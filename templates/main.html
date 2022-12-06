@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/nav.css" />
+    <link rel="stylesheet" href="../static/css/login.css" />
+    <link rel="stylesheet" href="../static/css/main.css" />
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- 네비바-->
+    <nav class="navbar">
+        <div class="underline">
+            <div><a href="../templates/main.html"></a>HOME</div>
+            <div><a href=""></a>About</div>
+            <div><a href=""></a>Contact</div>
+            <div class="open"> Click</div>
+        </div>
+    </nav>
+    <!--프로젝트설명-->
+    <div class="team_exp">
+
+    </div>
+    <!--베스트셀러-->
+    <div class="bestseller">
+        <div class="bestseller_txt">
+            당신을 기다리는
+            <br>
+            12만권의 도서
+        </div>
+        <div class="wrapper">
+            <div class="photobanner" id="card">
+            </div>
+            <div class="photobanner-left" id="card-left">
+            </div>
+            <div class="photobanner" id="card2">
+            </div>
+        </div>
+    </div>
+
+    <!-- 회원가입 로그인 모달창-->
+    <div class="container" id="modal-container">
+        <div class="contents">
+            <div class="modal signup" id="signupmodal">
+                <section class="signup-form">
+                    <h1>Thumbook</h1>
+                    <form action="" id="asdf">
+                        <div class="int-area">
+                            <input type="text" name="email" id="email" autocomplete="off" required/>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="int-area">
+                            <input type="text" name="username" id="username" autocomplete="off" required/>
+                            <label for="username">username</label>
+                        </div>
+                        <div class="int-area">
+                            <input type="password" name="password" id="password" autocomplete="off" required>
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="int-area">
+                            <input type="password" name="passwordcheck" id="passwordcheck" autocomplete="off" required>
+                            <label for="passwordcheck">PasswordCheck</label>
+                        </div>
+                        <div class="btn-area-user">
+                            <button type="button" id="btn-user" onclick="handleSignup()">회원가입</button>
+                        </div>
+                        <button type="button" class="page2login">로그인하러 가기</button>
+                    </form>
+                </section>
+                <button class="close">X</button>
+            </div>
+            <div class="modal login" id="loginmodal">
+                <section class="login-form">
+                    <h1>Thumbook</h1>
+                    <form action="">
+                        <div class="int-area">
+                            <input type="text" name="email" id="email1" autocomplete="off" required/>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="int-area">
+                            <input type="password" name="password" id="password1" autocomplete="off" required>
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="btn-area-user">
+                            <button type="button" id="btn1" onclick="handleLogin()">로그인</button>
+                        </div>
+                        <button type="button" class="page2Signup">계정이 없으신가요?</button>
+                    </form>
+                </section>
+                <button class="close">X</button>
+            </div>
+        </div>
+    </div>
+    <!-- 사용자 맞춤 추천 도서-->
+    <div class="user_custom">
+        <div class="user_custom_txt">
+            당신을 위한 맞춤 도서
+        </div>
+        <div class="component">
+            <ul class="align">
+              <!-- Book 1 -->
+              <li>
+                <figure class='book'>        
+                  <!-- Front -->        
+                  <ul class='hardcover_front'>
+                    <li>
+                      <img src="https://s.cdpn.io/13060/book1.jpg" alt="" width="100%" height="100%">
+                      <span class="ribbon bestseller">Nº1</span>
+                    </li>
+                    <li></li>
+                  </ul>        
+                  <!-- Pages -->        
+                  <ul class='page'>
+                    <li></li>
+                    <li>
+                      <a class="btn" href="#">Download</a>
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>        
+                  <!-- Back -->        
+                  <ul class='hardcover_back'>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <ul class='book_spine'>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <figcaption>
+                    <h1>Responsive Web Design</h1>
+                    <span>By Ethan Marcotte</span>
+                    <p>From mobile browsers to netbooks and tablets, users are visiting your sites from an increasing array of devices and browsers. Are your designs ready?...</p>
+                  </figcaption>
+                </figure>
+              </li>  
+              <!-- Book 2 -->
+              <li>
+                <figure class='book'>        
+                  <!-- Front -->        
+                  <ul class='hardcover_front'>
+                    <li>
+                      <img src="https://s.cdpn.io/13060/book2.jpg" alt="" width="100%" height="100%">
+                      <span class="ribbon new">NEW</span>
+                    </li>
+                    <li></li>
+                  </ul>        
+                  <!-- Pages -->        
+                  <ul class='page'>
+                    <li></li>
+                    <li>
+                      <a class="btn" href="#">Download</a>
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>        
+                  <!-- Back -->        
+                  <ul class='hardcover_back'>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <ul class='book_spine'>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <figcaption>
+                    <h1>Mobile First</h1>
+                    <span>By Luke Wroblewski</span>
+                    <p>Our industry’s long wait for the complete, strategic guide to mobile web design is finally over. Former Yahoo! design architect and co-creator of Bagcheck Luke Wroblewski knows more about mobile experience than the rest of us...</p>
+                  </figcaption>
+                </figure>
+              </li>  
+              <!-- Book 3 -->
+              <li>
+                <figure class='book'>       
+                  <!-- Front -->        
+                  <ul class='hardcover_front'>
+                    <li>
+                      <img src="https://s.cdpn.io/13060/book3.jpg" alt="" width="100%" height="100%">
+                    </li>
+                    <li></li>
+                  </ul>        
+                  <!-- Pages -->        
+                  <ul class='page'>
+                    <li></li>
+                    <li>
+                      <a class="btn" href="#">Download</a>
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>        
+                  <!-- Back -->        
+                  <ul class='hardcover_back'>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <ul class='book_spine'>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <figcaption>
+                    <h1>Adaptive Web Desgn</h1>
+                    <span>By Aaron Gustafson</span>
+                    <p>The web is an ever-changing medium whose scope, application, audience and platform continue to grow on a daily basis. If you’ve worked on the web for any amount of time, you’ve likely heard or even used the term “progressive enhancement.”...</p>
+                  </figcaption>
+                </figure>
+              </li>
+            </ul>  
+          </div>
+        
+    
+    </div>
+</body>
+</html>
+<script src="../static/js/api.js"></script>
+<script src="../static/js/main.js"></script>

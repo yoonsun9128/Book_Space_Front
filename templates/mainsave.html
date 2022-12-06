@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/nav.css" />
+    <link rel="stylesheet" href="../static/css/login.css" />
+    <link rel="stylesheet" href="../static/css/main.css" />
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- 네비바-->
+    <nav class="navbar">
+        <div class="underline">
+            <div><a href="../templates/main.html"></a>HOME</div>
+            <div><a href=""></a>About</div>
+            <div><a href=""></a>Contact</div>
+            <div class="open"> Click</div>
+        </div>
+    </nav>
+<!--팀설명-->
+<div class="hero_header">
+    <div class="wrapper">
+        <div class="photobanner">
+            <img class="first" src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg" alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+        </div>
+        <div class="photobanner-left">
+            <img class="first" src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg" alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+        </div>
+            <div class="photobanner">
+            <img class="first" src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg" alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+            <img src="https://i.ibb.co/DfbLcN1/photo-1426901013385-803d40bd5558.jpg " alt="" />
+        </div>
+
+    </div>
+</div>
+
+
+    
+<!-- 회원가입 로그인 모달창-->
+    <div class="container" id="modal-container">
+        <div class="contents">
+            <div class="modal signup" id="signupmodal">
+                <section class="signup-form">
+                    <h1>Thumbook</h1>
+                    <form action="" id="asdf">
+                        <div class="int-area">
+                            <input type="text" name="email" id="email" autocomplete="off" required/>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="int-area">
+                            <input type="text" name="username" id="username" autocomplete="off" required/>
+                            <label for="username">username</label>
+                        </div>
+                        <div class="int-area">
+                            <input type="password" name="password" id="password" autocomplete="off" required>
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="int-area">
+                            <input type="password" name="passwordcheck" id="passwordcheck" autocomplete="off" required>
+                            <label for="passwordcheck">PasswordCheck</label>
+                        </div>
+                        <div class="btn-area">
+                            <button type="button" id="btn" onclick="handleSignup()">회원가입</button>
+                        </div>
+                        <button type="button" class="page2login">로그인하러 가기</button>
+                    </form>
+                </section>
+                <button class="close">X</button>
+            </div>
+            <div class="modal login" id="loginmodal">
+                <section class="login-form">
+                    <h1>Thumbook</h1>
+                    <form action="">
+                        <div class="int-area">
+                            <input type="text" name="email" id="email1" autocomplete="off" required/>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="int-area">
+                            <input type="password" name="password" id="password1" autocomplete="off" required>
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="btn-area">
+                            <button type="button" id="btn1" onclick="handleLogin()">로그인</button>
+                        </div>
+                        <button type="button" class="page2Signup">계정이 없으신가요?</button>
+                    </form>
+                </section>
+                <button class="close">X</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../static/js/api.js"></script>
+<script src="../static/js/main.js"></script>
+<script>
+    let email = document.querySelector('#email')
+    let password = document.querySelector('#password')
+    let btn = document.querySelector('#btn')
+
+    btn.addEventListener('click', () => {
+        if(email.value == "") {
+            label = email.nextElementSibling
+            label.classList.add('warning')
+            setTimeout(() => {
+                label.classList.remove('warning')
+            }, 1500)
+        } else if(password.value == "") {
+            label = password.nextElementSibling
+            label.classList.add('warning')
+            setTimeout(() => {
+                label.classList.remove('warning')
+            }, 1500)
+        }
+    })
+</script>
