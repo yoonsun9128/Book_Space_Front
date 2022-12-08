@@ -1,4 +1,4 @@
-const backend_base_url = 'http://127.0.0.1:8000'
+const backend_base_url = 'http://127.0.0.1:8000/'
 const frontend_base_url = 'http://127.0.0.1:5501/templates/'
 
 
@@ -47,7 +47,7 @@ window.onload = async function getArticle(){
                 <div class="row row-cols-auto">
                     <div class="col" style="width:1000px; text-align:left;">${detail_comment}</div>
                     <div class="col"><button type="button" class="btn btn-outline-dark">수정</button></div>
-                    <div class="col"><button type="button" class="btn btn-outline-dark">삭제</button></div>
+                    <div class="col"><button type="button" id="delete" onclick="delete_comment()" class="btn btn-outline-dark">삭제</button></div>
                 </div>
             </div>
         </div>
@@ -85,3 +85,35 @@ window.onload = async function getArticle(){
     $('#detail_created_at-box').append(temp4_html)
   })
 }
+
+//article_id 
+const articleId = localStorage.getItem('article_id')
+console.log(articleId)
+
+
+// 댓글 작성 //
+async function post_comment() {
+    console.log("post_comment 실행")
+    const content = document.getElementById("content").value
+    console.log(content)
+    
+    const contentData = {
+    "article": articleId,
+    "content":  content
+    }    
+    const response = await fetch(`${backend_base_url}articles/${articleId}/`, {
+        headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + localStorage.getItem("access")
+            
+        },
+        method: 'POST',
+        body: JSON.stringify(contentData)
+    })
+    response_json = await response.json()
+    console.log(response_json,"!!!!!!!!", response_json.body)
+    if (response.status == 200) {
+        window.location.replace(`${frontend_base_url}detail.html`);
+    } else {
+        alert(response);
+    }}
