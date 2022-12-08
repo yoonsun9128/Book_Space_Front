@@ -16,7 +16,7 @@ window.onload = async function getArticle(){
     })
     return response.json();
 }
-  detailData().then((data) => {
+detailData().then((data) => {
     detail = data
     title = detail['title']
     article_user = detail['user']
@@ -38,13 +38,13 @@ window.onload = async function getArticle(){
         <div class="ms-3">
         <div class="row row-cols-auto">
             <div class="col" class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-            <div class="col"> <div class="fw-bold" id="comment-user">${detail_user}</div></div>
+            <div class="col"> <div> <div class="fw-bold" id="comment-user" id="comment-user">${detail_user}</div></div>
         </div>
             <div class="container text-center" style="width:100%; margin-left:70px; margin-bottom:30px;">
                 <div class="row row-cols-auto">
                     <div class="col" style="width:700px; text-align:left;" id="new-comment${detail_id}">${detail_comment}</div>
                     <div class="col"><button type="button" class="btn btn-outline-dark" id="${detail_id}" onclick="putComment(this.id)" data-bs-toggle="modal" data-bs-target="#Modal1">수정</button></div>
-                    <div class="col"><button type="button" class="btn btn-outline-dark">삭제</button></div>
+                    <div class="col"><button type="button" onclick="delete_comment(${detail_id})"  class="btn btn-outline-dark">삭제</button></div>
                 </div>
             </div>
         </div>
@@ -158,5 +158,40 @@ async function putSave() {
         OldComment.innerText=NewComment
     } else {
         console.log(comment_json['message'])
+    }
+}
+
+//댓글 삭제 //
+async function delete_comment(id) {
+    console.log(id)
+    const response = await fetch(`${backend_base_url}articles/${articleId}/${id}/`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("access")
+        },
+        method: 'DELETE'
+    })
+    
+    if (response.status == 204) {
+        window.location.reload();
+    } else {
+        alert("댓글 작성자만 삭제 가능합니다.")
+    }
+}
+
+// 게시글 삭제//
+async function delete_article() {
+    const response = await fetch(`${backend_base_url}articles/${articleId}/`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("access")
+        },
+        method: 'DELETE'
+    })
+    
+    if (response.status == 204) {
+        window.location.replace(`${frontend_base_url}feed.html`);
+    } else {
+        alert(" 작성자만 삭제 가능합니다.")
     }
 }
