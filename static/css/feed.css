@@ -9,6 +9,9 @@ body {
     border: none;
     background-color: #fff
 }
+.card-body{
+    height : 147px;
+}
 
 .image-card {
     height: 400px;
@@ -47,4 +50,22 @@ body {
 
 .about span {
     font-size: 12px
+}
+
+
+/* likes button */
+.btn{
+    background:transparent;
+    border-color: transparent;
+    height: 35px;
+    border : none;
+    padding : none;
+    margin:5px;
+    font-size: 27px;
+    outline : none;
+    color : grey
+}
+
+.btn i:hover{
+    cursor: pointer;
 }

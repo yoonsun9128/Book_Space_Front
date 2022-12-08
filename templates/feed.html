@@ -10,60 +10,57 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/43cd4c369a.js" crossorigin="anonymous"></script>  
   <title>Document</title>
   <link rel="stylesheet" href = "../static/css/feed.css">
 </head>
 <body>
   <div class="container"> 
-    <div class="row g-3 mt-5 mb-5" id = "image-box"> 
-      <div class="col-md-4"> 
-        <div class="card"> 
-          <div class="card-img-top image-card image-card-1"> 
-            <img src="https://post-phinf.pstatic.net/MjAyMDA5MDJfMTQ5/MDAxNTk5MDM3MzM4MDI0.OEVL2mjIl6L764BaOUbil2syoEshKzGh6NxDSgnL3V4g.JppeuZ51BtUCzDHRAwdlxhDob1SXT7wDNaa7TQL_xhUg.JPEG/%EC%9D%B8%EC%8A%A4%ED%83%80%EA%B7%B8%EB%9E%A8%EA%BE%B8%EB%AF%B8%EA%B8%B0.jpg?type=w1200" alt="..."> 
-          </div> 
-          <div class="card-body"> 
-            <span class="text-uppercase text-danger fw-bold fs-6">Category</span>
-             <h6 class="card-title text-dark mt-2">What you wants to know about hubspot?</h6> 
-             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</p> 
-             <a href="#" class="text-dark">Read full story...</a> 
-             <div class="mt-4 about d-flex justify-content-between align-items-center"> 
-            </div> 
-          </div> 
-        </div> 
-      </div> 
-      <div class="col-md-4"> 
-        <div class="card"> 
-          <div class="card-img-top image-card image-card-1"> 
-            <img src="https://post-phinf.pstatic.net/MjAyMDA5MDJfMTQ5/MDAxNTk5MDM3MzM4MDI0.OEVL2mjIl6L764BaOUbil2syoEshKzGh6NxDSgnL3V4g.JppeuZ51BtUCzDHRAwdlxhDob1SXT7wDNaa7TQL_xhUg.JPEG/%EC%9D%B8%EC%8A%A4%ED%83%80%EA%B7%B8%EB%9E%A8%EA%BE%B8%EB%AF%B8%EA%B8%B0.jpg?type=w1200" alt="..."> 
-          </div> 
-          <div class="card-body"> 
-            <span class="text-uppercase text-danger fw-bold fs-6">Category</span>
-             <h6 class="card-title text-dark mt-2">What you wants to know about hubspot?</h6> 
-             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</p> 
-             <a href="#" class="text-dark">Read full story...</a> 
-             <div class="mt-4 about d-flex justify-content-between align-items-center"> 
-            </div> 
-          </div> 
-        </div> 
-      </div> 
-      <div class="col-md-4"> 
-        <div class="card"> 
-          <div class="card-img-top image-card image-card-1"> 
-            <img src="https://post-phinf.pstatic.net/MjAyMDA5MDJfMTQ5/MDAxNTk5MDM3MzM4MDI0.OEVL2mjIl6L764BaOUbil2syoEshKzGh6NxDSgnL3V4g.JppeuZ51BtUCzDHRAwdlxhDob1SXT7wDNaa7TQL_xhUg.JPEG/%EC%9D%B8%EC%8A%A4%ED%83%80%EA%B7%B8%EB%9E%A8%EA%BE%B8%EB%AF%B8%EA%B8%B0.jpg?type=w1200" alt="..."> 
-          </div> 
-          <div class="card-body"> 
-            <span class="text-uppercase text-danger fw-bold fs-6">Category</span>
-             <h6 class="card-title text-dark mt-2">What you wants to know about hubspot?</h6> 
-             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</p> 
-             <a href="#" class="text-dark">Read full story...</a> 
-             <div class="mt-4 about d-flex justify-content-between align-items-center"> 
-            </div> 
-          </div> 
-        </div> 
-      </div> 
+    <div class="row g-3 mt-5 mb-5" id = "image-box">  
     </div>
   </div>
+<script src="../static/js/feed.js"></script>
+
+
+<script>
+  async function Toggle(k){
+
+    var btnvar1 = document.getElementById(k);
+      if (btnvar1.style.color == 'red'){
+        btnvar1.style.color = "grey"
+      }
+      else{
+        btnvar1.style.color = "red"
+      }
+    
+    const response = await fetch(`${backend_base_url}articles/like/1/`,{
+            method : 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer' + localStorage.getItem("access")
+            },
+        })
+      }    
+
+    // $('.btn').click(function(){
+    // var pk = $(this).attr(k) // 클릭한 요소의 attribute 중 name의 값을 가져온다.
+    // $.ajax({
+    //     url: "{% url 'http://127.0.0.1:8000/articles/like/2/' pledge.pk %}", // 통신할 url을 지정한다.
+    //     data: {'csrfmiddlewaretoken': '{{ csrf_token }}'}, // 서버로 데이터를 전송할 때 이 옵션을 사용한다.
+    //     dataType: "json", // 서버측에서 전송한 데이터를 어떤 형식의 데이터로서 해석할 것인가를 지정한다. 없으면 알아서 판단한다.
   
-  <script src="../static/js/feed.js"></script>
+    //     success: function(response){
+    //       // 요청이 성공했을 경우 좋아요/싫어요 개수 레이블 업데이트
+    //       $('#like_count'+ pk).html("count : "+ response.like_count);
+    //       $('#dislike_count'+ pk).html("count : "+ response.dislike_count);
+    //     },
+    //     error:function(error){
+    //       // 요청이 실패했을 경우
+    //       alert(error)
+    //     }
+    // });
+  // })
+
+</script>
 </body>
 </html>

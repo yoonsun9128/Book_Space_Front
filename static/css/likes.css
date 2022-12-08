@@ -1,0 +1,12 @@
+.btn{
+    background:transparent;
+    border : none;
+    margin:7px;
+    font-size: 27px;
+    outline : none;
+    color : grey
+}
+
+.btn i:hover{
+    cursor: pointer;
+}
