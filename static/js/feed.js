@@ -25,7 +25,7 @@ window.onload = async function FeedList(){
 
             let temp_html = `
             <div class="col-md-4"> 
-                <div class="card" id="${id}" onclick="page2detail(this.id)"> 
+                <div class="card"> 
                     <div class="card-img-top image-card image-card-1"> 
                         <img src="${image_url}${image}" alt="..."> 
                     </div>
