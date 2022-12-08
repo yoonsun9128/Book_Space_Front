@@ -57,56 +57,10 @@ function close() {
 }
 
 
-function show_popularlist(){
+function total_booklist(){
   $.ajax({
       type: 'GET',
       url:`${backend_base_url}articles/`,
-      data: {},
-      success: function(response) {
-          let postings = response
-          for (let i=0; i < postings.length; i++){
-              append_temp_html(
-                  postings[i].id,   
-                  postings[i].image,
-                  postings[i].likes_count,
-                  postings[i].title
-
-              )
-          }
-          function append_temp_html(id, image, likes_count, title){
-              temp_html = `
-          <div>
-              <div class="card-box">
-                  <!-- 게시글 -->
-                  <div class="card" id="${id}" onClick="page2detail(this.id)">
-                      <div class="card-img" src="${backend_base_url}${image}" no-repeat center center/contain;"></div>
-                      <div class="card-body">
-                          <h5 class="card-title">${title}</h5>
-                          <hr>
-                          <p class="card-text">${likes_count}</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          `
-              $('#card').append(temp_html)
-
-          }
-        }
-      }
-  )} show_popularlist()
-
-
-function page2detail(id){
-  localStorage.setItem('output_id', id)
-  window.location.href = "./imgdetail.html"
-
-}
-
-function show_booklist(){
-  $.ajax({
-      type: 'GET',
-      url:`${backend_base_url}articles/book/`,
       data: {},
       success: function(response) {
           let books = response
@@ -129,6 +83,33 @@ function show_booklist(){
           }
         }
       }
-  )} show_booklist()
+  )} total_booklist()
 
 
+function user_booklist(){
+  $.ajax({
+      type: 'GET',
+      url:`${backend_base_url}articles/user/`,
+      data: {},
+      success: function(response) {
+          let books = response
+          for (let i=0; i < books.length; i++){
+              append_temp_html(
+                  books[i].img_url,
+                  books[i].book_link,
+              )
+          }
+          function append_temp_html(img_url, book_link){
+              temp_html = `
+                    <img src="${img_url}" onclick="location.href='${book_link}'">
+
+            `
+              $('#card').append(temp_html)
+              $('#card-left').append(temp_html)
+              $('#card2').append(temp_html)
+
+
+          }
+        }
+      }
+  )} user_booklist()
