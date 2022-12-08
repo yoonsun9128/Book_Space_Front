@@ -62,12 +62,12 @@
                     <section class="mb-5">
                         <div class="card bg-light">
                             <div class="card-body">
-                                <!-- Comment form-->
-                                <div style = "margin-bottom: 100px;">
-                                    <form class="mb-4"><textarea class="form-control" rows="3" placeholder="댓글을 작성해주세요!"></textarea></form>
+                                 <!-- Comment form-->
+                                 <div style = "margin-bottom: 100px;">
+                                    <form class="mb-4"><textarea class="form-control" id="content" rows="3" placeholder="댓글을 작성해주세요!"></textarea></form>
                                     <div class="container text-center" style="width:100%;">
                                         <div class="row row-cols-auto" style = "float:right;">
-                                            <div class="col"><button type="button" class="btn btn-outline-dark">작성</button></div>
+                                            <div class="col"><button type="button" onclick="post_comment()" id="btn" class="btn btn-outline-dark">작성</button></div>
                                         </div>
                                     </div>
                                 </div>
