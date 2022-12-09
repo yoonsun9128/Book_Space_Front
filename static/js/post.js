@@ -1,6 +1,3 @@
-const backend_base_url = 'http://127.0.0.1:8000/'
-const frontend_base_url = 'http://127.0.0.1:5500/'
-
 // 게시글 작성 //
 async function post_article() {
     console.log("post_article 실행")

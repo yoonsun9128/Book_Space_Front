@@ -89,24 +89,60 @@ function total_booklist(){
 function user_booklist(){
   $.ajax({
       type: 'GET',
-      url:`${backend_base_url}articles/user/`,
+      url:`${backend_base_url}articles/`,
       data: {},
       success: function(response) {
           let books = response
-          for (let i=0; i < books.length; i++){
+          for (let i=0; i <3; i++){
               append_temp_html(
                   books[i].img_url,
                   books[i].book_link,
+                  books[i].book_content,
+                  books[i].book_title
               )
           }
-          function append_temp_html(img_url, book_link){
+          function append_temp_html(img_url, book_link, book_content, book_title){
               temp_html = `
-                    <img src="${img_url}" onclick="location.href='${book_link}'">
+              <li>
+              <figure class='book'>        
+                <!-- Front -->        
+                <ul class='hardcover_front'>
+                  <li>
+                    <img src="${img_url}" alt="" width="100%" height="100%">
+                    <span class="ribbon bestseller">Nº1</span>
+                  </li>
+                  <li></li>
+                </ul>        
+                <!-- Pages -->        
+                <ul class='page'>
+                  <li></li>
+                  <li>
+                    <a class="btn" href="${book_link}">더보기</a>
+                  </li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>        
+                <!-- Back -->        
+                <ul class='hardcover_back'>
+                  <li></li>
+                  <li></li>
+                </ul>
+                <ul class='book_spine'>
+                  <li></li>
+                  <li></li>
+                </ul>
+                <figcaption>
+                  <h1>${book_title}</h1>
+                  <span></span>
+                  <p>${book_content}</p>
+                </figcaption>
+              </figure>
+            </li>
 
             `
-              $('#card').append(temp_html)
-              $('#card-left').append(temp_html)
-              $('#card2').append(temp_html)
+              $('#user_book').append(temp_html)
+
 
 
           }

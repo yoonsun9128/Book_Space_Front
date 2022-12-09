@@ -7,6 +7,8 @@ body {
   display:flex;
   align-items: center;
   flex-wrap:wrap;
+  width: 950px;
+  height: 1300px;
 
 }
 .card {
@@ -41,6 +43,13 @@ body {
   top: 0;
   left: 100%;
   line-height: 400px;
+  white-space: no-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  
 }
 .card:hover .details {
   top: 0;
