@@ -89,11 +89,11 @@ function total_booklist(){
 function user_booklist(){
   $.ajax({
       type: 'GET',
-      url:`${backend_base_url}articles/user/`,
+      url:`${backend_base_url}articles/`,
       data: {},
       success: function(response) {
           let books = response
-          for (let i=0; i < books.length; i++){
+          for (let i=0; i < 3; i++){
               append_temp_html(
                   books[i].img_url,
                   books[i].book_link,
