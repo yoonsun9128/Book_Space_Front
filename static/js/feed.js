@@ -17,27 +17,32 @@ window.onload = async function FeedList(){
         feed = data
         console.log(feed)
         for (let i = 0; i < feed.length; i++){
-            let id = feed[i]['id']
+            let username = feed[i]['username']
             let title = feed[i]['title']
             let content = feed[i]['content']
             let image = feed[i]['image']
+            let id = feed[i]['id']
 
             let temp_html = `
             <div class="col-md-4"> 
-                <div class="card" id="${id}" onclick="page2detail(this.id)"> 
+                <div class="card"> 
                     <div class="card-img-top image-card image-card-1"> 
                         <img src="${image_url}${image}" alt="..."> 
-                    </div> 
+                    </div>
+                    <div class = "btns">
+                        <Button onclick = "Toggle(${id})"class = "btn" id="${id}" ><i class="fa-solid fa-heart"></i></Button>
+                    </div>
                     <div class="card-body"> 
                         <span class="text-uppercase text-danger fw-bold fs-6">${title}</span>
-                        <h6 class="card-title text-dark mt-2">${id}</h6> 
+                        <h6 class="card-title text-dark mt-2">${username}</h6> 
                         <p class="card-text">${content}</p> 
                         <a href="#" class="text-dark">Read full story...</a> 
                         <div class="mt-4 about d-flex justify-content-between align-items-center"> 
                         </div> 
                     </div> 
                 </div>
-            </div> `
+            </div>
+            `
             $('#image-box').append(temp_html)
         }
     })
@@ -46,5 +51,6 @@ window.onload = async function FeedList(){
 function page2detail(id){
     localStorage.setItem('article_id', id)
     window.location.href = "../templates/detail.html"
+    // window.location.href = `../templates/detail.html?article_id=${id}`
     console.log(id)
 }

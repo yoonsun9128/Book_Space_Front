@@ -7,10 +7,10 @@ async function handleSignup(){
     const SignupData = {
         username : document.getElementById("username").value,
         email : document.getElementById("email").value,
-        password : document.getElementById("password").value,
-        passwordcheck : document.getElementById("passwordcheck").value,
+        password1 : document.getElementById("password").value,
+        password2 : document.getElementById("passwordcheck").value,
     }
-    const response = await fetch(`${backend_base_url}users/signup/`, {
+    const response = await fetch(`${backend_base_url}users/dj-rest-auth/registration/`, {
         headers:{
             Accept: "application/json",
             'Content-type':'application/json'
@@ -21,6 +21,7 @@ async function handleSignup(){
 
     response_json = await response.json()
     if (response.status == 201) {
+        alert("이메일이 전송되었습니다. 확인해주세요.")
         login.style.display = 'flex'
         signup.style.display = 'none'
     } else {
@@ -33,7 +34,7 @@ async function handleLogin(){
         email : document.getElementById("email1").value,
         password : document.getElementById("password1").value
     }   
-    const response = await fetch('http://127.0.0.1:8000/users/api/token/', {
+    const response = await fetch(`${backend_base_url}users/dj-rest-auth/login/`, {
         headers:{
             'content-type':'application/json',
         },
@@ -43,21 +44,19 @@ async function handleLogin(){
 
     response_json = await response.json()
 
-
-
     if (response.status == 200) {
-        localStorage.setItem("access", response_json.access);
-        localStorage.setItem("refresh", response_json.refresh);
-    
-        const base64Url = response_json.access.split('.')[1];
+        alert("로그인 되었습니다.")
+        localStorage.setItem("access", response_json.access_token);
+        localStorage.setItem("refresh", response_json.refresh_token);
+
+        const base64Url = response_json.access_token.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         const jsonPayload = decodeURIComponent(atob(base64).split('').map(
             function(c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
-
     localStorage.setItem("payload", jsonPayload); 
-    window.location.replace(`${frontend_base_url}main.html`)
+    window.location.reload()
 } else {
     alert("잘못된 로그인입니다.", response.status)
 }
