@@ -33,19 +33,19 @@
         <div class="container mt-5">
             <div class="row">
                     <!-- Post content-->
-                    <article>
+                    <article style="width:80%; margin-left:130px;">
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
                             <div class="card bg-light" style="height:50px; line-height:50px; padding-left:10px;">
-                                <div id="detail_title-box"></div>
+                                <div id="detail_title-box" style="padding-left:10px; padding-right:10px;"></div>
                             </div>
                             <div class="container text-center" style="width:100%">
                                 <div class="row row-cols-auto" style="margin-top:30px;">
                                   <div class="col" style="font-size:20px; font-weight:bold;" id="detail_article_user-box"></div>
                                   <div class="col" style="padding-top:5px;" id="detail_created_at-box"></div>
                                   <div class="col"><button type="button" class="btn btn-outline-dark">수정</button></div>
-                                  <div class="col"><button type="button" class="btn btn-outline-dark">삭제</button></div>
+                                  <div class="col"><button type="button" onclick="delete_article()" id="" class="btn btn-outline-dark">삭제</button></div>
                                 </div>
                             </div>
                         </header>
@@ -53,21 +53,22 @@
                         <section class="mb-5">
                             <div class="card bg-light">
                             <div class="card-body" style="min-height:500px;">
-                                <div id="detail_article-box"></div>
+                                <div id="detail_image-box"></div>
+                                <div id="detail_article-box" style="padding-left:10px; padding-right:10px; margin-top:10px;"></div>
                             </div>
                             </div>
                         </section>
                     </article>
                     <!-- Comments section-->
-                    <section class="mb-5">
+                    <section class="mb-5" style="width:80%; margin-left:130px;">
                         <div class="card bg-light">
                             <div class="card-body">
-                                 <!-- Comment form-->
-                                 <div style = "margin-bottom: 100px;">
+                                <!-- Comment form-->
+                                <div style = "margin-bottom: 100px;">
                                     <form class="mb-4"><textarea class="form-control" id="content" rows="3" placeholder="댓글을 작성해주세요!"></textarea></form>
                                     <div class="container text-center" style="width:100%;">
                                         <div class="row row-cols-auto" style = "float:right;">
-                                            <div class="col"><button type="button" onclick="post_comment()" id="btn" class="btn btn-outline-dark">작성</button></div>
+                                            <div class="col"><button type="button" onclick="post_comment()" class="comment-btn btn-outline-dark">작성</button></div>
                                         </div>
                                     </div>
                                 </div>
@@ -82,6 +83,29 @@
                     </section>
             </div>
         </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="ModalLabel">댓글 수정</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="music">
+                            <input style="width:100%;" id="new_comment" placeholder="수정할 내용을 넣어주세요.">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="putSave()">수정</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
