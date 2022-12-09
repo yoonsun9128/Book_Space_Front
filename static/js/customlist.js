@@ -9,7 +9,7 @@ function show_customlist(){
         data: {},
         success: function(response) {
             let books = response
-            for (let i=0; i < 9; i++){
+            for (let i=0; i < 10; i++){
                 append_temp_html(
                     books[i].id,
                     books[i].img_url,
@@ -19,27 +19,34 @@ function show_customlist(){
             }
             function append_temp_html(id, img_url, book_title, book_content){
                 temp_html = `
-                <div class="card" id="${id}" onclick="save_id(${id})">
-                    <div class="imgBx">
-                        <img src="${img_url}" >
-                    </div>
-                    <div class="details">
-                        <h2>${book_title}</h2>
-                        <p >${book_content}</p>
-                    </div>
+                <div class="book-cell">
+                    <div class="book-img">
+                    <img src="${img_url}" class="book-photo">
+                </div>
+                <div class="book-content">
+                    <div class="book-title">${book_title}</div>
+                    <div class="book-sum">${book_content}</div>
+                    <section title=".squaredFour">
+                        <div class="squaredFour" id=${id} onclick=save_id(this.id)>
+                            <input type="checkbox" value="None" id="squaredFour" name="check" checked />
+                            <label for="squaredFour"></label>
+                        </div>
+                    </section>
                 </div>
                 `
                 $('#customlist').append(temp_html)
-  
-  
+                
+            
             }
           }
         }
+        
+
     )}show_customlist()
 let id_list = []
 function save_id(id){
     id_list.push(id)
-
+    console.log(id_list)
 }
 
 async function send_id(){
