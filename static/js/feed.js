@@ -48,3 +48,9 @@ window.onload = async function FeedList(){
     })
 }
 
+function page2detail(id){
+    localStorage.setItem('article_id', id)
+    window.location.href = "../templates/detail.html"
+    // window.location.href = `../templates/detail.html?article_id=${id}`
+    console.log(id)
+}
