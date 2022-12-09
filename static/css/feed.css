@@ -12,6 +12,19 @@ body {
 .card-body{
     height : 147px;
 }
+.card-body p{
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+    color: #888;
+    overflow : hidden; 
+    -webkit-line-clamp : 1;
+    -webkit-box-orient : vertical;
+    display : -webkit-box; 
+    margin-top: 3px;
+    
+}
+
 
 .image-card {
     height: 400px;
@@ -49,7 +62,7 @@ body {
 }
 
 .about span {
-    font-size: 12px
+    font-size: 12px;
 }
 
 
@@ -61,9 +74,9 @@ body {
     border : none;
     padding : none;
     margin:5px;
-    font-size: 27px;
+    font-size: 20px;
     outline : none;
-    color : grey
+    
 }
 
 .btn i:hover{

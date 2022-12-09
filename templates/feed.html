@@ -17,6 +17,8 @@
 <body>
   <div class="container"> 
     <div class="row g-3 mt-5 mb-5" id = "image-box">  
+
+
     </div>
   </div>
 
@@ -26,24 +28,29 @@
 
 <script>
   async function Toggle(k){
-
+     
     var btnvar1 = document.getElementById(k);
       if (btnvar1.style.color == 'red'){
         btnvar1.style.color = "grey"
+        history.scrollRestoration = "auto";
+        window.location.reload()
+        
       }
       else{
         btnvar1.style.color = "red"
+        history.scrollRestoration = "auto";
+        window.location.reload()
       }
-    }
     
-    // const response = await fetch(`${backend_base_url}articles/like/1/`,{
-    //         method : 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Authorization': 'Bearer' + localStorage.getItem("access")
-    //         },
-    //     })
-    //   } 
+    
+    const response = await fetch(`${backend_base_url}articles/like/${k}/`,{
+            method : 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("access")
+            },
+        })
+    } 
 
 </script>
 </body>
