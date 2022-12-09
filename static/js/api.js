@@ -43,13 +43,11 @@ async function handleLogin(){
     })
 
     response_json = await response.json()
-    console.log(response_json)
-
-
 
     if (response.status == 200) {
-        localStorage.setItem("access", response_json.access);
-        localStorage.setItem("refresh", response_json.refresh);
+        alert("로그인 되었습니다.")
+        localStorage.setItem("access", response_json.access_token);
+        localStorage.setItem("refresh", response_json.refresh_token);
 
         const base64Url = response_json.access_token.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -57,9 +55,8 @@ async function handleLogin(){
             function(c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
-
     localStorage.setItem("payload", jsonPayload); 
-    window.location.replace(`${frontend_base_url}main.html`)
+    window.location.reload()
 } else {
     alert("잘못된 로그인입니다.", response.status)
 }

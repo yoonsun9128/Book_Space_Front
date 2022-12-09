@@ -7,17 +7,22 @@
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../static/css/customlist.css" />
-
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>    <link rel="stylesheet" href="../static/css/customlist1.css" />
+    
     <title>Document</title>
 
 </head>
 <body>
-    <div class="customlist" id="customlist">
+    <main class="main" id="customlist">
+        <h1>취향에 맞는 카드를 골라주세요</h1>
+    </main>
     </div>
 <button class="subBnt"type="submit" onclick="send_id()">submit</button>
 
-<script src="../static/js/customlist.js"></script>
-<script src="../static/js/baseurl.js"></script>
+<script src="../static/js/customlist1.js"></script>
+<script>Splitting();</script>
 </body>
 </html>
+

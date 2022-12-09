@@ -19,22 +19,26 @@ function show_customlist(){
             }
             function append_temp_html(id, img_url, book_title, book_content){
                 temp_html = `
-                <div class="card" id="${id}" onclick="save_id(${id})">
-                    <div class="imgBx">
-                        <img src="${img_url}" >
-                    </div>
-                    <div class="details">
-                        <h2>${book_title}</h2>
-                        <p >${book_content}</p>
+                <div class="card" id=${id}>
+                    <img src="${img_url}"/>
+                    <div class="text">
+                        <h2 data-splitting="">${book_title}</h2>
+                        <p data-splitting="">${book_content}</p>
                     </div>
                 </div>
+                <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+                <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
+                <script>Splitting();</script>
+
                 `
                 $('#customlist').append(temp_html)
   
-  
+            
             }
           }
         }
+        
+
     )}show_customlist()
 let id_list = []
 function save_id(id){
