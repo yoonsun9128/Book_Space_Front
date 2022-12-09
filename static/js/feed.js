@@ -68,7 +68,7 @@ window.onload = async function FeedList(){
                         <p>${username}</p>
                         <p>${content}</p> 
                         <div class="mt-4 about d-flex justify-content-between align-items-center">
-                        <a href="#" class="text-dark">Read full story...</a>  
+                        <a href="../templates/detail.html" class="text-dark">Read full story...</a>  
                         </div> 
                     </div> 
                 </div>
