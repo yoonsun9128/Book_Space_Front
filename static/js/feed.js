@@ -2,6 +2,23 @@ const backend_base_url = 'http://127.0.0.1:8000/'
 const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 const image_url = 'http://127.0.0.1:8000'
 
+
+const payload = localStorage.getItem('payload')
+const personObj = JSON.parse(payload)
+const userId = personObj['user_id']
+
+
+
+
+
+// if (조건식) {
+//     // statement1
+//  } else if(조건식) {
+//     // statement2
+//  } else {
+//     // statement3
+//  }
+
 window.onload = async function FeedList(){
     const FeedData = async ()=> {
         const response = await fetch(`${backend_base_url}articles/list`,{
@@ -22,6 +39,20 @@ window.onload = async function FeedList(){
             let content = feed[i]['content']
             let image = feed[i]['image']
             let id = feed[i]['id']
+            let like = feed[i]['likes']
+            let count = feed[i]['likes_count']
+            
+            
+
+
+            console.log(like.includes(userId))
+
+            if (like.includes(userId) == true){
+                color = "red"
+            }
+            else{
+                color = "gray"
+            }
 
             let temp_html = `
             <div class="col-md-4"> 
@@ -30,14 +61,14 @@ window.onload = async function FeedList(){
                         <img src="${image_url}${image}" alt="..."> 
                     </div>
                     <div class = "btns">
-                        <Button onclick = "Toggle(${id})"class = "btn" id="${id}" ><i class="fa-solid fa-heart"></i></Button>
+                        <Button onclick = "Toggle(${id})"class = "btn" id="${id}" style = "color : ${color}" ><i class="fa-solid fa-heart"></i> ${count}</Button>
                     </div>
                     <div class="card-body"> 
-                        <span class="text-uppercase text-danger fw-bold fs-6">${title}</span>
-                        <h6 class="card-title text-dark mt-2">${username}</h6> 
-                        <p class="card-text">${content}</p> 
-                        <a href="#" class="text-dark">Read full story...</a> 
-                        <div class="mt-4 about d-flex justify-content-between align-items-center"> 
+                        <span class="text-uppercase fw-bold fs-6">${title}</span>
+                        <p>${username}</p>
+                        <p>${content}</p> 
+                        <div class="mt-4 about d-flex justify-content-between align-items-center">
+                        <a href="#" class="text-dark">Read full story...</a>  
                         </div> 
                     </div> 
                 </div>
