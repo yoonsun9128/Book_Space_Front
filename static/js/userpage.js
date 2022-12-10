@@ -28,7 +28,8 @@ window.onload = async function getUserpage(){
     }
     detailData().then((data) =>{
         total = data
-        console.log(data['username'])
+        console.log(total)
+        console.log(data['profile_img'])
         user_article = data.article_set
         console.log(user_article)
         for (let i = 0; i<user_article.length; i++){
@@ -42,7 +43,18 @@ window.onload = async function getUserpage(){
                 <img src="${image_url}${img}" class="rounded" id="${id}" onclick="pageDatail(this.id)">
             </div> `
             $('#article_list').append(temp_html)
+
         }
+        let name = data['username']
+        let user_image = data['profile_img']
+        let name_html = `
+        <h3 class="title">${name}</h3>
+        `
+        $('#user_name').append(name_html)
+        let img_html = `
+        <img src="${image_url}${user_image}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+        `
+        $('#user_img').append(img_html)
     })
 }
 
