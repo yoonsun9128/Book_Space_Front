@@ -1,5 +1,5 @@
 const backend_base_url = 'http://127.0.0.1:8000/'
-const frontend_base_url = 'http://127.0.0.1:5501/templates/'
+const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 const image_url = 'http://127.0.0.1:8000'
 
 
@@ -115,7 +115,6 @@ async function post_comment() {
     })
 
     response_json = await response.json()
-    console.log(response_json,"!!!!!!!!", response_json.body)
     if (response.status == 200) {
         window.location.replace(`${frontend_base_url}detail.html`);
     } else {

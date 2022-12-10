@@ -68,7 +68,7 @@ window.onload = async function FeedList(){
                         <p>${username}</p>
                         <p>${content}</p> 
                         <div class="mt-4 about d-flex justify-content-between align-items-center">
-                        <a href="../templates/detail.html" class="text-dark">Read full story...</a>  
+                        <div class="input_img" id="${id}" onclick="page2detail(this.id)">Read full story...</div>
                         </div> 
                     </div> 
                 </div>
