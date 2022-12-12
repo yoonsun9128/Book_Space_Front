@@ -16,7 +16,6 @@ const user_id = user[10];
 
 window.onload = async function getUserpage(){
     const detailData = async () => {
-    console.log(user_id)
     const response = await fetch(`http://127.0.0.1:8000/users/${user_id}/`,{
         headers:{
             'Content-Type': 'application/json',
@@ -28,9 +27,7 @@ window.onload = async function getUserpage(){
     }
     detailData().then((data) =>{
         total = data
-        console.log(data['username'])
         user_article = data.article_set
-        console.log(user_article)
         for (let i = 0; i<user_article.length; i++){
             let id = user_article[i]['id']
             let img = user_article[i]['image']
@@ -42,7 +39,18 @@ window.onload = async function getUserpage(){
                 <img src="${image_url}${img}" class="rounded" id="${id}" onclick="pageDatail(this.id)">
             </div> `
             $('#article_list').append(temp_html)
+
         }
+        let name = data['username']
+        let user_image = data['profile_img']
+        let name_html = `
+        <h3 class="title">${name}</h3>
+        `
+        $('#user_name').append(name_html)
+        let img_html = `
+        <img src="${image_url}${user_image}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+        `
+        $('#user_img').append(img_html)
     })
 }
 

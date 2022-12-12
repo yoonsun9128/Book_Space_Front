@@ -126,7 +126,7 @@ ul {
     font-size: 18px;
     text-shadow: 0 0 1px rgba(255,255,255,0.3);
   }
-  
+
   ul {
     list-style: none;
     display: block;
@@ -134,7 +134,7 @@ ul {
     width: 1000px;
     padding: 0;
   }
-  
+
   li {
     position: relative;
     display: inline-block;
@@ -145,9 +145,9 @@ ul {
     cursor: pointer;
     margin: 0;
     padding: 0;
-    perspective: 1000px;  
+    perspective: 1000px;
   }
-  
+
   li span {
     position: relative;
     display: inline-block;
@@ -157,7 +157,7 @@ ul {
     transform-origin: 50% 0;
     transform-style: preserve-3d;
   }
-  
+
   li span::before {
     position: absolute;
     top: 100%;
@@ -170,15 +170,15 @@ ul {
     transform: rotateX(-90deg);
     transform-origin: 50% 0;
   }
-  
+
   li:hover span,
   li:focus span {
     transform: rotateX(90deg) translateY(-22px);
   }
-  
+
   li:hover span::before,
   li:focus span::before {
-    background: #1abe9e;	
+    background: #1abe9e;
   }
 
   /* 검색 */
@@ -187,7 +187,7 @@ ul {
     text-align: center;
   }
   .redfamily {
-    color: red; 
+    color: red;
   }
   .search-box,.close-icon,.search-wrapper {
     position: relative;
@@ -241,4 +241,3 @@ ul {
     display: none;
   }
 
-  
