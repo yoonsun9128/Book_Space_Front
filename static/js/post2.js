@@ -4,13 +4,15 @@ const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 
 
 const payload = localStorage.getItem('payload')
+
 const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
-const bookId = localStorage.getItem('book_id')
+W = window.location.href
+id = (W.split("=")[1])
 
 window.onload = async function booktitle() {
     const bookData = async () => {
-        const response = await fetch(`http://127.0.0.1:8000/articles/search/1/`,{
+        const response = await fetch(`http://127.0.0.1:8000/articles/search/${id}/`,{
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer' + localStorage.getItem("access")
@@ -22,15 +24,15 @@ window.onload = async function booktitle() {
 
 bookData().then((data) => {
     book = data
-    title = book['book_title']
-    console.log(title)
-})
-let temp_html = `
+    let title = book['book_title']
+
+    let temp_html = `
     <div>
         <div class="form-control">${title}</div>
     </div>
     `
     $('#title').append(temp_html)
+})
 }
 
 
@@ -70,9 +72,9 @@ async function post_book() {
     formData.append('image', image);
     
     console.log("87", formData)
-    const response = await fetch(`http://127.0.0.1:8000/articles/search/1/`, {
+    const response = await fetch(`http://127.0.0.1:8000/articles/search/${id}/`, {
         headers: {
-            
+            // 'Content-Type': 'application/json',
             'Authorization': "Bearer " + localStorage.getItem("access"),
         },
         method: 'POST',
@@ -81,7 +83,7 @@ async function post_book() {
     response_json = response.json();
 
     if (response.status == 200) {
-        window.location.replace(`${frontend_base_url}/feed.html`);
+        window.location.replace(`${frontend_base_url}feed.html`);
     } else {
         alert(response.status);
     }}

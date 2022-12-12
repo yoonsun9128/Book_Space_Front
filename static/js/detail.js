@@ -2,12 +2,18 @@ const backend_base_url = 'http://127.0.0.1:8000/'
 const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 const image_url = 'http://127.0.0.1:8000'
 
-
+A = window.location.search
+// console.log(A)
+// code = A.split("=")[1]
+// console.log(code)
+// console.log(A)
 
 const article_id = localStorage.getItem('article_id');
 window.onload = async function getArticle(){
+    A = window.location.search
+    code = A.split("=")[1]
     const detailData = async () => {
-    const response = await fetch(`http://127.0.0.1:8000/articles/${article_id}/`,{
+    const response = await fetch(`http://127.0.0.1:8000/articles/${code}/`,{
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer' + localStorage.getItem("access")
@@ -104,7 +110,7 @@ async function post_comment() {
     "article": articleId,
     "content": content
     }    
-    const response = await fetch(`${backend_base_url}articles/${articleId}/`, {
+    const response = await fetch(`${backend_base_url}articles/${code}/`, {
         headers: {
                 'Content-Type': 'application/json',
                 'Authorization': "Bearer " + localStorage.getItem("access")
@@ -115,8 +121,9 @@ async function post_comment() {
     })
 
     response_json = await response.json()
+    console.log(response_json,"!!!!!!!!", response_json.body)
     if (response.status == 200) {
-        window.location.replace(`${frontend_base_url}detail.html`);
+        window.location.replace(`${frontend_base_url}detail.html?id=${code}`);
     } else {
         alert(response);
     }
@@ -140,7 +147,7 @@ async function putSave() {
     const OldComment = document.getElementById(`new-comment${num}`)
     const NewComment = document.getElementById(`new_comment`).value
     console.log(OldComment)
-    const response = await fetch(`http://127.0.0.1:8000/articles/${article_id}/${num}/`, {
+    const response = await fetch(`http://127.0.0.1:8000/articles/${code}/${num}/`, {
         headers: {
             "content-type": "application/json",
             "Authorization": "Bearer " + localStorage.getItem("access")
@@ -163,7 +170,7 @@ async function putSave() {
 //댓글 삭제 //
 async function delete_comment(id) {
     console.log(id)
-    const response = await fetch(`${backend_base_url}articles/${articleId}/${id}/`, {
+    const response = await fetch(`${backend_base_url}articles/${code}/${id}/`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + localStorage.getItem("access")
@@ -180,7 +187,7 @@ async function delete_comment(id) {
 
 // 게시글 삭제//
 async function delete_article() {
-    const response = await fetch(`${backend_base_url}articles/${articleId}/`, {
+    const response = await fetch(`${backend_base_url}articles/${code}/`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + localStorage.getItem("access")
