@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+
+
+<!-- jQuery -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<!-- Bootstrap CSS -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+
+
+<title>작성</title>
+
+
+<style>
+
+body {
+
+  padding-top: 70px;
+
+  padding-bottom: 30px;
+
+  background: #fde3a7;
+
+}
+
+.imagebutton {
+    margin-left: 750px;
+}
+.card-box {
+    border:1px solid black;
+    width: 700px;
+    height: 500px;
+}
+.card-box2 {
+    border:1px solid black;
+    float:left;
+    width:400px;
+    height:500px;
+
+}
+.container {
+    display: flex;
+}
+.file {
+    margin-left:210px;
+}
+.input-group {
+    margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+	
+	<h2 class="write" style="margin-left:200px;">작성</h2>
+		<div class="container"  role="main">
+
+			
+            
+                <div class="card-box">
+
+				<div class="mb-3" style="width:70%; margin-left:20px;" >
+
+					<label for="title">제목</label>
+					<div id="title"> </div>
+					
+
+				</div>
+
+				<div class="mb-3" style="width:70%;  margin-left:20px;" >
+
+					<label for="content">내용</label>
+
+					<textarea class="form-control" rows="9" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
+
+                    
+
+				</div>
+                <div class="input-group mb-3" style="margin-left:15px;">
+					<label class="input-group-text" for="inputGroupSelect01">별점</label>
+					<select class="form-select" id="rating">
+						<option selected>--선택하기--</option>
+						<option value="1">☆</option>
+						<option value="2">☆☆</option>
+						<option value="3">☆☆☆</option>
+						<option value="4">☆☆☆☆</option>
+						<option value="5">☆☆☆☆☆</option>
+					</select>
+				</div>
+            </div>
+            <div class="card-box2">
+				<div class="image-container">
+					<img style=
+					"width: 100%; height: 100%; max-width: 100%; max-height: 500px; object-fit: cover;" id="previewImage" >
+				</div>
+            </div>
+		</div>
+        <td><input type="file" class="file" value="파일 선택"  id="InputImg" name="image" accept="image/*"/></td>
+        <button type="button" class="imagebutton" onclick="post_book()" id="btnSave">작성</button>
+	
+		<script src="../static/js/post2.js"></script>
+</body>
+
+</html>
