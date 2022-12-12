@@ -16,7 +16,6 @@ const user_id = user[10];
 
 window.onload = async function getUserpage(){
     const detailData = async () => {
-    console.log(user_id)
     const response = await fetch(`http://127.0.0.1:8000/users/${user_id}/`,{
         headers:{
             'Content-Type': 'application/json',
@@ -28,10 +27,7 @@ window.onload = async function getUserpage(){
     }
     detailData().then((data) =>{
         total = data
-        console.log(total)
-        console.log(data['profile_img'])
         user_article = data.article_set
-        console.log(user_article)
         for (let i = 0; i<user_article.length; i++){
             let id = user_article[i]['id']
             let img = user_article[i]['image']

@@ -16,7 +16,7 @@
 
     <title>main2</title>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-    
+
 </head>
     <body>
     <ul>
@@ -29,28 +29,25 @@
         <li><span data-hover="s">s</span></li>
         <li><span data-hover="t">t</span></li>
     </ul>
-    
+
       <div class="search-wrapper">
-        <form>
-        <input type="text" name="focus" required class="search-box" placeholder="Enter search term" />
-          <button class="close-icon" type="reset"></button>
-        </form>
+        <form onsubmit="return false;">
+        <input type="text" id="box" class="search-box" placeholder="Enter search term" onkeyup="enter(event)" required/>
+
+      </form>
+      <button onclick="writeArticle()">새로작성하기</button>
       </div>
 
 
     <div class="wrap">
-        <div class="row row-cols-1 row-cols-md-3 g-4" id="book_list">
-            <div class="col">
-                <div class='book'>
-                    <img src='https://image.aladin.co.kr/product/29747/62/coversum/k122830710_1.jpg' />
-                </div>    
-                <div class="book-see">오웰의 장미</div>
-            </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="book_all_list">
+
         </div>
     </div>
 
 
+<script src="../static/js/main2.js"></script>
 </body>
 
 </html>
-<script src="../static/js/main2.js"></script>
+
