@@ -1,5 +1,5 @@
 const backend_base_url = 'http://127.0.0.1:8000/'
-const frontend_base_url = 'http://127.0.0.1:5501/templates/'
+const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 const image_url = 'http://127.0.0.1:8000'
 
 
@@ -11,7 +11,7 @@ function book_list(s_data) {
         $('#book_all_list').empty()
     };
     const BooksData = async () => {
-        const response = await fetch(`${backend_base_url}articles/search/?${searchParams.toString()}`, {
+        const response = await fetch(`${backend_base_url}articles/search/?${searchParams.toString()}`, { 
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,4 +52,8 @@ async function enter(e) {
 
 function writeArticle(){
     window.location.href = "../templates/detail.html"
+}
+
+function writeFeed(id){
+    window.location.href = `http://127.0.0.1:5500/templates/post2.html?id=${id}`
 }

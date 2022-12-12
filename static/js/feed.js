@@ -2,22 +2,9 @@ const backend_base_url = 'http://127.0.0.1:8000/'
 const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 const image_url = 'http://127.0.0.1:8000'
 
-
 const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
-
-
-
-
-
-// if (조건식) {
-//     // statement1
-//  } else if(조건식) {
-//     // statement2
-//  } else {
-//     // statement3
-//  }
 
 window.onload = async function FeedList(){
     const FeedData = async ()=> {
@@ -55,7 +42,7 @@ window.onload = async function FeedList(){
             }
 
             let temp_html = `
-            <div class="col-md-4"> 
+            <div id = "my_table" class="col-md-4"> 
                 <div class="card"> 
                     <div class="card-img-top image-card image-card-1"> 
                         <img src="${image_url}${image}" alt="..."> 
@@ -68,7 +55,7 @@ window.onload = async function FeedList(){
                         <p>${username}</p>
                         <p>${content}</p> 
                         <div class="mt-4 about d-flex justify-content-between align-items-center">
-                        <div class="input_img" id="${id}" onclick="page2detail(this.id)">Read full story...</div>
+                        <a href="${frontend_base_url}detail.html?id=${id}" class="text-dark">Read full story...</a>  
                         </div> 
                     </div> 
                 </div>
@@ -79,9 +66,9 @@ window.onload = async function FeedList(){
     })
 }
 
-function page2detail(id){
-    localStorage.setItem('article_id', id)
-    window.location.href = "../templates/detail.html"
-    // window.location.href = `../templates/detail.html?article_id=${id}`
-    console.log(id)
-}
+// function page2detail(id){
+//     localStorage.setItem('article_id', id)
+//     window.location.href = "../templates/detail.html"
+//     // window.location.href = `../templates/detail.html?article_id=${id}`
+//     console.log(id)
+// }
