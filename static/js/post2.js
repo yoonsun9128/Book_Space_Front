@@ -28,7 +28,7 @@ bookData().then((data) => {
 
     let temp_html = `
     <div>
-        <div class="form-control">${title}</div>
+        <div class="form-control" style="width:100%; margin-right:50px;">${title}</div>
     </div>
     `
     $('#title').append(temp_html)
