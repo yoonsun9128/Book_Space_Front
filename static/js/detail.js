@@ -3,14 +3,15 @@ const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 const image_url = 'http://127.0.0.1:8000'
 
 A = window.location.search
-// console.log(A)
-// code = A.split("=")[1]
-// console.log(code)
-// console.log(A)
+console.log(A)
+code = A.split("=")[1]
+console.log(code)
+console.log(A)
 
 const article_id = localStorage.getItem('article_id');
 window.onload = async function getArticle(){
 A = window.location.search
+console.log(A)
 code = A.split("=")[1]
     const detailData = async () => {
     const response = await fetch(`http://127.0.0.1:8000/articles/${code}/`,{
@@ -27,6 +28,8 @@ detailData().then((data) => {
     title = detail['title']
     article_user = detail['user']
     image = detail['image']
+    profile_img = detail['profile_img']
+    console.log(profile_img)
     console.log(image)
     content = detail['content']
     rating = detail['rating']
@@ -34,6 +37,8 @@ detailData().then((data) => {
     comment = detail['comment_set']
     comment_user = detail['comment_set']
     comment_id = detail['comment_set']
+    comment_profile_img = detail['comment_set']
+    console.log(comment_profile_img)
     console.log(comment_id)
 
 
@@ -41,10 +46,12 @@ detailData().then((data) => {
         let detail_comment = comment[i]['content']
         let detail_user = comment_user[i]['user']
         let detail_id = comment_id[i]['id']
+        let detail_profile_img = comment_profile_img[i]['profile_img']
+        console.log(detail_profile_img)
         let temp_html = `
         <div class="ms-3">
         <div class="row row-cols-auto">
-            <div class="col" class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+            <div class="col" class="flex-shrink-0"><img class="rounded-circle" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: top;" src="${image_url}${detail_profile_img}" alt="..." /></div>
             <div class="col"> <div> <div class="fw-bold" id="comment-user" id="comment-user">${detail_user}</div></div>
         </div>
             <div class="container text-center" style="width:100%; margin-left:70px; margin-bottom:30px;">
@@ -104,6 +111,13 @@ detailData().then((data) => {
     </div>
     `
     $('#put_title').append(temp7_html)
+
+    let temp8_html = `
+    <div>
+        <img style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: top;" src="${image_url}${profile_img}" alt="...">
+    </div>
+    `
+    $('#profile_img_box').append(temp8_html)
   })
 }
 
