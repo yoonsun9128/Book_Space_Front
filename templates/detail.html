@@ -13,7 +13,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     </head>
-    <body>
+    <body style="background: #fde3a7;">
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
@@ -44,7 +44,8 @@
                                 <div class="row row-cols-auto" style="margin-top:30px;">
                                   <div class="col" style="font-size:20px; font-weight:bold;" id="detail_article_user-box"></div>
                                   <div class="col" style="padding-top:5px;" id="detail_created_at-box"></div>
-                                  <div class="col"><button type="button" class="btn btn-outline-dark">수정</button></div>
+                                  <div class="col" style="padding-top:5px;" id="detail_rating-box"></div>
+                                  <div class="col"><button type="button" class="btn btn-outline-dark" id="put_article" onclick="putArticle()" data-bs-toggle="modal" data-bs-target="#Modal2">수정</button></div>
                                   <div class="col"><button type="button" onclick="delete_article()" id="" class="btn btn-outline-dark">삭제</button></div>
                                 </div>
                             </div>
@@ -55,7 +56,7 @@
                             <div class="card-body" style="min-height:500px;">
                                 <div class="container text-center">
                                     <div class="row row-cols-2" style="position:relative;">
-                                      <div class="col"><div id="detail_image-box" style="position:absolute; top:50%; transform:translateY(-50%);"></div></div>
+                                      <div class="col"><div id="detail_image-box" style="line-height:500px;""></div></div>
                                       <div class="col"><div id="detail_article-box" style="padding-left:15px; padding-right:10px; margin-top:10px; border-left : solid #dee2e6; min-height:500px; float:left;"></div></div>
                                     </div>
                                 </div>
@@ -89,7 +90,51 @@
         </div>
 
 
-        <!-- Modal -->
+        <!-- 게시글 수정 Modal -->
+        <div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="ModalLabel">게시글 수정</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="article-modal">
+                            <div class="mb-3">
+                                <label for="title">제목</label>
+                                <div class="card bg-light" style="height:40px; line-height:40px; padding-left:10px;">
+                                    <div id="put_title"></div>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupSelect01">별점</label>
+                                <select class="form-select" id="put_rating">
+                                    <option selected>--선택하기--</option>
+                                    <option value="1">☆</option>
+                                    <option value="2">☆☆</option>
+                                    <option value="3">☆☆☆</option>
+                                    <option value="4">☆☆☆☆</option>
+                                    <option value="5">☆☆☆☆☆</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="content">내용</label>
+                                <textarea class="form-control" rows="5" name="content" id="put_content" placeholder="내용을 입력해 주세요" ></textarea>
+                            </div>
+                            <div class="image-container">
+                                <img style="width: 500px;" id="put_previewImage" >
+                            </div>
+                            <td><input type="file" value="파일 선택" id="put_InputImg" name="image" accept="image/*"/></td>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="ArticleSave()">수정</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 댓글 수정 Modal -->
         <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

@@ -10,8 +10,8 @@ A = window.location.search
 
 const article_id = localStorage.getItem('article_id');
 window.onload = async function getArticle(){
-    A = window.location.search
-    code = A.split("=")[1]
+A = window.location.search
+code = A.split("=")[1]
     const detailData = async () => {
     const response = await fetch(`http://127.0.0.1:8000/articles/${code}/`,{
         headers: {
@@ -29,6 +29,7 @@ detailData().then((data) => {
     image = detail['image']
     console.log(image)
     content = detail['content']
+    rating = detail['rating']
     created_at = detail['created_at']
     comment = detail['comment_set']
     comment_user = detail['comment_set']
@@ -87,12 +88,22 @@ detailData().then((data) => {
     `
     $('#detail_created_at-box').append(temp4_html)
     let temp5_html = `
-                            <div class="card bg-light">
-    <div style="display: flex; justify-content: center;">
-        <img class="imput_image" src="${image_url}${image}" alt="...">
-    </div>
+        <img class="imput_image" style="width: 100%; height: auto; max-width: 400px; max-height: 400px; object-fit: cover;" src="${image_url}${image}" alt="...">
     `
     $('#detail_image-box').append(temp5_html)
+    let temp6_html = `
+    <div>
+        <div class="rating">별점 : ${rating}점</div>
+    </div>
+    `
+    $('#detail_rating-box').append(temp6_html)
+
+    let temp7_html = `
+    <div>
+        <div class="titles">${title}</div>
+    </div>
+    `
+    $('#put_title').append(temp7_html)
   })
 }
 
@@ -136,9 +147,11 @@ num=0
 function putComment(id) {
     console.log(id)
     num=id
-    const NewComment = document.getElementById(`new_comment`)
-    NewComment.value = null
+    const OldComment = document.getElementById(`new-comment${num}`)
+    const NewComment = document.getElementById(`new_comment`).value
+    NewComment.value = OldComment
     console.log(NewComment)
+    console.log(OldComment.innerText)
     
 }
 
@@ -199,5 +212,60 @@ async function delete_article() {
         window.location.replace(`${frontend_base_url}feed.html`);
     } else {
         alert(" 작성자만 삭제 가능합니다.")
+    }
+}
+
+
+//게시글 수정
+
+
+function putArticle() {
+    const OldContent = document.getElementById(`detail_article-box`)
+    const NewContent = document.getElementById(`put_content`).value
+    const OldRating = document.getElementById(`detail_rating-box`)
+    const NewRating = document.getElementById(`put_rating`).value
+    const OldImage = document.getElementById(`detail_image-box`)
+    const NewImage = document.getElementById(`put_InputImg`).value
+    NewContent.value = OldContent
+    NewRating.value = OldRating
+    NewImage.value = OldImage
+    console.log(NewContent)
+    console.log(OldContent.innerText)
+    console.log(NewRating)
+    console.log(OldRating.innerText)
+    console.log(NewImage)
+    console.log(OldImage)
+}
+
+async function ArticleSave() {
+    const OldContent = document.getElementById(`detail_article-box`)
+    const NewContent = document.getElementById(`put_content`).value
+    const OldRating = document.getElementById(`detail_rating-box`)
+    const NewRating = document.getElementById(`put_rating`).value
+    const OldImage = document.getElementById(`detail_image-box`)
+    const NewImage = document.getElementById(`put_InputImg`).files[0]
+    console.log(OldContent.innerText)
+    console.log(OldRating.innerText)
+    console.log(OldImage.innerText)
+
+    const formData = new FormData();
+    formData.append('content', NewContent);
+    formData.append('rating', NewRating);
+    formData.append('image', NewImage);
+
+    const response = await fetch(`http://127.0.0.1:8000/articles/${code}/`, {
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        method: 'PUT',
+        body: formData
+    })
+    article_json = await response.json()
+
+    if (response.status == 200) {
+        alert("게시글 수정 완료")
+        window.location.replace(`${frontend_base_url}detail.html?id=${code}`);
+    } else {
+        console.log(article_json['message'])
     }
 }
