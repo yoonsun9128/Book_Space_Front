@@ -49,7 +49,7 @@ window.onload = async function getUserpage(){
         `
         $('#user_name').append(name_html)
         let img_html = `
-        <img src="${image_url}${user_image}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+        <img src="${image_url}${user_image}" alt="Circle Image" class="img-raised rounded-circle img-fluid" onclick="ImageChange(this.id)" id="${info}" data-bs-toggle="modal" data-bs-target="#UserImage">
         `
         $('#user_img').append(img_html)
         let info_html = `
@@ -59,35 +59,27 @@ window.onload = async function getUserpage(){
     })
 }
 
+
 function pageDatail(id){
     console.log(id)
-    localStorage.setItem('article_id', id)
-    window.location.href = "../templates/detail.html"
+    window.location.href = "../templates/detail?id=${id}.html"
 }
 
 num = 0
+function ImageChange(id){
+    console.log(id)
+    num= id
+}
 function infoChange(id){
     console.log(id)
     num= id
 }
 
-async function editSave() {
-    console.log(num)
-    const newName = document.getElementById(`info_name`).value
-    const newPassword = document.getElementById(`info_password`).value
-    const newPassword2 = document.getElementById(`info_password2`).value
+async function imageSave(){
     const newImage = document.getElementById(`info_image`).files[0]
-    console.log(newName)
-    console.log(newPassword)
-    console.log(newPassword2)
-    console.log(newImage)
     const formData = new FormData();
-    formData.append('username', newName);
-    formData.append('password', newPassword);
-    formData.append('passwordcheck', newPassword2);
     formData.append('profile_img', newImage);
-    console.log("87", formData)
-    const response = await fetch(`http://127.0.0.1:8000/users/${num}/`, {
+    const response = await fetch(`http://127.0.0.1:8000/users/${num}/image`, {
         headers: {
             "Authorization": "Bearer " + localStorage.getItem("access")
         },
@@ -96,6 +88,30 @@ async function editSave() {
     })
     response_json = response.json();
     if (response.status == 200) {
+        window.location.replace(`${frontend_base_url}userpage.html`);
+    } else {
+        alert(response.status);
+    }
+}
+
+async function editSave() {
+    console.log(num)
+    const userInfoData = {
+        username : document.getElementById(`info_name`).value,
+        password : document.getElementById(`info_password`).value,
+        passwordcheck : document.getElementById(`info_password2`).value
+    }
+    const response = await fetch(`http://127.0.0.1:8000/users/${num}/`, {
+        headers: {
+            'Content-type':'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        method: 'PUT',
+        body: JSON.stringify(userInfoData)
+    })
+    response_json = response.json();
+    if (response.status == 200) {
+        alert("수정완료")
         window.location.replace(`${frontend_base_url}userpage.html`);
     } else {
         alert(response.status);
