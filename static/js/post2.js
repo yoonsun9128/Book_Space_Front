@@ -53,20 +53,19 @@ fileInput.addEventListener("change", handleFiles)
 
 // post2 작성 //
 async function post_book() {
-    const title = document.getElementById("title").value 
+    const title = document.getElementById("title").value
     const content = document.getElementById("content").value
     const InputImg = document.getElementById("InputImg").value
-    const rating = document.getElementById("rating").value
+    const rating = document.querySelector("input[type='radio']:checked").value
     const image=document.getElementById("InputImg").files[0]
     const formData = new FormData();
     formData.append('content', content);
     formData.append('rating', rating);
     formData.append('image', image);
-    
+
     console.log("87", formData)
     const response = await fetch(`http://127.0.0.1:8000/articles/search/${id}/`, {
         headers: {
-            // 'Content-Type': 'application/json',
             'Authorization': "Bearer " + localStorage.getItem("access"),
         },
         method: 'POST',
