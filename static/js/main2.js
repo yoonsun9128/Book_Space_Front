@@ -51,7 +51,7 @@ async function enter(e) {
 }
 
 function writeArticle(){
-    window.location.href = "../templates/detail.html"
+    window.location.href = "../templates/post.html"
 }
 
 function writeFeed(id){

@@ -1,40 +1,74 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<title>작성</title>
-<style>
-body {
-  padding-top: 70px;
-  padding-bottom: 30px;
-}
-button {
-    margin-left: 760px;
-}
-</style>
-</head>
-<body>
-		<div class="container" role="main">
-			<h2>작성</h2>
-				<div class="mb-3">
-					<label for="title">제목</label>
-					<input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
-				</div>
-				<div class="mb-3">
-					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
-				</div>
-				<div class="image-container">
-					<img style="width: 500px;" id="previewImage" >
-				</div>
-                <td><input type="file" value="파일 선택" id="InputImg" name="image" accept="image/*"/></td>
-                <button type="button" onclick="post_article()" id="btnSave">작성</button>
-		</div>
-		<script src="../static/js/post.js"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
+    <title>book space</title>
+	<link rel="stylesheet" href="../static/css/post.css" />
+  </head>
+
+  <body>
+    <section id="container">
+      <div id="main_container">
+          <form  class="post_form" style="padding-bottom: 100px">
+            <div class="title">NEW POST</div>
+            <p>
+              <textarea
+                name="title"
+                id="title"
+                cols="50"
+                rows="1"
+                placeholder="제목을 입력해주세요."
+              ></textarea>
+            </p>
+            <p>
+              <textarea
+                name="content"
+                id="content"
+                cols="50"
+                rows="15"
+                placeholder="내용을 입력해주세요."
+              ></textarea>
+			</p>
+			<div class="starpoint_wrap">
+				<div class="starpoint_box" id="starcheck">
+				  <label for="starpoint_1" class="label_star" value="0.5"><span class="blind">0.5점</span></label>
+				  <label for="starpoint_2" class="label_star" value="1"><span class="blind">1점</span></label>
+				  <label for="starpoint_3" class="label_star" value="1.5"><span class="blind">1.5점</span></label>
+				  <label for="starpoint_4" class="label_star" value="2"><span class="blind">2점</span></label>
+				  <label for="starpoint_5" class="label_star" value="2.5"><span class="blind">2.5점</span></label>
+				  <label for="starpoint_6" class="label_star" value="3"><span class="blind">3점</span></label>
+				  <label for="starpoint_7" class="label_star" value="3.5"><span class="blind">3.5점</span></label>
+				  <label for="starpoint_8" class="label_star" value="4"><span class="blind">4점</span></label>
+				  <label for="starpoint_9" class="label_star" value="4.5"><span class="blind">4.5점</span></label>
+				  <label for="starpoint_10" class="label_star" value="5"><span class="blind">5점</span></label>
+				  <input type="radio" name="starpoint" id="starpoint_1" value="0.5" class="star_radio">
+				  <input type="radio" name="starpoint" id="starpoint_2" value="1" class="star_radio">
+				  <input type="radio" name="starpoint" id="starpoint_3" value="1.5" class="star_radio">
+				  <input type="radio" name="starpoint" id="starpoint_4" value="2" class="star_radio">
+				  <input type="radio" name="starpoint" id="starpoint_5" value="2.5" class="star_radio">
+				  <input type="radio" name="starpoint" id="starpoint_6" value="3" class="star_radio">
+				  <input type="radio" name="starpoint" id="starpoint_7" value="3.5" class="star_radio">
+				  <input type="radio" name="starpoint" id="starpoint_8" value="4" class="star_radio">
+				  <input type="radio" name="starpoint" id="starpoint_9" value="4.5" class="star_radio">
+				  <input type="radio" name="starpoint" id="starpoint_10" value="5" class="star_radio">
+				  <span class="starpoint_bg"></span>
+				</div>
+			  </div>
+
+            <div class="card-box2">
+				<div class="image-container">
+					<img style=
+					"width: 100%; height: 100%; max-width: 100%; max-height: 500px; object-fit: cover;" id="previewImage" >
+				</div>
+            </div>
+            <td><input type="file" value="파일 선택" id="InputImg" name="file" accept="media/png, media/jpeg"/></td>
+            <input class="submit_btn" type="button" onclick="post_article()" value="저장" />
+          </form>
+      </div>
+    </section>
+    <script src="../static/js/post.js"></script>
+
+  </body>
 </html>
