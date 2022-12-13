@@ -4,7 +4,6 @@ const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 
 
 const payload = localStorage.getItem('payload')
-
 const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
 W = window.location.href
@@ -54,18 +53,11 @@ fileInput.addEventListener("change", handleFiles)
 
 // post2 작성 //
 async function post_book() {
-    console.log("post_article 실행")
     const title = document.getElementById("title").value 
-    console.log(title)
     const content = document.getElementById("content").value
-    console.log(content)
     const InputImg = document.getElementById("InputImg").value
-    console.log(InputImg)
     const rating = document.getElementById("rating").value
-    console.log(rating)
-    
     const image=document.getElementById("InputImg").files[0]
-    console.log(image)
     const formData = new FormData();
     formData.append('content', content);
     formData.append('rating', rating);

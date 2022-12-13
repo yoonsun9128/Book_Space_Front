@@ -28,8 +28,10 @@ window.onload = async function FeedList(){
             let id = feed[i]['id']
             let like = feed[i]['likes']
             let count = feed[i]['likes_count']
-
-
+            let profile_img = feed[i]['profile_img']
+            console.log(profile_img)
+            
+            
 
 
             console.log(like.includes(userId))
@@ -42,18 +44,20 @@ window.onload = async function FeedList(){
             }
 
             let temp_html = `
-            <div id = "my_table" class="col-md-4">
-                <div class="card">
-                    <div class="card-img-top image-card image-card-1">
-                        <img src="${image_url}${image}" alt="...">
+            <div id = "my_table" class="col-md-4"> 
+                <div class="card"> 
+                    <div class = "text">
+                        <img src="${image_url}${profile_img}" alt="..."><span style = "margin-left : 10px;" class="text-uppercase fw-bold fs-6">${username}</span>
+                    </div>
+                    <div class="card-img-top image-card image-card-1"> 
+                        <img src="${image_url}${image}" alt="..."> 
                     </div>
                     <div class = "btns">
                         <Button onclick = "Toggle(${id})"class = "btn" id="${id}" style = "color : ${color}" ><i class="fa-solid fa-heart"></i> ${count}</Button>
                     </div>
                     <div class="card-body">
                         <span class="text-uppercase fw-bold fs-6">${title}</span>
-                        <p>${username}</p>
-                        <p>${content}</p>
+                        <p>${content}</p> 
                         <div class="mt-4 about d-flex justify-content-between align-items-center">
                         <a href="${frontend_base_url}detail.html?id=${id}" class="text-dark">Read full story...</a>
                         </div>
