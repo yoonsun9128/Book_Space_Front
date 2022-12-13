@@ -66,9 +66,9 @@ body {
 .text{
     height : 70px;
     line-height: 70px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     float: left;
-    width: 33%;
+    width: 100%;
     margin-left: 25px;
 }
 .text img{
