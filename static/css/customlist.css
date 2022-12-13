@@ -1,10 +1,29 @@
+.container{
+  text-align: center;
+}
+
 .book-store {
   display: table;
   width: 1400px;
   height: 100vh;
   background-color: #f2f5f7;
   margin: 0 auto;
+}
 
+.reload{
+  margin-top: 100px;
+  border: 0;
+  outline: 0;
+  background-color:#f2f5f7;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+
+}
+.reload img{
+  width: 100%;
+  height: 100%;
+  background-color:#f2f5f7;
 }
 
 .book {
@@ -52,7 +71,7 @@
   font-size: 14px;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;
 }
 
@@ -130,44 +149,6 @@
 }
 
 
-.squaredFour {
-  width: 1000px;
-  left: 100%;
-  position: relative;
-  margin-top: 130px;
-}
-.squaredFour label {
-  width: 20px;
-  height: 20px;
+.check{
   cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #fcfff4;
-  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-  border-radius: 4px;
-  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
-}
-.squaredFour label:after {
-  content: "";
-  width: 9px;
-  height: 5px;
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  border: 3px solid #333;
-  border-top: none;
-  border-right: none;
-  background: transparent;
-  opacity: 1;
-  transform: rotate(-45deg);
-}
-.squaredFour label:hover::after {
-  opacity: 0.5;
-}
-.squaredFour input[type=checkbox] {
-  visibility: hidden;
-}
-.squaredFour input[type=checkbox]:checked + label:after {
-  opacity: 0;
 }
