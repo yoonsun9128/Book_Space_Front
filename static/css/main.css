@@ -14,7 +14,7 @@ body{
       width: 100%;
       align-items: center;
       justify-content: center;
-      
+      margin-top: 50px;
     }
 
   .bestseller_txt{
@@ -97,7 +97,6 @@ body{
     text-align: center;
     font-weight: bold;
     font-size: 30px;
-    margin: 90px;
   }
 
 

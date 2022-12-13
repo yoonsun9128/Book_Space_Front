@@ -68,18 +68,23 @@ function total_booklist(){
               append_temp_html(
                   books[i].img_url,
                   books[i].book_link,
+                  i
               )
           }
-          function append_temp_html(img_url, book_link){
+          function append_temp_html(img_url, book_link, i){
               temp_html = `
                     <img src="${img_url}" onclick="location.href='${book_link}'">
 
             `
-              $('#card').append(temp_html)
-              $('#card-left').append(temp_html)
-              $('#card2').append(temp_html)
-
-
+          if ( i % 3 == 0){
+            $('#card').append(temp_html)
+          } 
+          else if(i % 3 == 1){
+            $('#card-left').append(temp_html)
+          }
+          else if(i % 3 == 2){
+            $('#card2').append(temp_html)
+          }
           }
         }
       }
@@ -89,7 +94,7 @@ function total_booklist(){
 function user_booklist(){
   $.ajax({
       type: 'GET',
-      url:`${backend_base_url}articles/`,
+      url:`${backend_base_url}articles/user/`,
       data: {},
       success: function(response) {
           let books = response
@@ -109,7 +114,6 @@ function user_booklist(){
                 <ul class='hardcover_front'>
                   <li>
                     <img src="${img_url}" alt="" width="100%" height="100%">
-                    <span class="ribbon bestseller">Nº1</span>
                   </li>
                   <li></li>
                 </ul>        

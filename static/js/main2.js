@@ -1,8 +1,3 @@
-const backend_base_url = 'http://127.0.0.1:8000/'
-const frontend_base_url = 'http://127.0.0.1:5500/templates/'
-const image_url = 'http://127.0.0.1:8000'
-
-
 function book_list(s_data) {
     const searchParams = new URLSearchParams
     if (s_data.trim().length !==0 ) {
@@ -41,7 +36,6 @@ function book_list(s_data) {
 
     })
 }
-book_list("")
 
 async function enter(e) {
     if (e.keyCode == 13) {
