@@ -46,6 +46,7 @@ body {
     height: 300px;
     width: 350px;
     object-fit: cover;
+    
 
 }
 .profile-image img{
@@ -75,6 +76,7 @@ body {
     height:  40px;
     width: 40px;
     border-radius: 20px;
+    object-fit: cover;
 }
 .card-body a {
     font-size: 12px

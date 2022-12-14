@@ -40,7 +40,7 @@ window.onload = async function FeedList(){
             <div id = "my_table" class="col-md-4"> 
                 <div class="card"> 
                     <div class = "text">
-                        <img src="${image_url}${profile_img}" alt="..."><span style = "margin-left : 10px;" class="text-uppercase fw-bold fs-6">${username}</span>
+                        <img src="${image_url}${profile_img}" alt="..."></a><span style = "margin-left : 10px;" class="text-uppercase fw-bold fs-6">${username}</span>
                     </div>
                     <div class="card-img-top image-card image-card-1"> 
                         <img src="${image_url}${image}" alt="..."> 
