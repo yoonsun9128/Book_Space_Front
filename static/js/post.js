@@ -21,24 +21,20 @@ function teststar(){
     var i;
     for (i = 0; i <stars.length; i++){
         stats[i].innerHTML = i;
-    console.log(i)
     }
 }
 
 // 게시글 작성 //
 async function post_article() {
-    console.log("post_article 실행")
     const title = document.getElementById("title").value
     const content = document.getElementById("content").value
     const star = document.querySelector("input[type='radio']:checked").value
-    console.log(star)
     const image=document.getElementById("InputImg").files[0]
     const formData = new FormData();
     formData.append('title', title);
     formData.append('content', content);
     formData.append('image', image);
     formData.append('rating', star);
-    console.log("87", formData)
     const response = await fetch(`${backend_base_url}articles/search/`, {
         headers: {
 

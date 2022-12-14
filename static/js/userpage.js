@@ -27,7 +27,6 @@ window.onload = async function getUserpage(){
     }
     detailData().then((data) =>{
         total = data
-        console.log(total)
         user_article = data.article_set
         for (let i = 0; i<user_article.length; i++){
             let article_id = user_article[i]['id']
@@ -43,7 +42,6 @@ window.onload = async function getUserpage(){
         let name = data['username']
         let user_image = data['profile_img']
         let info = data['id']
-        console.log(info)
         let name_html = `
         <h3 class="title">${name}</h3>
         `
@@ -59,19 +57,16 @@ window.onload = async function getUserpage(){
     })
 }
 
-
-function pageDatail(id){
-    console.log(id)
-    window.location.href = "../templates/detail?id=${id}.html"
-}
-
 num = 0
-function ImageChange(id){
+function pageDatail(id){
+    num=id
     console.log(id)
+    window.location.href = `../templates/detail.html?id=${num}`
+}
+function ImageChange(id){
     num= id
 }
 function infoChange(id){
-    console.log(id)
     num= id
 }
 
@@ -95,7 +90,6 @@ async function imageSave(){
 }
 
 async function editSave() {
-    console.log(num)
     const userInfoData = {
         username : document.getElementById(`info_name`).value,
         password : document.getElementById(`info_password`).value,
