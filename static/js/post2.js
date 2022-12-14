@@ -56,16 +56,17 @@ async function post_book() {
     const title = document.getElementById("title").value
     const content = document.getElementById("content").value
     const InputImg = document.getElementById("InputImg").value
-    const rating = document.querySelector("input[type='radio']:checked").value
+    const star = document.querySelector("input[type='radio']:checked").value
     const image=document.getElementById("InputImg").files[0]
     const formData = new FormData();
     formData.append('content', content);
-    formData.append('rating', rating);
+    formData.append('rating', star);
     formData.append('image', image);
 
     console.log("87", formData)
     const response = await fetch(`http://127.0.0.1:8000/articles/search/${id}/`, {
         headers: {
+
             'Authorization': "Bearer " + localStorage.getItem("access"),
         },
         method: 'POST',
