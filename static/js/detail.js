@@ -4,6 +4,10 @@ const image_url = 'http://127.0.0.1:8000'
 A = window.location.search
 code = A.split("=")[1]
 
+const payload = localStorage.getItem('payload')
+const personObj = JSON.parse(payload)
+const userId = personObj['user_id']
+
 const article_id = localStorage.getItem('article_id');
 async function getArticle(){
 A = window.location.search
@@ -24,14 +28,18 @@ detailData().then((data) => {
     article_user = detail['user']
     image = detail['image']
     profile_img = detail['profile_img']
+    id = detail['id']
     content = detail['content']
     rating = detail['rating']
     likes = detail['likes']
     updated_at = detail['updated_at']
     comment = detail['comment_set']
+    count = detail['likes_count']
     comment_user = detail['comment_set']
     comment_id = detail['comment_set']
     comment_profile_img = detail['comment_set']
+
+    
 
 
     for (let i=0; i < comment.length; i++){
@@ -57,6 +65,14 @@ detailData().then((data) => {
         `
         $('#detail_comment-box').append(temp_html)
     }
+
+    if (likes.includes(userId) == true){
+        color = "red"
+    }
+    else{
+        color = "gray"
+    }
+
 
     let temp1_html = `
     <div>
@@ -87,7 +103,7 @@ detailData().then((data) => {
     $('#detail_updated_at-box').append(temp4_html)
     let temp9_html = `
     <div>
-        <div class="likes">좋아요 ${likes}</div>
+        <Button onclick = "Toggle(${id})"class = "btn123" id="${id}" style = "color : ${color}" ><i class="fa-solid fa-heart"></i>${count}</Button>
     </div>
     `
     $('#detail_likes-box').append(temp9_html)
