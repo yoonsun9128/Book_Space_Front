@@ -93,7 +93,7 @@
 
         <!-- 게시글 수정 Modal -->
         <div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                     <h1 class="modal-title fs-5" id="ModalLabel">게시글 수정</h1>
@@ -106,6 +106,10 @@
                                 <div class="card bg-light" style="height:40px; line-height:40px; padding-left:10px;">
                                     <div id="put_title"></div>
                                 </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="content">내용</label>
+                                <textarea class="form-control" rows="5" name="content" id="put_content" placeholder="내용을 입력해 주세요" ></textarea>
                             </div>
                             <div class="starpoint_wrap">
                                 <div class="starpoint_box" id="starcheck">
@@ -132,10 +136,6 @@
                                   <span class="starpoint_bg"></span>
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="content">내용</label>
-                                <textarea class="form-control" rows="5" name="content" id="put_content" placeholder="내용을 입력해 주세요" ></textarea>
-                            </div>
                             <div class="image-container">
                                 <img style="width: 500px;" id="put_previewImage" >
                             </div>
@@ -151,7 +151,7 @@
 
         <!-- 댓글 수정 Modal -->
         <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                     <h1 class="modal-title fs-5" id="ModalLabel">댓글 수정</h1>
