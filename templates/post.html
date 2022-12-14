@@ -1,74 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
-    <title>book space</title>
-	<link rel="stylesheet" href="../static/css/post.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
-  <body>
-    <section id="container">
-      <div id="main_container">
-          <form  class="post_form" style="padding-bottom: 100px">
-            <div class="title">NEW POST</div>
-            <p>
-              <textarea
-                name="title"
-                id="title"
-                cols="50"
-                rows="1"
-                placeholder="제목을 입력해주세요."
-              ></textarea>
-            </p>
-            <p>
-              <textarea
-                name="content"
-                id="content"
-                cols="50"
-                rows="15"
-                placeholder="내용을 입력해주세요."
-              ></textarea>
-			</p>
-			<div class="starpoint_wrap">
-				<div class="starpoint_box" id="starcheck">
-				  <label for="starpoint_1" class="label_star" value="0.5"><span class="blind">0.5점</span></label>
-				  <label for="starpoint_2" class="label_star" value="1"><span class="blind">1점</span></label>
-				  <label for="starpoint_3" class="label_star" value="1.5"><span class="blind">1.5점</span></label>
-				  <label for="starpoint_4" class="label_star" value="2"><span class="blind">2점</span></label>
-				  <label for="starpoint_5" class="label_star" value="2.5"><span class="blind">2.5점</span></label>
-				  <label for="starpoint_6" class="label_star" value="3"><span class="blind">3점</span></label>
-				  <label for="starpoint_7" class="label_star" value="3.5"><span class="blind">3.5점</span></label>
-				  <label for="starpoint_8" class="label_star" value="4"><span class="blind">4점</span></label>
-				  <label for="starpoint_9" class="label_star" value="4.5"><span class="blind">4.5점</span></label>
-				  <label for="starpoint_10" class="label_star" value="5"><span class="blind">5점</span></label>
-				  <input type="radio" name="starpoint" id="starpoint_1" value="0.5" class="star_radio">
-				  <input type="radio" name="starpoint" id="starpoint_2" value="1" class="star_radio">
-				  <input type="radio" name="starpoint" id="starpoint_3" value="1.5" class="star_radio">
-				  <input type="radio" name="starpoint" id="starpoint_4" value="2" class="star_radio">
-				  <input type="radio" name="starpoint" id="starpoint_5" value="2.5" class="star_radio">
-				  <input type="radio" name="starpoint" id="starpoint_6" value="3" class="star_radio">
-				  <input type="radio" name="starpoint" id="starpoint_7" value="3.5" class="star_radio">
-				  <input type="radio" name="starpoint" id="starpoint_8" value="4" class="star_radio">
-				  <input type="radio" name="starpoint" id="starpoint_9" value="4.5" class="star_radio">
-				  <input type="radio" name="starpoint" id="starpoint_10" value="5" class="star_radio">
-				  <span class="starpoint_bg"></span>
-				</div>
-			</div>
+  <title>book space</title>
+  <link rel="stylesheet" href="../static/css/post.css" />
+  <link rel="stylesheet" href="../static/css/nav.css" />
+  <!--폰트-->
+  <link rel=“preconnect” href=“https://fonts.googleapis.com”>
+  <link rel=“preconnect” href=“https://fonts.gstatic.com” crossorigin>
+  <link href=“https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap” rel=“stylesheet”>
 
-            <div class="card-box2">
-				<div class="image-container">
-					<img style=
-					"width: 100%; height: 100%; max-width: 100%; max-height: 500px; object-fit: cover;" id="previewImage" >
-				</div>
-            </div>
-            <td><input type="file" value="파일 선택" id="InputImg" name="file" accept="media/png, media/jpeg"/></td>
-            <input class="submit_btn" type="button" onclick="post_article()" value="저장" />
-          </form>
-      </div>
-    </section>
-    <script src="../static/js/post.js"></script>
+</head>
 
-  </body>
+<body>
+  <nav class="navbar">
+    <div class="underline">
+      <div id="home-button" onclick="location.href='../templates/main.html'">HOME</div>
+      <div id="post-button" onclick="location.href='../templates/booklist.html?page=1'">글 작성하기</div>
+      <div id="feed-button" onclick="location.href='../templates/feed.html'">독후감 보기</div>
+      <div id="recommend-button" onclick="location.href='../templates/customlist.html'">추천도서</div>
+      <div id="user_email" onclick="location.href='../templates/userpage.html'"></div>
+      <div id="login-button" class="open"> 로그인/회원가입</div>
+      <div id="logout-button" class="logout" onclick="logout()">로그아웃</div>
+    </div>
+  </nav>
+  <section id="container">
+    <div id="main_container">
+      <form class="post_form" style="padding-bottom: 100px">
+        <div class="title">NEW POST</div>
+        <p>
+          <textarea name="title" id="title" cols="50" rows="1" placeholder="제목을 입력해주세요."></textarea>
+        </p>
+        <p>
+          <textarea name="content" id="content" cols="50" rows="15" placeholder="내용을 입력해주세요."></textarea>
+        </p>
+        <div class="starpoint_wrap">
+          <div class="starpoint_box" id="starcheck">
+            <label for="starpoint_1" class="label_star" value="0.5"><span class="blind">0.5점</span></label>
+            <label for="starpoint_2" class="label_star" value="1"><span class="blind">1점</span></label>
+            <label for="starpoint_3" class="label_star" value="1.5"><span class="blind">1.5점</span></label>
+            <label for="starpoint_4" class="label_star" value="2"><span class="blind">2점</span></label>
+            <label for="starpoint_5" class="label_star" value="2.5"><span class="blind">2.5점</span></label>
+            <label for="starpoint_6" class="label_star" value="3"><span class="blind">3점</span></label>
+            <label for="starpoint_7" class="label_star" value="3.5"><span class="blind">3.5점</span></label>
+            <label for="starpoint_8" class="label_star" value="4"><span class="blind">4점</span></label>
+            <label for="starpoint_9" class="label_star" value="4.5"><span class="blind">4.5점</span></label>
+            <label for="starpoint_10" class="label_star" value="5"><span class="blind">5점</span></label>
+            <input type="radio" name="starpoint" id="starpoint_1" value="0.5" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_2" value="1" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_3" value="1.5" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_4" value="2" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_5" value="2.5" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_6" value="3" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_7" value="3.5" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_8" value="4" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_9" value="4.5" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_10" value="5" class="star_radio">
+            <span class="starpoint_bg"></span>
+          </div>
+        </div>
+
+        <div class="card-box2">
+          <div class="image-container">
+            <img style="width: 100%; height: 100%; max-width: 100%; max-height: 500px; object-fit: cover;"
+              id="previewImage">
+          </div>
+        </div>
+        <td><input type="file" value="파일 선택" id="InputImg" name="file" accept="media/png, media/jpeg" /></td>
+        <input class="submit_btn" type="button" onclick="post_article()" value="저장" />
+      </form>
+    </div>
+  </section>
+  <script src="../static/js/api.js"></script>
+  <script src="../static/js/post.js"></script>
+
+</body>
+
 </html>

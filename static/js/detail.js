@@ -1,12 +1,11 @@
-const backend_base_url = 'http://127.0.0.1:8000/'
-const frontend_base_url = 'http://127.0.0.1:5500/templates/'
+
 const image_url = 'http://127.0.0.1:8000'
 
 A = window.location.search
 code = A.split("=")[1]
 
 const article_id = localStorage.getItem('article_id');
-window.onload = async function getArticle(){
+async function getArticle(){
 A = window.location.search
 code = A.split("=")[1]
     const detailData = async () => {
@@ -117,7 +116,7 @@ detailData().then((data) => {
     `
     $('#profile_img_box').append(temp8_html)
   })
-}
+}getArticle()
 
 
 

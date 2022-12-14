@@ -1,7 +1,4 @@
 // 전역 변수 //
-const backend_base_url = 'http://127.0.0.1:8000/'
-const frontend_base_url = 'http://127.0.0.1:5500/templates/'
-
 
 const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
@@ -9,7 +6,7 @@ const userId = personObj['user_id']
 W = window.location.href
 id = (W.split("=")[1])
 
-window.onload = async function booktitle() {
+async function booktitle() {
     const bookData = async () => {
         const response = await fetch(`http://127.0.0.1:8000/articles/search/${id}/`,{
             headers: {
@@ -32,7 +29,7 @@ bookData().then((data) => {
     `
     $('#title').append(temp_html)
 })
-}
+}booktitle()
 
 
 
