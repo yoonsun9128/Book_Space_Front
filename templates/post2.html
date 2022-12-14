@@ -14,11 +14,23 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>book space</title>
     <link rel="stylesheet" href="../static/css/post.css" />
-
-
+    <link rel="stylesheet" href="../static/css/nav.css" />
+   
+    
   </head>
 
   <body>
+     <!-- 네비바-->
+     <nav class="navbar">
+      <div class="underline">
+          <div><a href="../templates/main.html"></a>HOME</div>
+          <div><a href="../templates/booklist.html?page=1">글 작성하기</a></div>
+          <div><a href="../templates/feed.html">독후감 보기</a></div>
+          <div class="logout" onclick = "logout()">로그아웃</div>
+          <div><a href="../templates/userpage.html">마이페이지</a></div>
+          <div class="open"> 로그인/회원가입</div>
+      </div>
+  </nav>
     <section id="container">
       <div id="main_container">
           <form  class="post_form" style="padding-bottom: 100px">
@@ -62,7 +74,7 @@
                 <input type="radio" name="starpoint" id="starpoint_10" value="5" class="star_radio">
                 <span class="starpoint_bg"></span>
               </div>
-            </div>
+              </div>
             <div class="card-box2">
 				<div class="image-container">
 					<img style=
