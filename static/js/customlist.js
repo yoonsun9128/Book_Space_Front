@@ -52,12 +52,10 @@ function save_id(id){
             }
         }
     }
-    console.log(select_books)
 }
 
 
 async function send_id(){
-    console.log(select_books)
     const response = await fetch(`${backend_base_url}articles/user/?select_books=${select_books}`, {
             method: 'GET',
             header: {
@@ -65,7 +63,6 @@ async function send_id(){
             },
         })
         .then(res=> res.json())
-        .then(data=> console.log(data));
         
         alert("메인페이지로 이동합니다")
         window.location.href="../templates/main.html"

@@ -63,7 +63,6 @@ async function post_book() {
     formData.append('rating', star);
     formData.append('image', image);
 
-    console.log("87", formData)
     const response = await fetch(`http://127.0.0.1:8000/articles/search/${id}/`, {
         headers: {
 

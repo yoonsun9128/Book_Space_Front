@@ -15,9 +15,7 @@ function pagination_book_list(){
         url:`${backend_base_url}articles/test/?page=${page}`,
         data: {},
         success: function(response) {
-            console.log(page)
             let total_books = response
-            console.log(total_books)
             let result_books = total_books.results
             let id = result_books.id
             let pages = Math.ceil(total_books.count/10)
@@ -90,7 +88,6 @@ function MoveNext() {
 function book_list(s_data) {
     const searchParams = new URLSearchParams
     if (s_data.trim().length !==0 ) {
-        console.log(s_data)
         searchParams.set("search_content", s_data)
         $('#book_all_list').empty()
     };
@@ -106,7 +103,6 @@ function book_list(s_data) {
     }
     BooksData().then((data) => {
         books = data
-        console.log(books)
         for (let i = 0; i < books.length; i++) {
             let book_name = books[i].book_title
             let book_img = books[i].img_url
