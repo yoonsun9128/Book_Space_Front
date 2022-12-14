@@ -3,15 +3,11 @@ const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 const image_url = 'http://127.0.0.1:8000'
 
 A = window.location.search
-console.log(A)
 code = A.split("=")[1]
-console.log(code)
-console.log(A)
 
 const article_id = localStorage.getItem('article_id');
 window.onload = async function getArticle(){
 A = window.location.search
-console.log(A)
 code = A.split("=")[1]
     const detailData = async () => {
     const response = await fetch(`http://127.0.0.1:8000/articles/${code}/`,{
@@ -29,8 +25,6 @@ detailData().then((data) => {
     article_user = detail['user']
     image = detail['image']
     profile_img = detail['profile_img']
-    console.log(profile_img)
-    console.log(image)
     content = detail['content']
     rating = detail['rating']
     created_at = detail['created_at']
@@ -38,8 +32,6 @@ detailData().then((data) => {
     comment_user = detail['comment_set']
     comment_id = detail['comment_set']
     comment_profile_img = detail['comment_set']
-    console.log(comment_profile_img)
-    console.log(comment_id)
 
 
     for (let i=0; i < comment.length; i++){
@@ -47,7 +39,6 @@ detailData().then((data) => {
         let detail_user = comment_user[i]['user']
         let detail_id = comment_id[i]['id']
         let detail_profile_img = comment_profile_img[i]['profile_img']
-        console.log(detail_profile_img)
         let temp_html = `
         <div class="ms-3">
         <div class="row row-cols-auto">
@@ -128,9 +119,7 @@ const articleId = localStorage.getItem('article_id')
 
 // 댓글 작성 //
 async function post_comment() {
-    console.log("post_comment 실행")
     const content = document.getElementById("content").value
-    console.log(content)
     const contentData = {
     "article": articleId,
     "content": content
@@ -146,7 +135,6 @@ async function post_comment() {
     })
 
     response_json = await response.json()
-    console.log(response_json,"!!!!!!!!", response_json.body)
     if (response.status == 200) {
         window.location.replace(`${frontend_base_url}detail.html?id=${code}`);
         alert("댓글 작성 완료")
@@ -160,21 +148,15 @@ async function post_comment() {
 num=0
 
 function putComment(id) {
-    console.log(id)
     num=id
     const OldComment = document.getElementById(`new-comment${num}`)
     const NewComment = document.getElementById(`new_comment`).value
     NewComment.value = OldComment
-    console.log(NewComment)
-    console.log(OldComment.innerText)
-
 }
 
 async function putSave() {
-    console.log(num)
     const OldComment = document.getElementById(`new-comment${num}`)
     const NewComment = document.getElementById(`new_comment`).value
-    console.log(OldComment)
     const response = await fetch(`http://127.0.0.1:8000/articles/${code}/${num}/`, {
         headers: {
             "content-type": "application/json",
@@ -191,13 +173,12 @@ async function putSave() {
         alert("댓글 수정 완료")
         OldComment.innerText=NewComment
     } else {
-        console.log(comment_json['message'])
+        alert("댓글 작성자만 수정 가능합니다.")
     }
 }
 
 //댓글 삭제 //
 async function delete_comment(id) {
-    console.log(id)
     const response = await fetch(`${backend_base_url}articles/${code}/${id}/`, {
         headers: {
             'Content-Type': 'application/json',
@@ -246,12 +227,7 @@ function putArticle() {
     NewContent.value = OldContent
     NewRating.value = OldRating
     NewImage.value = OldImage
-    console.log(NewContent)
-    console.log(OldContent.innerText)
-    console.log(NewRating)
-    console.log(OldRating.innerText)
-    console.log(NewImage)
-    console.log(OldImage)
+
 }
 
 async function ArticleSave() {
@@ -261,9 +237,6 @@ async function ArticleSave() {
     const NewRating = document.querySelector("input[type='radio']:checked").value
     const OldImage = document.getElementById(`detail_image-box`)
     const NewImage = document.getElementById(`put_InputImg`).files[0]
-    console.log(OldContent.innerText)
-    console.log(OldRating.innerText)
-    console.log(OldImage.innerText)
 
     const formData = new FormData();
     formData.append('content', NewContent);
@@ -283,6 +256,6 @@ async function ArticleSave() {
         alert("게시글 수정 완료")
         window.location.replace(`${frontend_base_url}detail.html?id=${code}`);
     } else {
-        console.log(article_json['message'])
+        alert("게시글 작성자만 수정 가능합니다.")
     }
 }

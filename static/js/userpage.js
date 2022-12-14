@@ -60,7 +60,6 @@ window.onload = async function getUserpage(){
 num = 0
 function pageDatail(id){
     num=id
-    console.log(id)
     window.location.href = `../templates/detail.html?id=${num}`
 }
 function ImageChange(id){
@@ -97,7 +96,6 @@ async function editSave() {
     }
     if (userInfoData.username ==""){
         alert("Username 입력해주세요")
-        console.log(userInfoData.username)
         return false
     };
     if ((userInfoData.password).length <4){
