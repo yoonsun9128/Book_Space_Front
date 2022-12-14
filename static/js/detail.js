@@ -134,12 +134,12 @@ async function post_comment() {
     const contentData = {
     "article": articleId,
     "content": content
-    }    
+    }
     const response = await fetch(`${backend_base_url}articles/${code}/`, {
         headers: {
                 'Content-Type': 'application/json',
                 'Authorization': "Bearer " + localStorage.getItem("access")
-            
+
         },
         method: 'POST',
         body: JSON.stringify(contentData)
@@ -166,7 +166,7 @@ function putComment(id) {
     NewComment.value = OldComment
     console.log(NewComment)
     console.log(OldComment.innerText)
-    
+
 }
 
 async function putSave() {
@@ -204,7 +204,7 @@ async function delete_comment(id) {
         },
         method: 'DELETE'
     })
-    
+
     if (response.status == 204) {
         window.location.reload();
     } else {
@@ -221,7 +221,7 @@ async function delete_article() {
         },
         method: 'DELETE'
     })
-    
+
     if (response.status == 204) {
         window.location.replace(`${frontend_base_url}feed.html`);
     } else {
@@ -255,7 +255,7 @@ async function ArticleSave() {
     const OldContent = document.getElementById(`detail_article-box`)
     const NewContent = document.getElementById(`put_content`).value
     const OldRating = document.getElementById(`detail_rating-box`)
-    const NewRating = document.getElementById(`put_rating`).value
+    const NewRating = document.querySelector("input[type='radio']:checked").value
     const OldImage = document.getElementById(`detail_image-box`)
     const NewImage = document.getElementById(`put_InputImg`).files[0]
     console.log(OldContent.innerText)
