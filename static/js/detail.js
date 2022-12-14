@@ -51,12 +51,12 @@ detailData().then((data) => {
         let temp_html = `
         <div class="ms-3">
         <div class="row row-cols-auto">
-            <div class="col" class="flex-shrink-0"><img class="rounded-circle" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: top;" src="${image_url}${detail_profile_img}" alt="..." /></div>
+            <a class="col" class="flex-shrink-0" href="${frontend_base_url}userpage.html"><img class="rounded-circle" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: top;" src="${image_url}${detail_profile_img}" alt="..." /></a>
             <div class="col"> <div> <div class="fw-bold" id="comment-user" id="comment-user">${detail_user}</div></div>
         </div>
             <div class="container text-center" style="width:100%; margin-left:70px; margin-bottom:30px;">
                 <div class="row row-cols-auto">
-                    <div class="col" style="width:700px; text-align:left;" id="new-comment${detail_id}">${detail_comment}</div>
+                    <div class="col" style="width:770px; text-align:left;" id="new-comment${detail_id}">${detail_comment}</div>
                     <div class="col"><button type="button" class="btn btn-outline-dark" id="${detail_id}" onclick="putComment(this.id)" data-bs-toggle="modal" data-bs-target="#Modal1">수정</button></div>
                     <div class="col"><button type="button" onclick="delete_comment(${detail_id})"  class="btn btn-outline-dark">삭제</button></div>
                 </div>
@@ -76,7 +76,7 @@ detailData().then((data) => {
 
     let temp2_html = `
     <div>
-        <div class="titles">${title}</div>
+        <div class="titles"> 책 제목 : ${title}</div>
     </div>
     `
     $('#detail_title-box').append(temp2_html)
@@ -95,7 +95,7 @@ detailData().then((data) => {
     `
     $('#detail_created_at-box').append(temp4_html)
     let temp5_html = `
-        <img class="imput_image" style="width: 100%; height: auto; max-width: 400px; max-height: 400px; object-fit: cover;" src="${image_url}${image}" alt="...">
+        <img class="input_image" style="width: 100%; height: auto; max-width: 400px; max-height: 400px; object-fit: cover;" src="${image_url}${image}" alt="...">
     `
     $('#detail_image-box').append(temp5_html)
     let temp6_html = `
@@ -149,6 +149,7 @@ async function post_comment() {
     console.log(response_json,"!!!!!!!!", response_json.body)
     if (response.status == 200) {
         window.location.replace(`${frontend_base_url}detail.html?id=${code}`);
+        alert("댓글 작성 완료")
     } else {
         alert(response);
     }
@@ -206,6 +207,7 @@ async function delete_comment(id) {
     })
 
     if (response.status == 204) {
+        alert("댓글 삭제 완료")
         window.location.reload();
     } else {
         alert("댓글 작성자만 삭제 가능합니다.")
@@ -224,6 +226,7 @@ async function delete_article() {
 
     if (response.status == 204) {
         window.location.replace(`${frontend_base_url}feed.html`);
+        alert("게시글 삭제 완료")
     } else {
         alert(" 작성자만 삭제 가능합니다.")
     }
