@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
 
 body {
-    font-family: 'Noto Sans KR', sans-serif;   
+    font-family: 'Noto Sans KR', sans-serif;
     margin: 0;
     padding: 0;
-    font-size: 14px;
+    font-size: 1rem;
 }
 
 .navbar {
@@ -12,15 +12,15 @@ body {
     object-fit: cover;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 100vw;
     z-index: 1;
     padding: 0;
+
 }
 .underline {
     display: flex;
     align-items: center;
     list-style: none;
-    width: 100%;
     background-color: rgba(255, 255, 255, 0.9);
     padding: 0 50px;
     margin: 0;
@@ -32,12 +32,12 @@ body {
 
 .underline div {
     margin: 0 70px;
-    width: 150px;
-    height: 50%;
+    width: 100vw;
     align-items: center;
     color: #000000;
     text-align : center;
-    
+    height: auto;
+
 }
 
 .underline div:hover{

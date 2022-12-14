@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.send-button{
-  text-align: center;
-  cursor: pointer;
-  
-}
 .book-store {
   display: table;
   width: 1400px;
@@ -25,10 +20,18 @@
   cursor: pointer;
 
 }
-.reload img{
+
+.flex-container{
+  text-align: center;
+}
+.flex-item{
+  display: inline-block
+}
+.reload2{
   width: 100%;
   height: 100%;
   background-color:#f2f5f7;
+
 }
 
 .book {
@@ -40,7 +43,7 @@
   padding: 25px;
   width: 40%;
   height: 250px;
-  margin: 30px 10px 10px 30px; 
+  margin: 30px 10px 10px 30px;
   float: left;
 }
 
@@ -124,7 +127,7 @@
     background-color: #FAE3BD;
   }
 
-  
+
 .book-see:hover {
   color: #ff6e72;
 }
