@@ -274,9 +274,6 @@ border-bottom-left-radius: calc(0.25rem - 1px);
 border-top: 0;
 }
 
-.mb-5 {
-margin-bottom: 3rem !important;
-}
 
 .card-body {
 flex: 1 1 auto;

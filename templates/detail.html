@@ -40,8 +40,8 @@
                                   <a class="col" id="profile_img_box" href="http://127.0.0.1:5500/templates/userpage.html"></a>
                                   <div class="col" style="font-size:20px; font-weight:bold;" id="detail_article_user-box"></div>
                                   <div class="col" style="padding-top:5px;" id="detail_updated_at-box"></div>
-                                  <div class="col" style="padding-top:5px;" id="detail_rating-box"></div>
-                                  <div class="col" style="padding-top:5px;" id="detail_likes-box"></div>
+                                  <!-- <div class="col" style="padding-top:5px;" id="detail_rating-box"></div>
+                                  <div class="col" style="padding-top:5px;" id="detail_likes-box"></div> -->
                                   <div class="col"><button type="button" class="btn btn-outline-dark" id="put_article" onclick="putArticle()" data-bs-toggle="modal" data-bs-target="#Modal2">수정</button></div>
                                   <div class="col"><button type="button" onclick="delete_article()" id="" class="btn btn-outline-dark">삭제</button></div>
                                 </div>
@@ -53,13 +53,21 @@
                             <div class="card-body" style="min-height:500px;">
                                 <div class="container text-center">
                                     <div class="row row-cols-2" style="position:relative;">
-                                      <div class="col"><div id="detail_image-box" style="line-height:500px;""></div></div>
-                                      <div class="col"><div id="detail_article-box" style="padding-left:15px; padding-right:10px; margin-top:10px; margin-bottom:10px; border-left : solid #dee2e6; min-height:500px; float:left;"></div></div>
+                                      <div class="col">
+                                        <div id="detail_image-box" style="line-height:500px;"></div>
+                                      </div>
+                                      <div class="col">
+                                        <div id="detail_article-box" style="padding-left:15px; padding-right:10px; margin-top:10px; margin-bottom:10px; border-left : solid #dee2e6; min-height:500px; float:left;"></div>
+                                      </div>
                                     </div>
                                 </div>
                             </div>
                             </div>
                         </section>
+                        <div class="row row-cols-auto" style=" height : 40px; width : 200px; float : right; line-height:20px;;">
+                            <div class="col" style="padding-top:5px;" id="detail_rating-box"></div>
+                            <div class="col" style="padding-top:5px;" id="detail_likes-box"></div>
+                       </div>
                     </article>
                     <!-- Comments section-->
                     <section class="mb-5" style="width:80%; margin-left:130px;">
