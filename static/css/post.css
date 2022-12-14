@@ -1,13 +1,13 @@
-body {
+#container {
     background: #fde3a7;
   }
 
-  #container {
-    background: #fde3a7;
+  html{
+    background-color: #fde3a7;
   }
 
   #main_container {
-    margin-top:200px;
+    margin-top: 60px;
     padding-top: 20px;
     display: flex;
     justify-content: center;
