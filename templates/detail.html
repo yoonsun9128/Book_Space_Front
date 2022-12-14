@@ -6,27 +6,22 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Blog Post - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../static/css/detail.css" rel="stylesheet" />
+        <link href="../static/css/detail1.css" rel="stylesheet" />
+        <link href="../static/css/nav.css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     </head>
     <body style="background: #fde3a7;">
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#!">뚜비야 너도 읽고 자랑 좀 해라</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
-                    </ul>
-                </div>
+        <nav class="navbar">
+            <div class="underline">
+                <div><a href="../templates/main.html"></a>HOME</div>
+                <div><a href="../templates/booklist.html?page=1">글 작성하기</a></div>
+                <div><a href="../templates/feed.html">독후감 보기</a></div>
+                <div><a href="../templates/userpage.html">마이페이지</a></div>
+                <div class="open"> 로그인/회원가입</div>
+                <div class="logout" onclick = "logout()">로그아웃</div>
             </div>
         </nav>
         <!-- Page content-->
@@ -37,12 +32,12 @@
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
-                            <div class="card bg-light" style="height:50px; line-height:50px; padding-left:10px;">
+                            <div class="card bg-light" style="height:50px; line-height:50px; padding-left:10px; margin-top:50px;">
                                 <div id="detail_title-box" style="padding-left:10px; padding-right:10px;"></div>
                             </div>
                             <div class="container text-center" style="width:100%">
                                 <div class="row row-cols-auto" style="margin-top:30px;">
-                                  <div class="col" id="profile_img_box"></div>
+                                  <a class="col" id="profile_img_box" href="http://127.0.0.1:5500/templates/userpage.html"></a>
                                   <div class="col" style="font-size:20px; font-weight:bold;" id="detail_article_user-box"></div>
                                   <div class="col" style="padding-top:5px;" id="detail_created_at-box"></div>
                                   <div class="col" style="padding-top:5px;" id="detail_rating-box"></div>
@@ -58,7 +53,7 @@
                                 <div class="container text-center">
                                     <div class="row row-cols-2" style="position:relative;">
                                       <div class="col"><div id="detail_image-box" style="line-height:500px;""></div></div>
-                                      <div class="col"><div id="detail_article-box" style="padding-left:15px; padding-right:10px; margin-top:10px; border-left : solid #dee2e6; min-height:500px; float:left;"></div></div>
+                                      <div class="col"><div id="detail_article-box" style="padding-left:15px; padding-right:10px; margin-top:10px; margin-bottom:10px; border-left : solid #dee2e6; min-height:500px; float:left;"></div></div>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +69,7 @@
                                     <form class="mb-4"><textarea class="form-control" id="content" rows="3" placeholder="댓글을 작성해주세요!"></textarea></form>
                                     <div class="container text-center" style="width:100%;">
                                         <div class="row row-cols-auto" style = "float:right;">
-                                            <div class="col"><button type="button" onclick="post_comment()" class="comment-btn btn-outline-dark">작성</button></div>
+                                            <div class="col"><button type="button" onclick="post_comment()" class="btn btn-outline-dark">작성</button></div>
                                         </div>
                                     </div>
                                 </div>
@@ -158,8 +153,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="music">
-                            <input style="width:100%;" id="new_comment" placeholder="수정할 내용을 넣어주세요.">
+                        <div class="put">
+                            <input style="width:100%; height="50px;" id="new_comment" placeholder="수정할 내용을 넣어주세요.">
                         </div>
                     </div>
                     <div class="modal-footer">

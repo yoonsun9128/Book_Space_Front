@@ -10,11 +10,11 @@ body {
 
 .navbar {
     position: fixed;
+    object-fit: cover;
     left: 0;
     top: 0;
     width: 100%;
     z-index: 1;
-    border: 1px solid rgba(216, 214, 214, 0.3);
 }
 .underline {
     display: flex;
@@ -32,9 +32,11 @@ body {
 
 .underline div {
     margin: 0 70px;
+    width: 150px;
     height: 50%;
     display: flex;
     align-items: center;
+    text-align : center;
     
 }
 
