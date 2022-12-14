@@ -95,6 +95,23 @@ async function editSave() {
         password : document.getElementById(`info_password`).value,
         passwordcheck : document.getElementById(`info_password2`).value
     }
+    if (userInfoData.username ==""){
+        alert("Username 입력해주세요")
+        console.log(userInfoData.username)
+        return false
+    };
+    if ((userInfoData.password).length <4){
+        alert("비밀번호는 4자리 이상으로 입력해주세요")
+        return false
+    };
+    if (userInfoData.password !== userInfoData.passwordcheck){
+        alert("비밀번호가 일치하지 않습니다!")
+        return false
+    };
+    if (userInfoData.password == ""){
+        alert("비밀번호를 입력해주세요.")
+        return false
+    };
     const response = await fetch(`http://127.0.0.1:8000/users/${num}/`, {
         headers: {
             'Content-type':'application/json',

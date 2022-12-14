@@ -48,5 +48,5 @@ async function post_article() {
     if (response.status == 200) {
         window.location.replace(`${frontend_base_url}feed.html`);
     } else {
-        alert(response.status);
+        alert("빈칸을 채워주세요", response.status);
     }}
