@@ -5,6 +5,7 @@ searchButton = document.querySelector('.search-box')
 
 
 
+
 function pagination_book_list(){
     pages = window.location.href
     page = pages.split("=")[1]
@@ -43,6 +44,9 @@ function pagination_book_list(){
 } pagination_book_list()
 
 
+let currentPage = window.location.href.split("=")[1]
+
+
 
 function pagination(){
     $.ajax({
@@ -53,6 +57,7 @@ function pagination(){
             let total_books = response
             let pages = Math.ceil(total_books.count/10)
             for (let page=1; page < pages; page++){
+                pageArray.push(page)
                 temp_html = `
                 <li><a class="num" href="?page=${page}" onclick="pagination_book_list()">${page}</a></li>
                 `

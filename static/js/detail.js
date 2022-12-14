@@ -26,7 +26,8 @@ detailData().then((data) => {
     profile_img = detail['profile_img']
     content = detail['content']
     rating = detail['rating']
-    created_at = detail['created_at']
+    likes = detail['likes']
+    updated_at = detail['updated_at']
     comment = detail['comment_set']
     comment_user = detail['comment_set']
     comment_id = detail['comment_set']
@@ -80,10 +81,16 @@ detailData().then((data) => {
 
     let temp4_html = `
     <div>
-        <div class="created_at">${created_at}</div>
+        <div class="updated_at">${updated_at}</div>
     </div>
     `
-    $('#detail_created_at-box').append(temp4_html)
+    $('#detail_updated_at-box').append(temp4_html)
+    let temp9_html = `
+    <div>
+        <div class="likes">좋아요 ${likes}</div>
+    </div>
+    `
+    $('#detail_likes-box').append(temp9_html)
     let temp5_html = `
         <img class="input_image" style="width: 100%; height: auto; max-width: 400px; max-height: 400px; object-fit: cover;" src="${image_url}${image}" alt="...">
     `
@@ -138,7 +145,7 @@ async function post_comment() {
         window.location.replace(`${frontend_base_url}detail.html?id=${code}`);
         alert("댓글 작성 완료")
     } else {
-        alert(response);
+        alert("댓글 작성 실패");
     }
 }
 
@@ -208,7 +215,7 @@ async function delete_article() {
         window.location.replace(`${frontend_base_url}feed.html`);
         alert("게시글 삭제 완료")
     } else {
-        alert(" 작성자만 삭제 가능합니다.")
+        alert("게시글 작성자만 삭제 가능합니다.")
     }
 }
 

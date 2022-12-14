@@ -78,35 +78,37 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                </section>
-            </article>
-            <!-- Comments section-->
-            <section class="mb-5" style="width:80%; margin-left:130px;">
-                <div class="card bg-light">
-                    <div class="card-body">
-                        <!-- Comment form-->
-                        <div style="margin-bottom: 100px;">
-                            <form class="mb-4"><textarea class="form-control" id="content" rows="3"
-                                    placeholder="댓글을 작성해주세요!"></textarea></form>
-                            <div class="container text-center" style="width:100%;">
-                                <div class="row row-cols-auto" style="float:right;">
-                                    <div class="col"><button type="button" onclick="post_comment()"
-                                            class="btn btn-outline-dark">작성</button></div>
+                            </div>
+                        </section>
+                        <div class="row row-cols-auto" style=" height : 40px; width : 200px; float : right; line-height:20px;;">
+                            <div class="col" style="padding-top:5px;" id="detail_rating-box"></div>
+                            <div class="col" style="padding-top:5px;" id="detail_likes-box"></div>
+                       </div>
+                    </article>
+                    <!-- Comments section-->
+                    <section class="mb-5" style="width:80%; margin-left:130px;">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <!-- Comment form-->
+                                <div style = "margin-bottom: 100px;">
+                                    <form class="mb-4"><textarea class="form-control" id="content" rows="3" placeholder="댓글을 작성해주세요!"></textarea></form>
+                                    <div class="container text-center" style="width:100%;">
+                                        <div class="row row-cols-auto" style = "float:right;">
+                                            <div class="col"><button type="button" onclick="post_comment()" class="btn btn-outline-dark">작성</button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <!-- Comment with nested comments-->
+                                <div class="d-flex mb-4">
+                                    <!-- Parent comment-->
+                                    <div id = "detail_comment-box"></div>
                                 </div>
                             </div>
                         </div>
-                        <hr>
-                        <!-- Comment with nested comments-->
-                        <div class="d-flex mb-4">
-                            <!-- Parent comment-->
-                            <div id="detail_comment-box"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                    </section>
+            </div>
         </div>
-    </div>
 
 
     <!-- 게시글 수정 Modal -->
