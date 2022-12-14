@@ -19,7 +19,6 @@ window.onload = async function FeedList(){
     }
     FeedData().then((data) => {
         feed = data
-        console.log(feed)
         for (let i = 0; i < feed.length; i++){
             let username = feed[i]['username']
             let title = feed[i]['title']
@@ -29,12 +28,6 @@ window.onload = async function FeedList(){
             let like = feed[i]['likes']
             let count = feed[i]['likes_count']
             let profile_img = feed[i]['profile_img']
-            console.log(profile_img)
-            
-            
-
-
-            console.log(like.includes(userId))
 
             if (like.includes(userId) == true){
                 color = "red"
@@ -69,10 +62,3 @@ window.onload = async function FeedList(){
         }
     })
 }
-
-// function page2detail(id){
-//     localStorage.setItem('article_id', id)
-//     window.location.href = "../templates/detail.html"
-//     // window.location.href = `../templates/detail.html?article_id=${id}`
-//     console.log(id)
-// }

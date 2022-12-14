@@ -13,10 +13,6 @@
     left: 0;
     width: 100vw;
     visibility: hidden;
-    /* flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.2); */
 }
 .container-open {
     visibility: visible;

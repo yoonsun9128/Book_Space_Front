@@ -48,9 +48,8 @@
     <div class="search-wrapper">
       <form onsubmit="return false;">
       <input type="text" id="box" class="search-box" placeholder="Enter search term" onkeyup="enter(event)" required/>
-
     </form>
-    <button onclick="writeArticle()">새로작성하기</button>
+    <button onclick="writeArticle()" class="custom-btn btn-12"><span>Click! -></span><span>new book</span></button>
     </div>
 
 
@@ -68,7 +67,7 @@
 
 
     <ul class="pagination" >
-      <li class="page-item"><a class="page-link" onclick="MovePrevious()"><</a></li>
+      <li class="page-item"><a class="page-link" onclick="MovePrevious()"></a></li>
       <li id="pagination-first-number"></li>
       <li id="pagination-number"></li>
       <li class="page-item"><a class="page-link" onclick="MoveNext()">></a></li>
