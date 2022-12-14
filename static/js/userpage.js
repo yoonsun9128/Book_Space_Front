@@ -1,6 +1,4 @@
 
-const backend_base_url = 'http://127.0.0.1:8000/'
-const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 const image_url = 'http://127.0.0.1:8000'
 
 // 로그인 안하면 접근 금지
@@ -14,7 +12,7 @@ var token = localStorage.getItem("access");
 const user = localStorage.getItem("payload").split(',')[4];
 const user_id = user[10];
 
-window.onload = async function getUserpage(){
+async function getUserpage(){
     const detailData = async () => {
     const response = await fetch(`http://127.0.0.1:8000/users/${user_id}/`,{
         headers:{
@@ -55,7 +53,7 @@ window.onload = async function getUserpage(){
         `
         $('#user_info').append(info_html)
     })
-}
+}getUserpage()
 
 num = 0
 function pageDatail(id){

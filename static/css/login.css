@@ -61,9 +61,9 @@
     width: 400px;
     position: relative;
     margin-top: 20px;
-
-
 }
+
+
 .int-area:first-child{
     margin-top:0;
 }
@@ -75,6 +75,9 @@
     border-bottom: 1px solid #999;
     font-size: 18px; color: black;
     outline: none;
+}
+.int-area input::placeholder{
+    font-size: 12px;
 }
 .int-area label{
     position: absolute; left: 10px; top:15px;

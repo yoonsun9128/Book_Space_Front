@@ -72,10 +72,6 @@ ul {
   left: -6px;
 }
 
-
-* {
-    font-family: 'Gowun Dodum', sans-serif;
-}
 .wrap {
     width:95%;
     max-width:1000px;
@@ -121,8 +117,6 @@ ul {
 
   body {
     color: #fff;
-    text-transform: uppercase;
-    font: Helvetica, Arial;
     font-size: 18px;
     text-shadow: 0 0 1px rgba(255,255,255,0.3);
   }

@@ -1,5 +1,3 @@
-const backend_base_url = 'http://127.0.0.1:8000/'
-const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 
 total_book_list = document.querySelector('.open')
 search_book_list = document.querySelector('.hidden')
@@ -12,13 +10,11 @@ function pagination_book_list(){
     page = pages.split("=")[1]
     $.ajax({
         type: 'GET',
-        url:`${backend_base_url}articles/test/?page=${page}`,
+        url:`${backend_base_url}articles/pagination/?page=${page}`,
         data: {},
         success: function(response) {
             let total_books = response
             let result_books = total_books.results
-            let id = result_books.id
-            let pages = Math.ceil(total_books.count/10)
 
             for (let i=0; i < result_books.length; i++){
                 append_temp_html(
@@ -51,7 +47,7 @@ function pagination_book_list(){
 function pagination(){
     $.ajax({
         type: 'GET',
-        url:`${backend_base_url}articles/test/`,
+        url:`${backend_base_url}articles/pagination/`,
         data: {},
         success: function(response) {
             let total_books = response

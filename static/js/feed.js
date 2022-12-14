@@ -1,12 +1,10 @@
-const backend_base_url = 'http://127.0.0.1:8000/'
-const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 const image_url = 'http://127.0.0.1:8000'
 
 const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
 
-window.onload = async function FeedList(){
+async function FeedList(){
     const FeedData = async ()=> {
         const response = await fetch(`${backend_base_url}articles/list`,{
             method : 'GET',
@@ -61,4 +59,6 @@ window.onload = async function FeedList(){
             $('#image-box').append(temp_html)
         }
     })
-}
+}FeedList()
+
+

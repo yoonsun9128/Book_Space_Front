@@ -1,45 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/css/customlist.css" />
     <link rel="stylesheet" href="../static/css/nav.css" />
+    <!--폰트-->
+    <link rel=“preconnect” href=“https://fonts.googleapis.com”>
+    <link rel=“preconnect” href=“https://fonts.gstatic.com” crossorigin>
+    <link href=“https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap” rel=“stylesheet”>
 
 
     <title>Document</title>
 
 </head>
+
 <body>
     <nav class="navbar">
         <div class="underline">
-            <div><a href="../templates/main.html"></a>HOME</div>
-            <div><a href="../templates/main2.html">글 작성하기</a></div>
-            <div><a href="../templates/feed.html">독후감 보기</a></div>
-            <button onclick = "logout()">로그아웃</button>
-            <div><a href="../templates/userpage.html">마이페이지</a></div>
-            <div class="open"> 로그인/회원가입</div>
-            <button type="submit" onclick="send_id()">보내기</button>
+            <div id="home-button" onclick="location.href='../templates/main.html'">HOME</div>
+            <div id="post-button" onclick="location.href='../templates/booklist.html?page=1'">글 작성하기</div>
+            <div id="feed-button" onclick="location.href='../templates/feed.html'">독후감 보기</div>
+            <div id="recommend-button" onclick="location.href='../templates/customlist.html'">추천도서</div>
+            <div id="user_email" onclick="location.href='../templates/userpage.html'"></div>
+            <div id="login-button" class="open"> 로그인/회원가입</div>
+            <div id="logout-button" class="logout" onclick="logout()">로그아웃</div>
         </div>
     </nav>
+    <div class="container" onclick="send_id()">보내기</div>
     <div class="container">
-        <button class="reload "onClick="window.location.reload()">
+        <button class="reload " onClick="window.location.reload()">
             <img src="../static/images/refresh_icon_151134.png" alt="">
         </button>
-        <div class="book-store" id="customlist" >
+        <div class="book-store" id="customlist">
         </div>
     </div>
- 
 
 
 
-<script src="../static/js/customlist.js"></script>
-<script>
+    <script src="../static/js/api.js"></script>
+    <script src="../static/js/customlist.js"></script>
 
-</script>
+
+    <script>
+
+    </script>
 </body>
+
 </html>
