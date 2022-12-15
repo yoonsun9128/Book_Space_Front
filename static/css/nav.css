@@ -1,47 +1,89 @@
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
-
-body {
-    font-family: 'Noto Sans KR', sans-serif;
-    margin: 0;
-    padding: 0;
-    font-size: 1rem;
-}
-
-.navbar {
-    position: fixed;
-    object-fit: cover;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    z-index: 1;
-    padding: 0;
-
-}
-.underline {
+:root {
+    --text-color: #000000;
+    --background-color: rgba(255, 255, 255, 0.9);
+    --accent-color: orange;
+    --icons-color: rgb(152, 187, 201);
+    --bodybackground-color: antiquewhite;
+  }
+  
+  body { 
+    margin: 0 !important;
+    background-color: var(--bodybackground-color) !important;
+    font-family: 'Noto Sans KR', sans-serif !important;
+    font-size: 1rem !important;
+    
+  }
+  
+  a {
+    text-decoration: none;
+    color: var(--text-color);
+  }
+  
+  .navbar {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    background-color: var(--background-color);
+    padding: 8px 12px;
+    z-index: 5;
+    position: fixed;
+    width: 100%;
+    top:0;
+  }
+
+
+  .navbar__logo i {
+    color: var(--accent-color);
+    padding-left: 0;
+  }
+  
+  .navbar__menu {
     list-style: none;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 0 50px;
+    display: flex;
     margin: 0;
-    height: 50px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-}
+    padding-left: 0;
+  }
+  
+  .navbar__menu div {
+    padding: 8px 30px;
+  }
 
+  .navbar__menu div:hover {
+    background-color: var(--accent-color);
+    border-radius: 3px;
+  }
 
-.underline div {
-    margin: 0 70px;
-    width: 100vw;
-    align-items: center;
-    color: #000000;
-    text-align : center;
-    height: auto;
+  .navbar__toggleBtn{
+    position: absolute;
+    right: 32px;
+    font-size: 24px;
+    color: #d49466;
+    display:none;
+  }
 
-}
+  @media screen and (max-width: 1100px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0;
+      }
+    .navbar__menu {
+        display:none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .navbar__menu div {
+        width: 100%;
+        text-align: center;
+    }
 
-.underline div:hover{
-    border-bottom: 2px solid aqua;
-    transition: 0.5s all;
-
+    .navbar__toggleBtn{
+        display: block;
+    }
+    .navbar__menu.active {
+      display: flex;
+  }
 }

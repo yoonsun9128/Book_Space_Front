@@ -10,6 +10,17 @@ const feedButton = document.getElementById("feed-button")
 const postButton = document.getElementById("post-button")
 const recommendButton = document.getElementById("recommend-button")
 
+const toggleBtn = document.querySelector('.navbar__toggleBtn');
+const menu = document.querySelector('.navbar__menu');
+const icons = document.querySelector('.navbar__icons');
+
+toggleBtn.addEventListener('click', () => {
+  menu.classList.toggle('active')
+  icons.classList.toggle('active')
+})
+
+
+
 window.onload = function navbar(){
     console.log(localStorage.hasOwnProperty("user"))
     // 로그인 된 상태
@@ -79,8 +90,12 @@ async function handleSignup(){
     response_json = await response.json()
     if (response.status == 201) {
         alert("이메일이 전송되었습니다. 확인해주세요.")
+        signup.style.display = 'none';
+        login.style.display = 'flex';
 
-    };
+    }else{
+        alert("다시한번 확인해")
+    }
 
 }
 // # 로그인 //

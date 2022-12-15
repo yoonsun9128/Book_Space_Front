@@ -61,11 +61,12 @@ async function send_id(){
             },
         })
         .then(res=> res.json())
-        if(select_books !== 0){
+        if(select_books == 0){
             alert("적어도 하나의 책을 선택해주세요")
         }else{
             alert("메인페이지로 이동합니다")
+            window.location.href="../templates/main.html"
         }
         
-        window.location.href="../templates/main.html"
+        
     }

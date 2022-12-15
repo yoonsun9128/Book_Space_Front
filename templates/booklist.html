@@ -19,15 +19,17 @@
     crossorigin="anonymous"></script>
 
   <!--폰트-->
-  <link rel=“preconnect” href=“https://fonts.googleapis.com”>
-  <link rel=“preconnect” href=“https://fonts.gstatic.com” crossorigin>
-  <link href=“https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap” rel=“stylesheet”>
-
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link href='https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
-  <link rel="stylesheet" href="../static/css/booklist.css">
-  <link rel="stylesheet" href="../static/css/pagination.css">
-  <link rel="stylesheet" href="../static/css/nav.css">
+  
+  <link rel="stylesheet" href="../static/css/nav.css"/>
+  <link rel="stylesheet" href="../static/css/booklist.css"/>
 
+
+  <!--아이콘-->
+  <script src="https://kit.fontawesome.com/43cd4c369a.js" crossorigin="anonymous"></script>
 
 
 
@@ -36,35 +38,42 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
-
-
-
   <title>main2</title>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
+  <!-- 네비바-->
   <nav class="navbar">
-    <div class="underline">
-      <div id="home-button" onclick="location.href='../templates/main.html'">HOME</div>
-      <div id="post-button" onclick="location.href='../templates/booklist.html?page=1'">글 작성하기</div>
-      <div id="feed-button" onclick="location.href='../templates/feed.html'">독후감 보기</div>
-      <div id="recommend-button" onclick="location.href='../templates/customlist.html'">추천도서</div>
-      <div id="user_email" onclick="location.href='../templates/userpage.html'"></div>
-      <div id="login-button" class="open"> 로그인/회원가입</div>
-      <div id="logout-button" class="logout" onclick="logout()">로그아웃</div>
+
+    <div class="navbar__logo">
+        <i class="fa-solid fa-book"></i>
+        <a href="../templates/main.html">ThumBook</a>
     </div>
-  </nav>
+
+    <ul class="navbar__menu">
+        <div id="post-button" onclick="location.href='../templates/booklist.html?page=1'">글 작성하기</div>
+        <div id="feed-button" onclick="location.href='../templates/feed.html'">독후감 보기</div>
+        <div id="recommend-button" onclick="location.href='../templates/customlist.html'">추천도서</div>
+        <div id="user_email" onclick="location.href='../templates/userpage.html'"></div>
+        <div id="login-button" class="open"> 로그인/회원가입</div>
+        <div id="logout-button" class="logout" onclick="logout()">로그아웃</div>
+    </ul>
+
+    <a href="#" class="navbar__toggleBtn">
+        <i class="fas fa-bars"></i>
+    </a>
+</nav>
   <ul>
-    <li><span data-hover="b">b</span></li>
-    <li><span data-hover="o">o</span></li>
-    <li><span data-hover="o">o</span></li>
-    <li><span data-hover="k">k</span></li>
-    <li><span data-hover="l">l</span></li>
-    <li><span data-hover="i">i</span></li>
-    <li><span data-hover="s">s</span></li>
-    <li><span data-hover="t">t</span></li>
+    <li><span data-hover="B">B</span></li>
+    <li><span data-hover="O">O</span></li>
+    <li><span data-hover="O">O</span></li>
+    <li><span data-hover="K">K</span></li>
+    <li><span data-hover="L">L</span></li>
+    <li><span data-hover="I">I</span></li>
+    <li><span data-hover="S">S</span></li>
+    <li><span data-hover="T">T</span></li>
   </ul>
 
   <div class="search-wrapper">
@@ -75,7 +84,7 @@
   </div>
 
 
-  <div class="wrap open">
+  <div class="wrap total">
     <div class="row row-cols-1 row-cols-md-3 g-4" id="book_list">
 
     </div>
@@ -88,17 +97,15 @@
   </div>
 
 
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" onclick="MovePrevious()"></a></li>
-    <li id="pagination-first-number"></li>
-    <li id="pagination-number"></li>
-    <li class="page-item"><a class="page-link" onclick="MoveNext()">></a></li>
-  </ul>
+  <div id="pagination-demo">
 
-
+  </div>
   <script src="../static/js/api.js"></script>
   <script src="../static/js/booklist.js"></script>
+  <script src="../static/js/pagination.js"></script>
 
+  
+  
 
 </body>
 
