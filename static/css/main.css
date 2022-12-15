@@ -1,6 +1,14 @@
 body{
   background-color: antiquewhite;
   height: 100%;
+  line-height: 1.5;
+
+}
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
 }
 
   .team_exp{
@@ -765,19 +773,6 @@ footer a {
 
 
 
-
-
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-body{
-	line-height: 1.5;
-	font-family: 'Poppins', sans-serif;
-}
-*{
-	margin:0;
-	padding:0;
-	box-sizing: border-box;
-}
 .container2{
 	max-width: 1170px;
 	margin:auto;

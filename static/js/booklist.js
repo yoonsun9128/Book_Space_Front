@@ -1,5 +1,5 @@
 
-total_book_list = document.querySelector('.open')
+total_book_list = document.querySelector('.total')
 search_book_list = document.querySelector('.hidden')
 searchButton = document.querySelector('.search-box')
 
@@ -43,47 +43,6 @@ function pagination_book_list(){
 
 } pagination_book_list()
 
-
-let currentPage = window.location.href.split("=")[1]
-
-
-
-function pagination(){
-    $.ajax({
-        type: 'GET',
-        url:`${backend_base_url}articles/pagination/`,
-        data: {},
-        success: function(response) {
-            let total_books = response
-            let pages = Math.ceil(total_books.count/10)
-            for (let page=1; page < pages; page++){
-                pageArray.push(page)
-                temp_html = `
-                <li><a class="num" href="?page=${page}" onclick="pagination_book_list()">${page}</a></li>
-                `
-                $('#pagination-number').append(temp_html)
-            }
-            }
-        }
-    )
-}pagination()
-
-    
-function MovePrevious() {
-    page = window.location.href.split("=")[1]
-    previous_page = page - 1
-    if (!page || page == 1) {
-        alert("첫 페이지입니다");
-    } else {
-        window.location.href=`?page=${previous_page}`
-    }
-    }
-    
-function MoveNext() {
-    page = window.location.href.split("=")[1]
-    next_page = Number(page) + 1
-    window.location.href=`?page=${next_page}`
-}
 
 // 검색기능
 function book_list(s_data) {

@@ -15,9 +15,11 @@
     <link rel="stylesheet" href="../static/css/main.css" />
     <link rel="stylesheet" href="../static/css/siteintro.css" />
     <!--폰트-->
-    <link rel=“preconnect” href=“https://fonts.googleapis.com”>
-    <link rel=“preconnect” href=“https://fonts.gstatic.com” crossorigin>
-    <link href=“https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap” rel=“stylesheet”>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap' rel='stylesheet'>
+    <!--아이콘-->
+    <script src="https://kit.fontawesome.com/43cd4c369a.js" crossorigin="anonymous"></script>
 
 
     <link rel="stylesheet" type="text/css"
@@ -30,15 +32,24 @@
 <body>
     <!-- 네비바-->
     <nav class="navbar">
-        <div class="underline">
-            <div id="home-button" onclick="location.href='../templates/main.html'">HOME</div>
+
+        <div class="navbar__logo">
+            <i class="fa-solid fa-book"></i>
+            <a href="../templates/main.html">ThumBook</a>
+        </div>
+
+        <ul class="navbar__menu">
             <div id="post-button" onclick="location.href='../templates/booklist.html?page=1'">글 작성하기</div>
             <div id="feed-button" onclick="location.href='../templates/feed.html'">독후감 보기</div>
             <div id="recommend-button" onclick="location.href='../templates/customlist.html'">추천도서</div>
             <div id="user_email" onclick="location.href='../templates/userpage.html'"></div>
             <div id="login-button" class="open"> 로그인/회원가입</div>
             <div id="logout-button" class="logout" onclick="logout()">로그아웃</div>
-        </div>
+        </ul>
+
+        <a href="#" class="navbar__toggleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
     </nav>
 
     <!--프로젝트설명-->
@@ -49,16 +60,16 @@
                     <!-- ACCORDION ROW -->
                     <div class="row">
                         <ul class="accordion-group" id="accordion">
-                            <li style="background-image: url(../static/images/Recommend.PNG);">
+                            <li style="background-image: url(../static/images/customlist.PNG);">
                                 <div class="accordion-overlay"></div>
                                 <h3>Recommend</h3>
                                 <section class="hidden-xs">
                                     <article>
-                                        <p>취향을 선택하시면 적절한 책을 추천해드립니다.</p>
+                                        <p>취향을 선택하시면 책을 추천드립니다.</p>
                                     </article>
                                 </section>
                             </li>
-                            <li class="out" style="background-image: url(../static/images/Introduce.PNG);">
+                            <li class="out" style="background-image: url(../static/images/booklist.PNG);">
                                 <div class="accordion-overlay"></div>
                                 <h3>Introduce</h3>
                                 <section class="hidden-xs">
@@ -69,22 +80,22 @@
                                 </section>
                             </li>
                             <li
-                                style="background-image: url('https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1955&q=80');">
+                                style="background-image: url('../static/images/post1.PNG');">
                                 <div class="accordion-overlay"></div>
                                 <h3>Record</h3>
                                 <section class="hidden-xs">
                                     <article>
-                                        <p>When people want it cosy but stylish</p>
+                                        <p>읽은 책들을 기록하세요.</p>
                                     </article>
                                 </section>
                             </li>
                             <li
-                                style="background-image: url('https://images.unsplash.com/photo-1495433324511-bf8e92934d90?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');">
+                                style="background-image: url('../static/images/feed.PNG');">
                                 <div class="accordion-overlay"></div>
                                 <h3>Community</h3>
                                 <section class="hidden-xs">
                                     <article>
-                                        <p>For the family dinner</p>
+                                        <p>자신의 책 일상을 공유하세요</p>
                                     </article>
                                 </section>
                             </li>
