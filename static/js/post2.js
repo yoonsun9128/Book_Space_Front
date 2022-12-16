@@ -54,11 +54,15 @@ async function post_book() {
     const content = document.getElementById("content").value
     const InputImg = document.getElementById("InputImg").value
     const star = document.querySelector("input[type='radio']:checked").value
+    const private = document.getElementById("is_private")
+    const is_private = private.checked;   
+    document.getElementById('result').innerText = is_private; 
     const image=document.getElementById("InputImg").files[0]
     const formData = new FormData();
     formData.append('content', content);
     formData.append('rating', star);
     formData.append('image', image);
+    formData.append('is_private', is_private)
 
     const response = await fetch(`http://127.0.0.1:8000/articles/search/${id}/`, {
         headers: {
