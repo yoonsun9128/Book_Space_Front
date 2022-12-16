@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
+    <title>book space</title>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../static/css/inquirylist.css" />
+    <link rel="stylesheet" href="../static/css/nav.css" />
+    <!--폰트-->
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap' rel='stylesheet'>
+    <!--아이콘-->
+    <script src="https://kit.fontawesome.com/43cd4c369a.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <!-- 네비바-->
+    <nav class="navbar">
+
+        <div class="navbar__logo">
+            <i class="fa-solid fa-book"></i>
+            <a href="../templates/main.html">ThumBook</a>
+        </div>
+
+        <ul class="navbar__menu">
+            <div id="post-button" onclick="location.href='../templates/booklist.html?page=1'">글 작성하기</div>
+            <div id="feed-button" onclick="location.href='../templates/feed.html'">독후감 보기</div>
+            <div id="recommend-button" onclick="location.href='../templates/customlist.html'">추천도서</div>
+            <div id="user_email" onclick="location.href='../templates/userpage.html'"></div>
+            <div id="login-button" class="open"> 로그인/회원가입</div>
+            <div id="logout-button" class="logout" onclick="logout()">로그아웃</div>
+        </ul>
+
+        <a href="#" class="navbar__toggleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+    <!--문의글 내용-->
+    <thead>
+        <div class="board_list_wrap">
+            <h2>문의글 목록</h2>
+            <div class="board_list">
+                <div class="board_list_head">
+                    <div class="num">번호</div>
+                    <div class="tit">제목</div>
+                    <div class="writer">글쓴이</div>
+                    <div class="date">작성일</div>
+                    <div class="view">조회</div>
+                </div>
+                <div class="board_list_body" id="inquiry-box">
+                </div>
+            </div>
+            <div class="board_detail">
+                <div class="board_detail_tit">제목</div>
+                <div class="board_detail_content">내용</div>
+                <div class="board_detail_comment">댓글</div>
+            </div>
+        </div>
+
+
+    </thead>
+
+    <script src="../static/js/api.js"></script>
+    <script src="../static/js/inquiry.js"></script>
+</body>
