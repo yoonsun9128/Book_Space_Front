@@ -1,0 +1,71 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.board_list_wrap {
+    padding: 50px;
+}
+
+.board_list_wrap > h2{
+    text-align: center;
+}
+.board_list_head{
+    border-top: 2px solid #000000;
+    border-bottom: 1px solid #ccc;
+}
+
+.board_list_body .item{
+    border-bottom: 1px solid #ccc;
+}
+
+.board_list_head,
+.board_list_body .item {
+    font-size : 0;
+    padding: 10px 0;
+}
+
+.board_list_head > div, 
+.board_list_body .item > div {
+    display: inline-block;
+    text-align: center;
+    font-size: 14px;
+}
+
+.board_list_head > div{
+    font-weight: 600;
+}
+
+.board_list .num{
+    width: 10%;
+}
+
+.board_list .tit{
+    width: 55%;
+}
+
+.board_list_body div.tit{
+    text-align: left;
+}
+
+.board_list_body div.tit a:hover{
+    text-decoration: underline;
+}
+
+.board_list .writer{
+    width: 10%;
+}
+
+.board_list .date{
+    width: 15%;
+}
+
+.board_list .view{
+    width: 10%;
+}
+
+
+.board_detail{
+    border: 2px solid red;
+}
+
