@@ -59,8 +59,6 @@ id = URL.split("=")[1]
         $('#user_info').append(info_html)
 
         if (user_id != info_user_id){
-            console.log(user_id)
-            console.log(info_user_id)
             editButton.style.display = 'none';
         }
     })
@@ -69,7 +67,8 @@ id = URL.split("=")[1]
 function likesArticle(){
 URL = window.location.search
 id = URL.split("=")[1]
-
+console.log(id)
+    $('#likeArticle_list').empty()
     const detailData = async () => {
     const response = await fetch(`http://127.0.0.1:8000/users/${id}/likes/`,{
         headers:{
@@ -82,6 +81,7 @@ id = URL.split("=")[1]
     }
     detailData().then((data) =>{
         total = data
+        console.log(total)
         for (let i = 0; i<total.length; i++){
             let article_id = total[i]['id']
             let img = total[i]['image']

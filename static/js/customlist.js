@@ -48,7 +48,6 @@ function save_id(id){
             }
         }
     }
-    console.log(select_books)
 
 }
 

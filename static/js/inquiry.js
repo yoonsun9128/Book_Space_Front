@@ -17,7 +17,6 @@ async function inquiryList() {
             let title = inquiry[i]['title']
             let content = inquiry[i]['content']
             let updated_at = inquiry[i]['updated_at']
-            console.log(inquiry)
             let temp_html = `
 
                     <div class="item">

@@ -2,6 +2,13 @@ const backend_base_url = 'http://127.0.0.1:8000/'
 const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 const image_url = 'http://127.0.0.1:8000'
 
+
+const PutArticleBtn = document.getElementById("put_article") //게시글 수정
+const DelArticleBtn = document.getElementById("del_article_btn") //게시글 삭제
+
+
+
+
 A = window.location.search
 code = A.split("=")[1]
 
@@ -25,26 +32,39 @@ code = A.split("=")[1]
 }
 detailData().then((data) => {
     detail = data
-    title = detail['title']
-    article_user = detail['user']
-    article_user_id = detail['user_id']
-    image = detail['image']
-    profile_img = detail['profile_img']
-    id = detail['id']
-    content = detail['content']
-    rating = detail['rating']
-    likes = detail['likes']
-    updated_at = detail['updated_at']
-    comments = detail['comment_set']
-    count = detail['likes_count']
+    title = detail['title'] //게시글 이름
+    article_user = detail['user'] //게시글 작성자 username
+    article_user_id = detail['user_id'] //게시글 작성자 id
+    image = detail['image'] //게시글 이미지
+    profile_img = detail['profile_img'] //게시글 작성자 프로필 이미지
+    id = detail['id'] //게시글 id
+    content = detail['content'] //게시글 내용
+    rating = detail['rating'] //게시글 별점
+    likes = detail['likes'] //게시글 좋아요
+    updated_at = detail['updated_at'] //게시글 수정날짜
+    comment = detail['comment_set'] //게시글 댓글
+    count = detail['likes_count'] //게시글 좋아요 수
+    comment_user = detail['comment_set'] // 댓글 작성자 username
+    comment_id = detail['comment_set'] //댓글 id
+    comment_profile_img = detail['comment_set'] //댓글 작성자 프로필 이미지
+    comment_user_id = detail['comment_set'] //댓글 작성자 id
+
+    function ButtonShow1(article_user_id){
+        //로그인 유저!=게시글 작성유서
+        if(userId!=article_user_id){
+            PutArticleBtn.style.display = 'none';
+            DelArticleBtn.style.display = 'none';
+        }
+    }ButtonShow1(article_user_id)
+
+    for (let i=0; i < comment.length; i++){
+        let detail_comment = comment[i]['content']
+        let detail_user = comment_user[i]['user']
+        let detail_id = comment_id[i]['id']
+        let detail_profile_img = comment_profile_img[i]['profile_img']
+        let detail_user_id = comment_user_id[i]['user_id']
 
 
-    for (let i=0; i < comments.length; i++){
-        let detail_comment = comments[i]['content']
-        let detail_user = comments[i]['user']
-        let detail_id = comments[i]['id']
-        let detail_profile_img = comments[i]['profile_img']
-        let detail_user_id = comments[i]['user_id']
         let temp_html = `
         <div class="ms-3">
         <div class="row row-cols-auto">
@@ -54,16 +74,32 @@ detailData().then((data) => {
             <div class="container text-center" style="width:100%; margin-left:70px; margin-bottom:30px;">
                 <div class="row row-cols-auto">
                     <div class="col" style="width:770px; text-align:left;" id="new-comment${detail_id}">${detail_comment}</div>
-                    <div class="col"><button type="button" class="btn btn-outline-dark" id="${detail_id}" onclick="putComment(this.id)" data-bs-toggle="modal" data-bs-target="#Modal1">수정</button></div>
-                    <div class="col"><button type="button" onclick="delete_comment(${detail_id})"  class="btn btn-outline-dark">삭제</button></div>
+                    <div class="col put_comment_btn"><button type="button" class="btn btn-outline-dark" id="${detail_id}" onclick="putComment(this.id)" data-bs-toggle="modal" data-bs-target="#Modal1">수정</button></div>
+                    <div class="col del_comment_btn"><button type="button" onclick="delete_comment(${detail_id})" class="btn btn-outline-dark">삭제</button></div>
                 </div>
             </div>
         </div>
         <hr>
         `
         $('#detail_comment-box').append(temp_html)
-    }
+        
+        const PutCommentBtn = document.getElementsByClassName("put_comment_btn")[i] //댓글수정버튼
+        const DelCommentBtn = document.getElementsByClassName("del_comment_btn")[i] //댓글삭제버튼
 
+        function ButtonShow2(detail_user_id){
+            //로그인 유저!=게시글 작성유저
+            if(userId==detail_user_id){
+                PutCommentBtn.style.display = 'flex';
+                DelCommentBtn.style.display = 'flex';
+            }
+            else{PutCommentBtn.style.display = 'none'; DelCommentBtn.style.display = 'none';}
+            if(userId==article_user_id){
+                PutCommentBtn.style.display = 'flex';
+                DelCommentBtn.style.display = 'flex';
+            }
+        }
+        ButtonShow2(detail_user_id)
+    }
     if (likes.includes(userId) == true){
         color = "red"
     }

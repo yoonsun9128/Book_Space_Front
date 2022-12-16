@@ -22,7 +22,6 @@ toggleBtn.addEventListener('click', () => {
 
 
 window.onload = function navbar(){
-    console.log(localStorage.hasOwnProperty("user"))
     // 로그인 된 상태
     if(localStorage.hasOwnProperty("user") === true){
         user_email.innerText = login_email
@@ -48,7 +47,6 @@ window.onload = function navbar(){
 const a = localStorage.getItem("payload").split(',')[4];
 const user_id = a[10];
 function gotoUserpage(){
-    console.log(user_id)
     window.location.href = `../templates/userpage.html?id=${user_id}`
 }
 
