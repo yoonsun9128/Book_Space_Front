@@ -28,12 +28,16 @@ async function post_article() {
     const title = document.getElementById("title").value
     const content = document.getElementById("content").value
     const star = document.querySelector("input[type='radio']:checked").value
+    const private = document.getElementById("is_private")
+    const is_private = private.checked;   
+    document.getElementById('result').innerText = is_private; 
     const image=document.getElementById("InputImg").files[0]
     const formData = new FormData();
     formData.append('title', title);
     formData.append('content', content);
     formData.append('image', image);
     formData.append('rating', star);
+    formData.append('is_private', is_private)
     const response = await fetch(`${backend_base_url}articles/search/`, {
         headers: {
 

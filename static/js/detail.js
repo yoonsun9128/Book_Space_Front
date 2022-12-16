@@ -245,6 +245,9 @@ function putArticle() {
     const OldRating = document.getElementById(`detail_rating-box`)
     const NewRating = document.getElementById(`put_rating`).value
     const OldImage = document.getElementById(`detail_image-box`)
+    const private = document.getElementById("is_private")
+    const is_private = private.checked;   
+    document.getElementById('result').innerText = is_private;
     const NewImage = document.getElementById(`put_InputImg`).value
     NewContent.value = OldContent
     NewRating.value = OldRating
@@ -258,12 +261,16 @@ async function ArticleSave() {
     const OldRating = document.getElementById(`detail_rating-box`)
     const NewRating = document.querySelector("input[type='radio']:checked").value
     const OldImage = document.getElementById(`detail_image-box`)
+    const private = document.getElementById("is_private")
+    const is_private = private.checked;   
+    document.getElementById('result').innerText = is_private;
     const NewImage = document.getElementById(`put_InputImg`).files[0]
 
     const formData = new FormData();
     formData.append('content', NewContent);
     formData.append('rating', NewRating);
     formData.append('image', NewImage);
+    formData.append('is_private', is_private);
 
     const response = await fetch(`http://127.0.0.1:8000/articles/${code}/`, {
         headers: {
