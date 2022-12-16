@@ -1,6 +1,7 @@
 
 const image_url = 'http://127.0.0.1:8000'
 
+
 // 로그인 안하면 접근 금지
 var token = localStorage.getItem("access");
     if (!token) {
@@ -8,13 +9,16 @@ var token = localStorage.getItem("access");
         window.location.replace (`${frontend_base_url}main.html`)
     }
 
+const editButton = document.getElementById("user_info")
 
-const user = localStorage.getItem("payload").split(',')[4];
-const user_id = user[10];
+URL = window.location.search
+id = URL.split("=")[1]
 
-async function getUserpage(){
+function getUserpage(){
+URL = window.location.search
+id = URL.split("=")[1]
     const detailData = async () => {
-    const response = await fetch(`http://127.0.0.1:8000/users/${user_id}/`,{
+    const response = await fetch(`http://127.0.0.1:8000/users/${id}/`,{
         headers:{
             'Content-Type': 'application/json',
             'Authorization': 'Bearer' + localStorage.getItem("access")
@@ -39,21 +43,58 @@ async function getUserpage(){
         }
         let name = data['username']
         let user_image = data['profile_img']
-        let info = data['id']
+        let info_user_id = data['id']
+
         let name_html = `
         <h3 class="title">${name}</h3>
         `
         $('#user_name').append(name_html)
         let img_html = `
-        <img src="${image_url}${user_image}" alt="Circle Image" class="img-raised rounded-circle img-fluid" onclick="ImageChange(this.id)" id="${info}" data-bs-toggle="modal" data-bs-target="#UserImage">
+        <img src="${image_url}${user_image}" alt="Circle Image" class="img-raised rounded-circle img-fluid" onclick="ImageChange(this.id)" id="${info_user_id}" data-bs-toggle="modal" data-bs-target="#UserImage">
         `
         $('#user_img').append(img_html)
         let info_html = `
-        <i type="button" onclick="infoChange(this.id)" id="${info}" data-bs-toggle="modal" data-bs-target="#UserModal" >수정하기</i>
+        <i type="button" onclick="infoChange(this.id)" class="edit_user" id="${info_user_id}" data-bs-toggle="modal" data-bs-target="#UserModal" >수정하기</i>
         `
         $('#user_info').append(info_html)
+
+        if (user_id != info_user_id){
+            console.log(user_id)
+            console.log(info_user_id)
+            editButton.style.display = 'none';
+        }
     })
 }getUserpage()
+
+function likesArticle(){
+URL = window.location.search
+id = URL.split("=")[1]
+
+    const detailData = async () => {
+    const response = await fetch(`http://127.0.0.1:8000/users/${id}/likes/`,{
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer' + localStorage.getItem("access")
+        },
+        method:'GET',
+    })
+    return response.json();
+    }
+    detailData().then((data) =>{
+        total = data
+        for (let i = 0; i<total.length; i++){
+            let article_id = total[i]['id']
+            let img = total[i]['image']
+
+            let temp_html = `
+            <div class="col-md-3">
+                <img src="${image_url}${img}" class="rounded" id="${article_id}" onclick="pageDatail(this.id)">
+            </div> `
+            $('#likeArticle_list').append(temp_html)
+
+        }
+    })
+}
 
 num = 0
 function pageDatail(id){
@@ -62,6 +103,7 @@ function pageDatail(id){
 }
 function ImageChange(id){
     num= id
+
 }
 function infoChange(id){
     num= id

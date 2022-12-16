@@ -44,7 +44,13 @@ window.onload = function navbar(){
     }
 }
 
-
+// # userpage로 가는 함수//
+const a = localStorage.getItem("payload").split(',')[4];
+const user_id = a[10];
+function gotoUserpage(){
+    console.log(user_id)
+    window.location.href = `../templates/userpage.html?id=${user_id}`
+}
 
 
 // # 회원가입 //
@@ -103,7 +109,7 @@ async function handleLogin(){
     const LoginData = {
         email : document.getElementById("email1").value,
         password : document.getElementById("password1").value
-    }   
+    }
     const response = await fetch(`${backend_base_url}users/dj-rest-auth/login/`, {
         headers:{
             'content-type':'application/json',
@@ -125,10 +131,10 @@ async function handleLogin(){
             function(c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
-    localStorage.setItem("payload", jsonPayload); 
+    localStorage.setItem("payload", jsonPayload);
     localStorage.setItem("user", response_json.user.email)
 
-    
+
 
     window.location.reload()
 

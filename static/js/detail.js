@@ -1,4 +1,5 @@
-
+const backend_base_url = 'http://127.0.0.1:8000/'
+const frontend_base_url = 'http://127.0.0.1:5500/templates/'
 const image_url = 'http://127.0.0.1:8000'
 
 A = window.location.search
@@ -26,6 +27,7 @@ detailData().then((data) => {
     detail = data
     title = detail['title']
     article_user = detail['user']
+    article_user_id = detail['user_id']
     image = detail['image']
     profile_img = detail['profile_img']
     id = detail['id']
@@ -33,24 +35,20 @@ detailData().then((data) => {
     rating = detail['rating']
     likes = detail['likes']
     updated_at = detail['updated_at']
-    comment = detail['comment_set']
+    comments = detail['comment_set']
     count = detail['likes_count']
-    comment_user = detail['comment_set']
-    comment_id = detail['comment_set']
-    comment_profile_img = detail['comment_set']
-
-    
 
 
-    for (let i=0; i < comment.length; i++){
-        let detail_comment = comment[i]['content']
-        let detail_user = comment_user[i]['user']
-        let detail_id = comment_id[i]['id']
-        let detail_profile_img = comment_profile_img[i]['profile_img']
+    for (let i=0; i < comments.length; i++){
+        let detail_comment = comments[i]['content']
+        let detail_user = comments[i]['user']
+        let detail_id = comments[i]['id']
+        let detail_profile_img = comments[i]['profile_img']
+        let detail_user_id = comments[i]['user_id']
         let temp_html = `
         <div class="ms-3">
         <div class="row row-cols-auto">
-            <a class="col" class="flex-shrink-0" href="${frontend_base_url}userpage.html"><img class="rounded-circle" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: top;" src="${image_url}${detail_profile_img}" alt="..." /></a>
+            <a class="col" class="flex-shrink-0" href="${frontend_base_url}userpage.html?id=${detail_user_id}"><img class="rounded-circle" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: top;" src="${image_url}${detail_profile_img}" alt="..." /></a>
             <div class="col"> <div> <div class="fw-bold" id="comment-user" id="comment-user">${detail_user}</div></div>
         </div>
             <div class="container text-center" style="width:100%; margin-left:70px; margin-bottom:30px;">
@@ -127,7 +125,7 @@ detailData().then((data) => {
 
     let temp8_html = `
     <div>
-        <img style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: top;" src="${image_url}${profile_img}" alt="...">
+        <img style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: top;" src="${image_url}${profile_img}" id="${article_user_id}" onclick="userpagemove(this.id)" alt="...">
     </div>
     `
     $('#profile_img_box').append(temp8_html)
@@ -168,6 +166,11 @@ async function post_comment() {
 
 //댓글 수정
 num=0
+// 유저페이지 가는 기능
+function userpagemove(id){
+    num=id
+    window.location.href=`../templates/userpage.html?id=${num}`
+}
 
 function putComment(id) {
     num=id
