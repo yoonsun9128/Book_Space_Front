@@ -26,6 +26,7 @@ async function FeedList(){
             let like = feed[i]['likes']
             let count = feed[i]['likes_count']
             let profile_img = feed[i]['profile_img']
+            let write_user_id = feed[i]['user_id']
 
             if (like.includes(userId) == true){
                 color = "red"
@@ -35,20 +36,20 @@ async function FeedList(){
             }
 
             let temp_html = `
-            <div id = "my_table" class="col-md-4"> 
-                <div class="card"> 
+            <div id = "my_table" class="col-md-4">
+                <div class="card">
                     <div class = "text">
-                        <img src="${image_url}${profile_img}" alt="..."></a><span style = "margin-left : 10px;" class="text-uppercase fw-bold fs-6">${username}</span>
+                    <a href="${frontend_base_url}userpage.html?id=${write_user_id}"><img src="${image_url}${profile_img}" alt="..."></a><span style = "margin-left : 10px;" class="text-uppercase fw-bold fs-6">${username}</span>
                     </div>
-                    <div class="card-img-top image-card image-card-1"> 
-                        <img src="${image_url}${image}" alt="..."> 
+                    <div class="card-img-top image-card image-card-1">
+                        <img src="${image_url}${image}" alt="...">
                     </div>
                     <div class = "btns">
                         <Button onclick = "Toggle(${id})"class = "btn" id="${id}" style = "color : ${color}" ><i class="fa-solid fa-heart"></i> ${count}</Button>
                     </div>
                     <div class="card-body">
                         <span class="text-uppercase fw-bold fs-6">${title}</span>
-                        <p>${content}</p> 
+                        <p>${content}</p>
                         <div class="mt-4 about d-flex justify-content-between align-items-center">
                         <a href="${frontend_base_url}detail.html?id=${id}" class="text-dark">Read full story...</a>
                         </div>
