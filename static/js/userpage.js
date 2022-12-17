@@ -55,6 +55,7 @@ id = URL.split("=")[1]
         $('#user_img').append(img_html)
         let info_html = `
         <i type="button" onclick="infoChange(this.id)" class="edit_user" id="${info_user_id}" data-bs-toggle="modal" data-bs-target="#UserModal" >수정하기</i>
+        <i type="button" onclick="infoDelete(this.id)" class="delete_user" id="${info_user_id}" data-bs-toggle="modal" data-bs-target="#DeleteModal" >탈퇴하기</i>
         `
         $('#user_info').append(info_html)
 
@@ -67,7 +68,6 @@ id = URL.split("=")[1]
 function likesArticle(){
 URL = window.location.search
 id = URL.split("=")[1]
-console.log(id)
     $('#likeArticle_list').empty()
     const detailData = async () => {
     const response = await fetch(`http://127.0.0.1:8000/users/${id}/likes/`,{
@@ -81,7 +81,6 @@ console.log(id)
     }
     detailData().then((data) =>{
         total = data
-        console.log(total)
         for (let i = 0; i<total.length; i++){
             let article_id = total[i]['id']
             let img = total[i]['image']
@@ -106,6 +105,10 @@ function ImageChange(id){
 
 }
 function infoChange(id){
+    num= id
+}
+
+function infoDelete(id){
     num= id
 }
 
@@ -166,4 +169,25 @@ async function editSave() {
         alert(response.status);
     }
 
+}
+
+async function userDelete() {
+    console.log(num)
+    const response = await fetch(`http://127.0.0.1:8000/users/${num}/`, {
+        headers: {
+            'Content-type':'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        method: 'Delete',
+    })
+    if (response.status == 202) {
+        localStorage.removeItem("access")
+        localStorage.removeItem("refresh")
+        localStorage.removeItem("payload")
+        localStorage.removeItem("user")
+        alert("회원 탈퇴 완료")
+        window.location.href = "../templates/main.html"
+    } else {
+        alert("계정확인이 필요합니다.")
+    }
 }
