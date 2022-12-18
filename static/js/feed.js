@@ -17,6 +17,8 @@ async function FeedList(){
     }
     FeedData().then((data) => {
         feed = data
+
+        console.log(feed['username'])
         for (let i = 0; i < feed.length; i++){
             let username = feed[i]['username']
             let title = feed[i]['title']

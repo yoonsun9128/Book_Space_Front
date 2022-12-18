@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -55,11 +54,19 @@
                 <button class="reload" onclick="send_id()"  style="margin-left: 50px;">
                     <img class="reload2" src="../static/images/send.png">
                 </button>
+                <select name="job" id = "changeTest" onChange="changeValue()">
+                    <option value="전체">전체</option>
+                    <option value="어린이" >어린이</option>
+                    <option value="교육">교육</option>
+                    <option value="자격증시험">자격증시험</option>
+                    <option value="자기계발">자기계발</option>
+                    <option value="기타">기타</option>
+                </select>  
             </div>
     </div>
-
     <div class="container">
-        <div class="book-store" id="customlist">
+        <div class="book-store" id="customlist" >
+            </div>
         </div>
     </div>
 
@@ -73,5 +80,3 @@
 
     </script>
 </body>
-
-</html>
