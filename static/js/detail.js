@@ -1,5 +1,4 @@
-const backend_base_url = 'http://127.0.0.1:8000/'
-const frontend_base_url = 'http://127.0.0.1:5500/templates/'
+
 const image_url = 'http://127.0.0.1:8000'
 
 
@@ -82,7 +81,7 @@ detailData().then((data) => {
         <hr>
         `
         $('#detail_comment-box').append(temp_html)
-        
+
         const PutCommentBtn = document.getElementsByClassName("put_comment_btn")[i] //댓글수정버튼
         const DelCommentBtn = document.getElementsByClassName("del_comment_btn")[i] //댓글삭제버튼
 
@@ -285,7 +284,7 @@ function putArticle() {
     const NewRating = document.getElementById(`put_rating`).value
     const OldImage = document.getElementById(`detail_image-box`)
     const private = document.getElementById("is_private")
-    const is_private = private.checked;   
+    const is_private = private.checked;
     document.getElementById('result').innerText = is_private;
     const NewImage = document.getElementById(`put_InputImg`).value
     NewContent.value = OldContent
@@ -301,7 +300,7 @@ async function ArticleSave() {
     const NewRating = document.querySelector("input[type='radio']:checked").value
     const OldImage = document.getElementById(`detail_image-box`)
     const private = document.getElementById("is_private")
-    const is_private = private.checked;   
+    const is_private = private.checked;
     document.getElementById('result').innerText = is_private;
     const NewImage = document.getElementById(`put_InputImg`).files[0]
 

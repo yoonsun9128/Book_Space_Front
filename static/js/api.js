@@ -44,6 +44,7 @@ window.onload = function navbar(){
 }
 
 // # userpage로 가는 함수//
+console.log(localStorage.getItem("access"))
 const a = localStorage.getItem("payload").split(',')[4];
 const user_id = a[10];
 function gotoUserpage(){
