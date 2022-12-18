@@ -5,7 +5,6 @@ searchButton = document.querySelector('.search-box')
 
 
 
-
 function pagination_book_list(){
     pages = window.location.href
     page = pages.split("=")[1]
@@ -49,6 +48,7 @@ function book_list(s_data) {
     const searchParams = new URLSearchParams
     if (s_data.trim().length !==0 ) {
         searchParams.set("search_content", s_data)
+        console.log(searchParams)
         $('#book_all_list').empty()
     };
     const BooksData = async () => {
