@@ -189,11 +189,11 @@ ul {
   }
   .search-wrapper {
     width: 500px;
-    margin: auto;
-    margin-top: 50px;
+    height : 50px;
+    margin : auto;
   }
   .search-box {
-    width: 80%;
+    width: 90%;
     border: 1px solid #ccc;
     outline: 0;
     border-radius: 15px;
@@ -331,7 +331,7 @@ ul {
   width: 130px;
   height: 40px;
   color: #000000;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px 25px;
   font-family: 'Lato', sans-serif;
   font-weight: 500;
@@ -348,7 +348,7 @@ ul {
 
 .btn-8 {
   background-color: #e3f5ce;
-background-image: linear-gradient(315deg, #e3f5ce 0%, #64f3ba 74%);
+  background-image: linear-gradient(315deg, #e3f5ce 0%, #64f3ba 74%);
   line-height: 42px;
   padding: 0;
   border: none;
@@ -419,4 +419,14 @@ background-image: linear-gradient(315deg, #e3f5ce 0%, #64f3ba 74%);
 }
 .btn-8 span:hover:after {
   width: 100%;
+}
+
+
+
+.booklist_txt{
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 50px;
 }

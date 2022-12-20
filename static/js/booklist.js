@@ -50,7 +50,16 @@ function book_list(s_data) {
         searchParams.set("search_content", s_data)
         console.log(searchParams)
         $('#book_all_list').empty()
-    };
+    } else if (s_data.trim().length == 0){
+        console.log("FD")
+        temp_html2 = `
+        <button onclick="writeArticle()" class="custom-btn btn-8" ><span>새 글 쓰기</span></button>
+        `
+        $('#new-button').append(temp_html2)
+        $('#pagination-demo').empty()
+        return pagination_book_list()
+        
+    } 
     const BooksData = async () => {
         const response = await fetch(`${backend_base_url}articles/search/?${searchParams.toString()}`, { 
             method: 'GET',

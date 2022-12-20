@@ -4,9 +4,14 @@ const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
 
+function Best(){
+    var A = document.getElementById("best").value;
+
+
 async function FeedList(){
+    $('#image-box').empty()
     const FeedData = async ()=> {
-        const response = await fetch(`${backend_base_url}articles/list`,{
+        const response = await fetch(`${backend_base_url}articles/list/?rank=${A}`,{
             method : 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -17,7 +22,7 @@ async function FeedList(){
     }
     FeedData().then((data) => {
         feed = data
-
+        console.log(feed)
         console.log(feed['username'])
         for (let i = 0; i < feed.length; i++){
             let username = feed[i]['username']
@@ -63,5 +68,7 @@ async function FeedList(){
         }
     })
 }FeedList()
+}
+Best();
 
 
