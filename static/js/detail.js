@@ -48,14 +48,13 @@ detailData().then((data) => {
     comment_profile_img = detail['comment_set'] //댓글 작성자 프로필 이미지
     comment_user_id = detail['comment_set'] //댓글 작성자 id
 
-    function ButtonShow1(article_user_id){
+    window.onload = function ButtonShow1(article_user_id){
         //로그인 유저!=게시글 작성유서
         if(userId!=article_user_id){
             PutArticleBtn.style.display = 'none';
             DelArticleBtn.style.display = 'none';
         }
-    }ButtonShow1(article_user_id)
-
+    }
     for (let i=0; i < comment.length; i++){
         let detail_comment = comment[i]['content']
         let detail_user = comment_user[i]['user']
