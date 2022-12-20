@@ -5,6 +5,7 @@ body{
 
 .board_list_wrap {
     padding: 50px;
+
 }
 
 .board_list_wrap > h2{
@@ -66,6 +67,26 @@ body{
 
 
 .board_detail{
-    border: 2px solid red;
+    border: 1px solid #000000;
+    width: 50%;
+    height: 500px;
+    margin: auto;
+    display: none;
 }
 
+.board_detail > div{
+    text-align: left;
+    border-bottom: 1px solid grey;
+    
+}
+.board_detail_tit {
+    height: 10%;
+}
+
+.board_detail_content{
+    height: 60%;
+}
+
+.board_detail_comment{
+    height: 30%;
+}

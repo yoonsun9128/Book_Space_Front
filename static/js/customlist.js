@@ -49,7 +49,7 @@ changeValue();
 
 
 
-let select_books = [];
+var select_books = [];
 function save_id(id){    
     if($(`input:checkbox[id=${id}]`).is(":checked") == true){
         select_books.push(id)
@@ -67,22 +67,21 @@ function save_id(id){
 
 
 async function send_id(){
-    const response = await fetch(`${backend_base_url}articles/user/?select_books=${select_books}`, {
-            method: 'GET',
+    const response = await fetch(`${backend_base_url}users/user-choice/`, {
+            method: 'POST',
             header: {
-                'Content-type':'application/json'
+                'Content-type':'application/json',
+                'Authorization': "Bearer " + localStorage.getItem("access"),
             },
-        })
-        .then(res=> res.json())
-        if(select_books == 0){
-            alert("적어도 하나의 책을 선택해주세요")
+            body: JSON.stringify(select_books)
             
+        })
+        response_json = await response.json()
+        if(response.status == 200){
+            alert("andoianwidanwiodanwd")
         }else{
-            alert("메인페이지로 이동합니다")
-            window.location.href="../templates/main.html"
+            alert("실패")
         }
-        
-        
     }
 
 

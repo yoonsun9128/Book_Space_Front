@@ -99,7 +99,7 @@ async function handleSignup(){
         login.style.display = 'flex';
 
     }else{
-        alert("다시한번 확인해")
+        alert("다시한번 확인해주세요")
     }
 
 }

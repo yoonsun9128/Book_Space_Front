@@ -94,8 +94,8 @@
         </div>
 
         <ul class="navbar__menu">
-            <div id="post-button" onclick="location.href='../templates/booklist.html?page=1'">글 작성하기</div>
-            <div id="feed-button" onclick="location.href='../templates/feed.html'">독후감 보기</div>
+            <div id="post-button" onclick="location.href='../templates/booklist.html?page=1'">기록하기</div>
+            <div id="feed-button" onclick="location.href='../templates/feed.html'">커뮤니티</div>
             <div id="recommend-button" onclick="location.href='../templates/customlist.html'">추천도서</div>
             <div id="user_email" onclick="gotoUserpage()"></div>
             <div id="login-button" class="open"> 로그인/회원가입</div>
@@ -283,18 +283,59 @@
             </div>
         </div>
     </div>
-    <!-- 사용자 맞춤 추천 도서-->
-    <div class="user_custom">
-        <div class="user_custom_txt">
-            당신을 위한 맞춤 도서
+    <!-- 메인 인기피드-->
+    <div class="user-container">
+        <div class="user_custom">
+            <div class="user_custom_txt">
+                당신을 위한 맞춤 도서
+            </div>
         </div>
-        <div class="component">
-            <ul class="align" id="user_book">
+        <div class="user_custom">
+            <div class="user-popular a">
+                <div class="user_custom_txt">
+                    인기 피드
+                </div>
+                <div class="user-feed-list">
+                    <div class="user-feed-head">
+                        <div class="num">순위</div>
+                        <div class="nickname">닉네임</div>
+                        <div class="title">책 제목</div>
+                        <div class="like">좋아요</div>
+                    </div>
+                    <div class="user-feed-body" id="popular-feed-list">
+                    </div>
+                </div>
+            </div>
+            <div class="user-popular b">
+                <div class="user-stats ppbook">
+                    <div class="user_custom_txt">
+                        책 많이 읽은
+                    </div>
+                    <div class="user-feed-head">
+                        <div class="num">순위</div>
+                        <div class="nickname">닉네임</div>
+                        <div class="num-book">읽은 책 수</div>
+                    </div>
+                    <div class="numberous-book-list" id="numberous-book">
 
-            </ul>
+                    </div>
+                </div>
+                <div class="user-stats">
+                    <div class="user_custom_txt">
+                        책 순위
+                    </div>
+                    <div class="user-feed-head">
+                        <div class="num">순위</div>
+                        <div class="nickname">닉네임</div>
+                        <div class="num-book">읽힌 수</div>
+                    </div>
+                    <div class="numberous-book-list" id="many-book">
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
 
 
     <footer class="footer">
