@@ -107,44 +107,7 @@ function user_booklist(){
               )
           }
           function append_temp_html(img_url, book_link, book_content, book_title){
-              temp_html = `
-              <li>
-              <figure class='book'>        
-                <!-- Front -->        
-                <ul class='hardcover_front'>
-                  <li>
-                    <img src="${img_url}" alt="" width="100%" height="100%">
-                  </li>
-                  <li></li>
-                </ul>        
-                <!-- Pages -->        
-                <ul class='page'>
-                  <li></li>
-                  <li>
-                    <a class="btn" href="${book_link}">더보기</a>
-                  </li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul>        
-                <!-- Back -->        
-                <ul class='hardcover_back'>
-                  <li></li>
-                  <li></li>
-                </ul>
-                <ul class='book_spine'>
-                  <li></li>
-                  <li></li>
-                </ul>
-                <figcaption>
-                  <h1>${book_title}</h1>
-                  <span></span>
-                  <p>${book_content}</p>
-                </figcaption>
-              </figure>
-            </li>
-
-            `
+              temp_html =''
               $('#user_book').append(temp_html)
 
 
@@ -153,3 +116,91 @@ function user_booklist(){
         }
       }
   )} user_booklist()
+
+
+function popular_feed(){
+  $.ajax({
+    type: 'GET',
+    url: `${backend_base_url}articles/popular-feed/`,
+    data: {},
+    success: function(response) {
+      let ppfeed = response
+      for (let i=0; i < 3; i++){
+        append_temp_html(
+          i,
+          ppfeed[i].username,
+          ppfeed[i].title,
+          ppfeed[i].likes_count,
+          
+        )
+      }
+      function append_temp_html(i, username, title, likes_count){
+        temp_html = `
+          <div class="user-popular-feeds">
+            <div class="num">${i+1}</div>
+            <div class="nickname">${username}</div>
+            <div class="title">${title}</div>
+            <div class="like">${likes_count}</div>
+          </div>
+        `
+        $('#popular-feed-list').append(temp_html)
+      }
+    }
+  })
+}popular_feed()
+
+function numberous_book(){
+  $.ajax({
+    type: 'GET',
+    url: `${backend_base_url}users/most-numberous/`,
+    data: {},
+    success: function(response){
+      let numberbook = response
+      for (let i=0; i < 3; i++){
+        append_temp_html(
+          i,
+          numberbook[i].username,
+          numberbook[i].article_count,
+        )
+      }
+      function append_temp_html(i, username, article_count){
+        temp_html = `
+        <div class="user-stats-number">
+          <div class="num">${i+1}</div>
+          <div class="nickname">${username}</div>
+          <div class="num-book">${article_count}</div>
+        </div>
+        `
+        $('#numberous-book').append(temp_html)
+      }
+    }
+  })
+}numberous_book()
+
+function many_book(){
+  $.ajax({
+    type: 'GET',
+    url: `${backend_base_url}articles/many-book/`,
+    data: {},
+    success: function(response){
+      let manybook = response
+      for (let i=0; i < 3; i++){
+        append_temp_html(
+          i,
+          manybook[i].book_title,
+          manybook[i].article_count,
+        )
+      }console.log(manybook)
+      function append_temp_html(i, book_title, article_count){
+        temp_html = `
+        <div class="user-stats-number">
+          <div class="num">${i+1}</div>
+          <div class="nickname">${book_title}</div>
+          <div class="num-book">${article_count}</div>
+        </div>
+        `
+        $('#many-book').append(temp_html)
+      }
+    }
+  })
+}many_book()
