@@ -65,35 +65,37 @@
         <i class="fas fa-bars"></i>
     </a>
 </nav>
-  <ul>
-    <li><span data-hover="B">B</span></li>
-    <li><span data-hover="O">O</span></li>
-    <li><span data-hover="O">O</span></li>
-    <li><span data-hover="K">K</span></li>
-    <li><span data-hover="L">L</span></li>
-    <li><span data-hover="I">I</span></li>
-    <li><span data-hover="S">S</span></li>
-    <li><span data-hover="T">T</span></li>
-  </ul>
 
+<div class="booklist_txt" style="margin-top: 100px;">
+  독후감을 쓸 책을 검색해주세요
+  <br>
+  
+</div>
+
+
+<div>
   <div class="search-wrapper">
     <form onsubmit="return false;">
       <input type="text" id="box" class="search-box" placeholder="Enter search term" onkeyup="enter(event)" required />
     </form>
-    <button onclick="writeArticle()" class="custom-btn btn-8"><span>새 글 쓰기</span></button>
   </div>
+</div>
+
 
 
   <div class="wrap total">
-    <div class="row row-cols-1 row-cols-md-3 g-4" id="book_list">
+    <div class="row row-cols-1 row-cols-md-5 g-4" id="book_list" style = "width : 1024px">
 
     </div>
   </div>
 
   <div class="wrap hidden">
-    <div class="row row-cols-1 row-cols-md-3 g-4" id="book_all_list">
+    <div class="row row-cols-1 row-cols-md-5 g-4" id="book_all_list">
 
     </div>
+  </div>
+  <div id = "new-button">
+    
   </div>
 
 

@@ -1,43 +1,5 @@
-// var selectOption = document.getElementById("changeTest");
-// selectOption = selectOption.options[selectOption.selectedIndex].value;
-// // var yu= $("changeTest option:selected").val();
-// console.log(selectOption)
-// gnere_list = $("select[name=job]").val()
-// kkk = `?genre_list=${gnere_list}`
-// var a = 10
-// console.log(a)
-// let Genre_list = []
-// $("select[name=job]").change(function(){
-//     genre = $(this).val()
-//     Genre_list.push(genre)
-//     const R = Genre_list.at(-1);
-//     console.log(R)
-//     kkk = `?genre_list=${R}`
-//     console.log(Genre_list)
-// }); 
-// console.log(R)
-// E = $("#changeTest option:selected").val();
-// console.log(E)
-
-// Q = $("#changeTest option:checked").text();
-// console.log(Q)
-
-
-
-
-
-// <select name="job" id = "changeTest" onChange="getselect()">
-//     <option value="전체">전체</option>
-//     <option value="어린이">어린이</option>
-//     <option value="교육">교육</option>
-//     <option value="자격증시험">자격증시험</option>
-//     <option value="자기계발">자기계발</option>
-//     <option value="기타">기타</option>
-// </select>   
-
-function changeValue(){
+ function changeValue(){
     var A=document.getElementById("changeTest").value;
-    console.log(A)
 
     function show_customlist(){
         $('#customlist').empty()
@@ -84,8 +46,6 @@ function changeValue(){
     show_customlist()
 }
 changeValue();
-
-// });
 
 
 

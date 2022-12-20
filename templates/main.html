@@ -27,6 +27,61 @@
         <script src="https://kit.fontawesome.com/43cd4c369a.js" crossorigin="anonymous"></script>
 
     <title>Document</title>
+    <style>
+        * {margin:0;padding:0;}
+        .section input[id*="slide"] {display:none;}
+        .section .slidewrap {width:1300px; margin:0 auto;}
+        .section .slidelist {white-space:nowrap;font-size:0;overflow:hidden;position:relative; margin-top: 57px; }
+        .section .slidelist > li {display:inline-block;vertical-align:middle;width:100%;transition:all .5s;height: 500px; margin-top:50px; border-radius: 30px;}
+        .section .slidelist > li > a {display:block;position:relative;}
+        .section .slidelist > li > a img {width:100%;}
+        .section .slidelist label {position:absolute;z-index:10;top:50%;transform:translateY(-50%);padding:50px;cursor:pointer;}
+        .section .slidelist .textbox {position:absolute;z-index:1;top:50%;left:20%;transform:translate(-50%,-50%);line-height:1.6;text-align:center;}
+        .section .slidelist .textbox h3 {font-size:36px;color:#000;;transform:translateY(30px);transition:all .5s;}
+        .section .slidelist .textbox p {font-size:16px;color:#fff;opacity:0;transform:translateY(30px);transition:all .5s;}
+        .section{background-color: #fff; }
+        
+        
+        /* input에 체크되면 슬라이드 효과 */
+        .section input[id="slide01"]:checked ~ .slidewrap .slidelist > li {transform:translateX(0%);}
+        .section input[id="slide02"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-100%);}
+        .section input[id="slide03"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-200%);}
+        .section input[id="slide04"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-300%);}
+        .section input[id="slide05"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-400%);}
+    
+        /* input에 체크되면 텍스트 효과 */
+        .section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
+        .section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+        .section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
+        .section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .textbox p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+        .section input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
+        .section input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) .textbox p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+        .section input[id="slide04"]:checked ~ .slidewrap li:nth-child(4) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
+        .section input[id="slide04"]:checked ~ .slidewrap li:nth-child(4) .textbox p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+        .section input[id="slide05"]:checked ~ .slidewrap li:nth-child(5) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
+        .section input[id="slide05"]:checked ~ .slidewrap li:nth-child(5) .textbox p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+    
+        /* 좌,우 슬라이드 버튼 */
+        .slide-control > div {display:none;}
+        .section .left {left:30px;background:url('./images/left.png') center center / 100% no-repeat;}
+        .section .right {right:30px;background:url('./images/right.png') center center / 100% no-repeat;}
+        .section input[id="slide01"]:checked ~ .slidewrap .slide-control > div:nth-child(1) {display:block;}
+        .section input[id="slide02"]:checked ~ .slidewrap .slide-control > div:nth-child(2) {display:block;}
+        .section input[id="slide03"]:checked ~ .slidewrap .slide-control > div:nth-child(3) {display:block;}
+        .section input[id="slide04"]:checked ~ .slidewrap .slide-control > div:nth-child(4) {display:block;}
+        .section input[id="slide05"]:checked ~ .slidewrap .slide-control > div:nth-child(5) {display:block;}
+    
+        /* 페이징 */
+        .slide-pagelist {text-align:center;padding:20px;}
+        .slide-pagelist > li {display:inline-block;vertical-align:middle;}
+        .slide-pagelist > li > label {display:block;padding:8px 30px;border-radius:30px;background:#ccc;margin:20px 10px;cursor:pointer;}
+        .section input[id="slide01"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(1) > label {background:#999;}
+        .section input[id="slide02"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(2) > label {background:#999;}
+        .section input[id="slide03"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(3) > label {background:#999;}
+        .section input[id="slide04"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(4) > label {background:#999;}
+        .section input[id="slide05"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(5) > label {background:#999;}
+        
+        </style>
 </head>
 
 <body>
@@ -53,59 +108,105 @@
     </nav>
 
     <!--프로젝트설명-->
-    <div class="project_exp">
-        <div class="site-outer">
-            <div class="site-inner">
-                <section class="container-fluid">
-                    <!-- ACCORDION ROW -->
-                    <div class="row">
-                        <ul class="accordion-group" id="accordion">
-                            <li style="background-image: url(../static/images/customlist.PNG);">
-                                <div class="accordion-overlay"></div>
-                                <h3>Recommend</h3>
-                                <section class="hidden-xs">
-                                    <article>
-                                        <p>취향을 선택하시면 책을 추천드립니다.</p>
-                                    </article>
-                                </section>
-                            </li>
-                            <li class="out" style="background-image: url(../static/images/booklist.PNG);">
-                                <div class="accordion-overlay"></div>
-                                <h3>Introduce</h3>
-                                <section class="hidden-xs">
-                                    <article>
-                                        <p>다양한 책을 소개해드립니다.
-                                        </p>
-                                    </article>
-                                </section>
-                            </li>
-                            <li
-                                style="background-image: url('../static/images/post1.PNG');">
-                                <div class="accordion-overlay"></div>
-                                <h3>Record</h3>
-                                <section class="hidden-xs">
-                                    <article>
-                                        <p>읽은 책들을 기록하세요.</p>
-                                    </article>
-                                </section>
-                            </li>
-                            <li
-                                style="background-image: url('../static/images/feed.PNG');">
-                                <div class="accordion-overlay"></div>
-                                <h3>Community</h3>
-                                <section class="hidden-xs">
-                                    <article>
-                                        <p>자신의 책 일상을 공유하세요</p>
-                                    </article>
-                                </section>
-                            </li>
-                        </ul>
-
+    <div class="section">
+        <input type="radio" name="slide" id="slide01" checked>
+        <input type="radio" name="slide" id="slide02">
+        <input type="radio" name="slide" id="slide03">
+        <input type="radio" name="slide" id="slide04">
+        <input type="radio" name="slide" id="slide05">
+        <div class="slidewrap">
+            
+            <ul class="slidelist">
+                <!-- 슬라이드 영역 -->
+                <li class="slideitem" style="background-color: black;">
+                    <a>
+                        <div class="textbox">
+                            <h3 style="font-size:36px;color:#000;"><i class="fa-solid fa-book" style = "margin-right: 10px;"></i>ThunBook</h3>
+                            <p style="font-size:16px;color:#000;">책을 통한 소통과 교류의 장</p>
+                        </div>
+                        <img src="../static/images/5467.PNG">
+                    </a>
+                </li>
+                <li class="slideitem">
+                    <a>
+                        
+                        <div class="textbox">
+                            <h3>책을 추천해드립니다</h3>
+                            <p style="font-size:16px;color:#000;">이미읽은 책의 깊은 감동을 이어가보세요</p>
+                        </div>
+                        <img src="../static/images/3579.png">
+                    </a>
+                </li>
+                <li class="slideitem">
+                    <a>
+                        
+                        <div class="textbox">
+                            <h3 >독후감을 작성해주세요</h3>
+                            <p  style="font-size:16px;color:#000;">책에 대한 인상이 깊으셨다면 모두에게 글로 표현해주세요</p>
+                        </div>
+                        <img src="../static/images/6786.png">
+                    </a>
+                <li class="slideitem">
+                    <a>
+                            
+                        <div class="textbox" style="margin-left: 80px;">
+                            <h3 >자신만의 감성을 표현해보세요</h3>
+                            <p  style="font-size:16px;color:#000;">책읽고 인상이 깊으셨다면 인증샷 찰칵! </p>
+                            <p  style="font-size:16px;color:#000;">댓글을 통해 사람들과 책소통을 해보아요</p>
+                        </div>
+                        <img src="../static/images/9876.png">
+                    </a>
+                <li class="slideitem">
+                    <a>
+                        
+                        <div class="textbox">
+                            <h3>나만의 책 일기장</h3>
+                            <p style="font-size:16px;color:#000;">나의 독후감 기록소를 Thunbook에 마련해보세요</p>
+                            <p style="font-size:16px;color:#000;">하나씩 정리된 사진과 글귀는 추억이 된답니다</p>
+                        </div>
+                        <img src="../static/images/3322.png">
+                    </a>
+                <li class="slideitem">     
+    
+                <!-- 좌,우 슬라이드 버튼 -->
+                <div class="slide-control">
+                    <div>
+                        <label for="slide05" class="left"></label>
+                        <label for="slide02" class="right"></label>
                     </div>
-                </section>
-            </div>
+                    <div>
+                        <label for="slide01" class="left"></label>
+                        <label for="slide03" class="right"></label>
+                    </div>
+                    <div>
+                        <label for="slide02" class="left"></label>
+                        <label for="slide04" class="right"></label>
+                    </div>
+                    <div>
+                        <label for="slide03" class="left"></label>
+                        <label for="slide05" class="right"></label>
+                    </div>
+                    <div>
+                        <label for="slide04" class="left"></label>
+                        <label for="slide01" class="right"></label>
+                    </div>
+                </div>
+    
+            </ul>
+            <!-- 페이징 -->
+            <ul class="slide-pagelist">
+                <li><label for="slide01"></label></li>
+                <li><label for="slide02"></label></li>
+                <li><label for="slide03"></label></li>
+                <li><label for="slide04"></label></li>
+                <li><label for="slide05"></label></li>
+            </ul>
         </div>
+    
+        
     </div>
+    
+    
     <!--베스트셀러-->
     <div class="bestseller">
         <div class="bestseller_txt">
