@@ -29,7 +29,9 @@
         <script src="https://kit.fontawesome.com/43cd4c369a.js" crossorigin="anonymous"></script>
 
     <title>Document</title>
-    <style></style>
+
+    <style>
+    </style>
 </head>
 
 <body>
@@ -233,36 +235,17 @@
     </div>
     <!-- 메인 인기피드-->
     <div class="user-container">
-        <div class="user_custom">
+        <div class="user_custom1">
             <div class="user_custom_txt">
                 당신을 위한 맞춤 도서
             </div>
+
             <div class="row row-cols-1 row-cols-md-3 g-4" id="book_all_list" style = "margin:auto; margin-left: 90px;">
                 <div class="col">
                     <div class='book'>
                         <img src="../static/images/3456.png" id="${id}" onclick="writeFeed(this.id)"/>
                     </div>   
                 </div>
-                <div class="col">
-                    <div class='book'>
-                        <img src="../static/images/3456.png" id="${id}" onclick="writeFeed(this.id)"/>
-                    </div>   
-                </div>    
-                <div class="col">
-                    <div class='book'>
-                        <img src="../static/images/3456.png" id="${id}" onclick="writeFeed(this.id)"/>
-                    </div>   
-                </div>    
-                <div class="col">
-                    <div class='book'>
-                        <img src="../static/images/3456.png" id="${id}" onclick="writeFeed(this.id)"/>
-                    </div>   
-                </div>    
-                <div class="col">
-                    <div class='book'>
-                        <img src="../static/images/3456.png" id="${id}" onclick="writeFeed(this.id)"/>
-                    </div>   
-                </div>         
             </div>
         </div>
         <div class="user_custom">
@@ -289,13 +272,13 @@
                     <div class="user-feed-head">
                         <div class="num">순위</div>
                         <div class="nickname">닉네임</div>
-                        <div class="num-book">읽은 책 수</div>
+                        <div style="margin-right:2%; width:70px;" class="num-book">읽은 책 수</div>
                     </div>
                     <div class="numberous-book-list" id="numberous-book">
 
                     </div>
                 </div>
-                <div class="user-stats">
+                <div class="user-stats bookrate">
                     <div class="user_custom_txt">
                         책 순위
                     </div>

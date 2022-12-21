@@ -3,7 +3,7 @@ const image_url = 'http://127.0.0.1:8000'
 
 
 const PutArticleBtn = document.getElementById("put_article") //게시글 수정
-const DelArticleBtn = document.getElementById("del_article_btn") //게시글 삭제
+const DelArticleBtn = document.getElementById("del_article") //게시글 삭제
 
 
 
@@ -43,24 +43,21 @@ detailData().then((data) => {
     updated_at = detail['updated_at'] //게시글 수정날짜
     comment = detail['comment_set'] //게시글 댓글
     count = detail['likes_count'] //게시글 좋아요 수
-    comment_user = detail['comment_set'] // 댓글 작성자 username
-    comment_id = detail['comment_set'] //댓글 id
-    comment_profile_img = detail['comment_set'] //댓글 작성자 프로필 이미지
-    comment_user_id = detail['comment_set'] //댓글 작성자 id
 
-    window.onload = function ButtonShow1(article_user_id){
-        //로그인 유저!=게시글 작성유서
+    function ButtonShow1(article_user_id){
+        //로그인 유저!=게시글 작성유저
         if(userId!=article_user_id){
             PutArticleBtn.style.display = 'none';
             DelArticleBtn.style.display = 'none';
         }
-    }
+    }ButtonShow1(article_user_id)
+    
     for (let i=0; i < comment.length; i++){
         let detail_comment = comment[i]['content']
-        let detail_user = comment_user[i]['user']
-        let detail_id = comment_id[i]['id']
-        let detail_profile_img = comment_profile_img[i]['profile_img']
-        let detail_user_id = comment_user_id[i]['user_id']
+        let detail_user = comment[i]['user']
+        let detail_id = comment[i]['id']
+        let detail_profile_img = comment[i]['profile_img']
+        let detail_user_id = comment[i]['user_id']
 
 
         let temp_html = `
@@ -85,7 +82,7 @@ detailData().then((data) => {
         const DelCommentBtn = document.getElementsByClassName("del_comment_btn")[i] //댓글삭제버튼
 
         function ButtonShow2(detail_user_id){
-            //로그인 유저!=게시글 작성유저
+            //로그인 유저==댓글 작성유저
             if(userId==detail_user_id){
                 PutCommentBtn.style.display = 'flex';
                 DelCommentBtn.style.display = 'flex';

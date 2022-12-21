@@ -92,26 +92,23 @@ function total_booklist(){
 
 
 function user_booklist(){
+  var user_key = localStorage.getItem("pk")
   $.ajax({
       type: 'GET',
-      url:`${backend_base_url}articles/user/`,
+      url:`${backend_base_url}articles/user/?user_key=${user_key}`,
       data: {},
       success: function(response) {
           let books = response
-          for (let i=0; i <3; i++){
+          for (let i=0; i <books.length; i++){
               append_temp_html(
                   books[i].img_url,
                   books[i].book_link,
-                  books[i].book_content,
-                  books[i].book_title
               )
           }
+
           function append_temp_html(img_url, book_link, book_content, book_title){
               temp_html =``
               $('#user_book').append(temp_html)
-
-
-
           }
         }
       }
@@ -119,6 +116,7 @@ function user_booklist(){
 
 
 function popular_feed(){
+
   $.ajax({
     type: 'GET',
     url: `${backend_base_url}articles/popular-feed/`,
@@ -190,7 +188,7 @@ function many_book(){
           manybook[i].book_title,
           manybook[i].article_count,
         )
-      }console.log(manybook)
+      }
       function append_temp_html(i, book_title, article_count){
         temp_html = `
         <div class="user-stats-number">

@@ -62,23 +62,23 @@ function save_id(id){
             }
         }
     }
-
+console.log(select_books)
 }
 
 
 async function send_id(){
     const response = await fetch(`${backend_base_url}users/user-choice/`, {
             method: 'POST',
-            header: {
+            headers: {
                 'Content-type':'application/json',
                 'Authorization': "Bearer " + localStorage.getItem("access"),
             },
-            body: JSON.stringify(select_books)
+            body: JSON.stringify({"choice":select_books})
             
         })
         response_json = await response.json()
         if(response.status == 200){
-            alert("andoianwidanwiodanwd")
+            alert("취향반영된 책을 추천하겠습니다.")
         }else{
             alert("실패")
         }

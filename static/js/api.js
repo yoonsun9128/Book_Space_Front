@@ -19,8 +19,6 @@ toggleBtn.addEventListener('click', () => {
   icons.classList.toggle('active')
 })
 
-
-
 window.onload = function navbar(){
     // 로그인 된 상태
     if(localStorage.hasOwnProperty("user") === true){
@@ -30,7 +28,7 @@ window.onload = function navbar(){
         user_email.style.display = 'block';
         feedButton.style.display = 'block';
         postButton.style.display = 'block';
-        recommendButton.style.display = 'block'
+        recommendButton.style.display = 'block';
     }
     //로그아웃 된 상태
     if(localStorage.hasOwnProperty("user") === false){
@@ -42,6 +40,23 @@ window.onload = function navbar(){
         recommendButton.style.display = 'none';
     }
 }
+
+// function isAuthenticated() {
+//     const token = localStorage.getItem('access');
+//     const refreshToken = localStorage.getItem('refresh');
+//     try {
+//       decode(token);
+//       const { exp } = decode(refreshToken);
+//       if (Date.now() >= exp * 1000) {
+//         logout()
+//         return false;
+//       }
+//     } catch (err) {
+//       return false;
+//     }
+//     return true;
+//   }
+
 
 // # userpage로 가는 함수//
 const a = localStorage.getItem("payload").split(',')[4];
@@ -131,16 +146,30 @@ async function handleLogin(){
     }).join(''));
     localStorage.setItem("payload", jsonPayload);
     localStorage.setItem("user", response_json.user.email)
+    localStorage.setItem("pk", response_json.user.pk)
 
-
-
-    window.location.reload()
+    window.onload()
 
 } else {
     alert("잘못된 로그인입니다.", response.status)
 }
 
 }
+
+// 토큰 완료 자동 로그아웃//
+window.onload = () =>{
+    const payload = JSON.parse(localStorage.getItem("payload"));
+    console.log(payload.exp)
+    console.log(Date.now()/1000)
+    if (payload.exp <(Date.now()/1000)){
+        localStorage.removeItem("access")
+        localStorage.removeItem("refresh")
+        localStorage.removeItem("payload")
+        localStorage.removeItem("user")
+        alert("사용시간이 완료되 로그아웃 되었습니다.")
+        window.location.href = "../templates/main.html"
+    };
+};
 
 
 
@@ -167,3 +196,5 @@ function parseJwt(token) {
 
     return JSON.parse(jsonPayload);
 };
+
+

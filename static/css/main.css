@@ -102,6 +102,12 @@ body{
     width : 2000px;
   }
 
+  .user_custom1{
+    width: 49%;
+    margin: 0 50px;
+    background-color: #f8f6ed;
+    border: 2px solid rgb(125, 124, 124);
+  }
   .user_custom{
     width: 1000px;
     height : 610px;
@@ -122,16 +128,23 @@ body{
 
   .a{
     margin-bottom: 2%;
-    background-color: lightblue;
+    background-color: #f8f6ed;
+    border-bottom: 2px solid rgb(125, 124, 124);
   }
   .b{
     margin: 0;
     display: flex;
     width: 100%;
+    padding:0% 3% 1% 3%;
   }
   .b .ppbook{
-    margin-right: 5%;
-    background-color: aliceblue;
+    margin-right: 3%;
+    background-color:#ffffff;
+    border: 1px solid rgb(125, 124, 124);
+  }
+  .bookrate{
+    background-color:#ffffff;
+    border: 1px solid rgb(125, 124, 124);
   }
   .user-stats{
     width: 50%;
@@ -150,7 +163,6 @@ body{
 
   .user-feed-head{
     display: flex;
-    
     border-bottom: 1px solid #ccc;
     text-align: center;
   }
@@ -289,12 +301,11 @@ ul{
     width: 100%;
 }
 }
+
 .book img{
   width: 150px;
   height: 235px;
 }
-
-
 /* main 슬라이드 */
 * {margin:0;padding:0;}
         .section input[id*="slide"] {display:none;}
