@@ -18,6 +18,7 @@ const userId = personObj['user_id']
 const article_id = localStorage.getItem('article_id');
 async function getArticle(){
 A = window.location.search
+console.log(A)
 code = A.split("=")[1]
     const detailData = async () => {
     const response = await fetch(`http://127.0.0.1:8000/articles/${code}/`,{

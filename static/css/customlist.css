@@ -184,3 +184,10 @@
 select::-ms-expand {
   display:none;
 }
+
+.booklist_txt1{
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+}
