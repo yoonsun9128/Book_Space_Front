@@ -107,7 +107,7 @@ function user_booklist(){
               )
           }
           function append_temp_html(img_url, book_link, book_content, book_title){
-              temp_html =''
+              temp_html =``
               $('#user_book').append(temp_html)
 
 
