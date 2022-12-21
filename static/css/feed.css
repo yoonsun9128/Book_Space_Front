@@ -107,4 +107,5 @@ body {
 
 .selectpicker{
     margin-top: 100px;
+    cursor: pointer;
 }

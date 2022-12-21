@@ -50,12 +50,12 @@ id = URL.split("=")[1]
         `
         $('#user_name').append(name_html)
         let img_html = `
-        <img src="${image_url}${user_image}" alt="Circle Image" class="img-raised rounded-circle img-fluid" onclick="ImageChange(this.id)" id="${info_user_id}" data-bs-toggle="modal" data-bs-target="#UserImage">
+        <img src="${image_url}${user_image}" alt="Circle Image" class="img-raised rounded-circle img-fluid" onclick="ImageChange(this.id)" id="${info_user_id}" data-bs-toggle="modal" data-bs-target="#UserImage" style="cursor:pointer;">
         `
         $('#user_img').append(img_html)
         let info_html = `
-        <i type="button" onclick="infoChange(this.id)" class="edit_user" id="${info_user_id}" data-bs-toggle="modal" data-bs-target="#UserModal" >수정하기</i>
-        <i type="button" onclick="infoDelete(this.id)" class="delete_user" id="${info_user_id}" data-bs-toggle="modal" data-bs-target="#DeleteModal" >탈퇴하기</i>
+        <i type="button" onclick="infoChange(this.id)" class="edit_user" id="${info_user_id}" data-bs-toggle="modal" data-bs-target="#UserModal" style="cursor:pointer;">UserName/PW변경</i>
+        <i type="button" onclick="infoDelete(this.id)" class="delete_user" id="${info_user_id}" data-bs-toggle="modal" data-bs-target="#DeleteModal" style="cursor:pointer;">// 탈퇴하기</i>
         `
         $('#user_info').append(info_html)
 

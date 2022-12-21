@@ -75,26 +75,81 @@ async function handleSignup(){
         password2 : document.getElementById("passwordcheck").value,
     }
     if(SignupData.email == ""){
-        alert("이메일을 입력해주세요")
-        return false;
+        Swal.fire({
+            title: "이메일이 빈칸입니다!",
+            text: "이메일을 입력해주세요",
+            icon: "warning",
+            confirmButtonColor:"#FFCCCC",
+            confirmButtonText:"확인"
+        }).then((result) => {
+            if(result.value) {
+                return false;
+            }
+        })
     }
     if(SignupData.username == ""){
-        alert("닉네임을 입력해주세요")
-        return false;
+        Swal.fire({
+            title: "유저네임이 빈칸입니다!",
+            text: "유저네임을 입력해주세요",
+            icon: "warning",
+            confirmButtonColor:"#FFCCCC",
+            confirmButtonText:"확인"
+        }).then((result) => {
+            if(result.value) {
+                return false;
+            }
+        })
     }
     if(SignupData.password1 == ""){
-        alert("비밀번호를 입력해주세요")
-        return false;
+        Swal.fire({
+            title: "패스워드가 빈칸입니다!",
+            text: "패스워드를 입력해주세요",
+            icon: "warning",
+            confirmButtonColor:"#FFCCCC",
+            confirmButtonText:"확인"
+        }).then((result) => {
+            if(result.value) {
+                return false;
+            }
+        })    
     }else if(SignupData.password1.length < 8){
-        alert("비밀번호를 8자 이상, 문자,숫자를 포함해주세요")
+        Swal.fire({
+            title: "패스워드 길이가 짧습니다!",
+            text: "문자,영어를 포함한 8글자 이상적어주세요",
+            icon: "warning",
+            confirmButtonColor:"#FFCCCC",
+            confirmButtonText:"확인"
+        }).then((result) => {
+            if(result.value) {
+                return false;
+            }
+        })
     }
     if(SignupData.password2 == ""){
-        alert("비밀번호 확인을 입력해주세요")
-        return false;
+        Swal.fire({
+            title: "비밀번호 확인이 빈칸입니다!",
+            text: "비밀번호 확인을 입력해주세요",
+            icon: "warning",
+            confirmButtonColor:"#FFCCCC",
+            confirmButtonText:"확인"
+        }).then((result) => {
+            if(result.value) {
+                return false;
+            }
+        })
     }
     if(SignupData.password1 !== SignupData.password2){
-        alert("비밀번호가 다릅니다. 확인해주세요")
-        return false;
+        Swal.fire({
+            title: "비밀번호와 비밀번호확인이 다릅니다!",
+            text: "두 비밀번호를 확인해주세요",
+            icon: "warning",
+            confirmButtonColor:"#FFCCCC",
+            confirmButtonText:"확인"
+        }).then((result) => {
+            if(result.value) {
+                return false;
+            }
+        })
     }
 
     const response = await fetch(`${backend_base_url}users/dj-rest-auth/registration/`, {
@@ -108,12 +163,31 @@ async function handleSignup(){
 
     response_json = await response.json()
     if (response.status == 201) {
-        alert("이메일이 전송되었습니다. 확인해주세요.")
+        Swal.fire({
+            title: "이메일이 전송되었습니다!",
+            text: "이메일을 확인해주세요",
+            icon: "success",
+            confirmButtonColor:"#FFCCCC",
+            confirmButtonText:"확인"
+        }).then((result) => {
+            if(result.value) {
+                
+            }
+        })
         signup.style.display = 'none';
         login.style.display = 'flex';
 
     }else{
-        alert("다시한번 확인해주세요")
+        Swal.fire({
+            title: "다시한번 확인해주세요!",
+            icon: "warning",
+            confirmButtonColor:"#FFCCCC",
+            confirmButtonText:"확인"
+        }).then((result) => {
+            if(result.value) {
+                
+            }
+        })
     }
 
 }
@@ -134,7 +208,18 @@ async function handleLogin(){
     response_json = await response.json()
     user = response_json.user
     if (response.status == 200) {
-        alert("로그인 되었습니다.")
+        Swal.fire({
+            title: "로그인 성공!",
+            text: "좋은시간 되세요",
+            icon: "success",
+            confirmButtonColor:"#FFCCCC",
+            confirmButtonText:"확인"
+        }).then((result) => {
+            if(result.value) {
+                
+            }
+        })
+
         localStorage.setItem("access", response_json.access_token);
         localStorage.setItem("refresh", response_json.refresh_token);
 
@@ -148,10 +233,19 @@ async function handleLogin(){
     localStorage.setItem("user", response_json.user.email)
     localStorage.setItem("pk", response_json.user.pk)
 
-    window.onload()
-
+    window.location.reload()
 } else {
-    alert("잘못된 로그인입니다.", response.status)
+    Swal.fire({
+        title: "로그인 실패!",
+        text: "다시한번 확인해주세요",
+        icon: "warning",
+        confirmButtonColor: "#FFCCCC",
+        confirmButtonText:"확인"
+    }).then((result) => {
+        if(result.value) {
+
+        }
+    })
 }
 
 }
@@ -179,12 +273,20 @@ async function logout() {
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
     localStorage.removeItem("user")
+    localStorage.removeItem("pk")
 
-    alert("로그아웃 되었습니다.")
-
-    window.location.href = "../templates/main.html"
+    Swal.fire({
+        title: "로그아웃되었습니다!",
+        text: "로그아웃",
+        icon: "success",
+        confirmButtonColor: "#FFCCCC",
+        confirmButtonText:"확인"
+    }).then((result) => {
+        if(result.value) {
+            window.location.href="../templates/main.html"
+        }
+    })
 }
-
 
 function parseJwt(token) {
     var base64Url = localStorage.getItem("access").split('.')[1];
@@ -196,5 +298,4 @@ function parseJwt(token) {
 
     return JSON.parse(jsonPayload);
 };
-
 
