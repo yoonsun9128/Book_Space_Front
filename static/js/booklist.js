@@ -78,12 +78,18 @@ function book_list(s_data) {
             let book_id = books[i].id
 
             let temp_html = `
-                <div class="col">
-                    <div class='book'>
-                        <img src="${book_img}" id="${book_id}" onclick="writeFeed(this.id)">
+                    <div class="wrapper" style = "background-color : white;">
+                        <div >
+                            <div class='book'>
+                                <img src="${book_img}" id="${book_id}" onclick="writeFeed(this.id)">
+                            </div>  
+                        </div>
+                            <div style = "overflow:hidden; word-wrap:break-word; margin-top: 35px; ">
+                            <h3 style = "text-align-last:left">${book_name}</h3>
+                            <br>
+                            <p style = "font-size: 20px; text-align-last:left;">${book_content}</p>
+                        </div>
                     </div>
-                    <div class="book-see">${book_name}</div>
-                </div>
                 `
             $('#book_all_list').append(temp_html)
         }
