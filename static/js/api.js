@@ -156,6 +156,21 @@ async function handleLogin(){
 
 }
 
+// 토큰 완료 자동 로그아웃//
+window.onload = () =>{
+    const payload = JSON.parse(localStorage.getItem("payload"));
+    console.log(payload.exp)
+    console.log(Date.now()/1000)
+    if (payload.exp <(Date.now()/1000)){
+        localStorage.removeItem("access")
+        localStorage.removeItem("refresh")
+        localStorage.removeItem("payload")
+        localStorage.removeItem("user")
+        alert("사용시간이 완료되 로그아웃 되었습니다.")
+        window.location.href = "../templates/main.html"
+    };
+};
+
 
 
 //#로그아웃//
