@@ -97,8 +97,9 @@ body{
 
   .user-container{
     display:flex;
-    margin: 150px 0;
-    height: 600px;
+    margin:auto;
+    height: 750px;
+    width : 2000px;
   }
 
   .user_custom1{
@@ -108,10 +109,13 @@ body{
     border: 2px solid rgb(125, 124, 124);
   }
   .user_custom{
-    width: 49%;
-    margin: 0 50px;
-    background-color: #f8f6ed;
-    border: 2px solid rgb(125, 124, 124);
+    width: 1000px;
+    height : 610px;
+    background-color: rgb(232, 238, 243); 
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 20px;
   }
 
   .user-popular{
@@ -223,9 +227,6 @@ footer a {
   font-weight: 500;
   text-decoration: none;
 }
-
-
-
 .container2{
 	max-width: 1170px;
 	margin:auto;
@@ -300,57 +301,11 @@ ul{
     width: 100%;
 }
 }
-.wrapper2 {
-  display: grid;
-  grid-template-columns: 100px 100px 100px 100px;
-  margin-left : 7%;
-  margin-top : 3%;
-}
 
-.wrapper2 {
-  display: grid;
-  grid-template-columns: 100px 100px 100px ;
-  grid-template-rows: 30px 30px;
-}
-.GT2{
-  cursor: pointer;
-}
-.GT2:nth-child(1) {
-  width : 150px; 
+.book img{
+  width: 150px;
   height: 235px;
 }
-.GT2:nth-child(2) {
-  width : 150px; 
-  height: 235px; 
-  margin-left: 120px;
-}
-.GT2:nth-child(3) {
-  width : 150px; 
-  height: 235px; 
-  margin-left: 240px;
-}
-.GT2:nth-child(4) {
-  width : 150px; 
-  height: 235px; 
-  margin-top: 220px;
-}
-.GT2:nth-child(5) {
-  width : 150px; 
-  height: 235px; 
-  margin-left: 120px;
-  margin-top: 220px;
-}
-.GT2:nth-child(6) {
-  width : 150px; 
-  height: 235px; 
-  margin-left: 240px;
-  margin-top: 220px;
-
-}
-
-
-
-
 /* main 슬라이드 */
 * {margin:0;padding:0;}
         .section input[id*="slide"] {display:none;}

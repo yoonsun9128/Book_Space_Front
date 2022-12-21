@@ -105,19 +105,10 @@ function user_booklist(){
                   books[i].book_link,
               )
           }
-          
-          console.log(books)
-          function append_temp_html(img_url, book_link){
-              temp_html =`
-              <div class="GT2" onclick="location.href='${book_link}'";">
-                <img class = "GT2" src="${img_url}"></img>
-              </div>
 
-              `
-              $('#recom_book').append(temp_html)
-
-
-
+          function append_temp_html(img_url, book_link, book_content, book_title){
+              temp_html =``
+              $('#user_book').append(temp_html)
           }
         }
       }
