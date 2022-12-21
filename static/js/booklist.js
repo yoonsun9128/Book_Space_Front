@@ -115,7 +115,7 @@ function book_list(s_data) {
                                 <img src="${book_img}" id="${book_id}" onclick="writeFeed(this.id)">
                             </div>  
                         </div>
-                            <div style = "overflow:hidden; word-wrap:break-word; margin-top: 35px;">
+                            <div style = "overflow:hidden; word-wrap:break-word; margin-top: 35px; ">
                             <h3 style = "text-align-last:left">${book_name}</h3>
                             <br>
                             <p style = "font-size: 20px; text-align-last:left;">${book_content}</p>
