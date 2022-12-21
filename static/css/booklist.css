@@ -438,9 +438,11 @@ ul {
   text-align: center;
 }
 .wrapper {
+
   display: grid;
   margin-top : 40px;
   grid-template-columns: 200px 800px
+
 }
 .wrapper p{
   margin: 0;
