@@ -19,8 +19,6 @@ toggleBtn.addEventListener('click', () => {
   icons.classList.toggle('active')
 })
 
-
-
 window.onload = function navbar(){
     // 로그인 된 상태
     if(localStorage.hasOwnProperty("user") === true){
@@ -30,7 +28,7 @@ window.onload = function navbar(){
         user_email.style.display = 'block';
         feedButton.style.display = 'block';
         postButton.style.display = 'block';
-        recommendButton.style.display = 'block'
+        recommendButton.style.display = 'block';
     }
     //로그아웃 된 상태
     if(localStorage.hasOwnProperty("user") === false){
@@ -42,6 +40,23 @@ window.onload = function navbar(){
         recommendButton.style.display = 'none';
     }
 }
+
+// function isAuthenticated() {
+//     const token = localStorage.getItem('access');
+//     const refreshToken = localStorage.getItem('refresh');
+//     try {
+//       decode(token);
+//       const { exp } = decode(refreshToken);
+//       if (Date.now() >= exp * 1000) {
+//         logout()
+//         return false;
+//       }
+//     } catch (err) {
+//       return false;
+//     }
+//     return true;
+//   }
+
 
 // # userpage로 가는 함수//
 const a = localStorage.getItem("payload").split(',')[4];
@@ -131,10 +146,9 @@ async function handleLogin(){
     }).join(''));
     localStorage.setItem("payload", jsonPayload);
     localStorage.setItem("user", response_json.user.email)
+    localStorage.setItem("pk", response_json.user.pk)
 
-
-
-    window.location.reload()
+    window.onload()
 
 } else {
     alert("잘못된 로그인입니다.", response.status)
@@ -167,3 +181,5 @@ function parseJwt(token) {
 
     return JSON.parse(jsonPayload);
 };
+
+

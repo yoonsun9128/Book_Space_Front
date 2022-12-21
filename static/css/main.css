@@ -313,7 +313,9 @@ ul{
   grid-template-columns: 100px 100px 100px ;
   grid-template-rows: 30px 30px;
 }
-
+.GT2{
+  cursor: pointer;
+}
 .GT2:nth-child(1) {
   width : 150px; 
   height: 235px;
