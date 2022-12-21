@@ -430,3 +430,26 @@ ul {
   font-size: 30px;
   margin-bottom: 50px;
 }
+
+#wrap1 > div{
+  float: left;
+  font-size: 20px;
+  line-height: 100px;
+  text-align: center;
+}
+.wrapper {
+
+  display: grid;
+  margin-top : 40px;
+  grid-template-columns: 200px 1000px
+}
+.wrapper p{
+  margin: 0;
+  padding: 0;
+  color: #888;
+  overflow : hidden; 
+  -webkit-line-clamp : 3;
+  -webkit-box-orient : vertical;
+  display : -webkit-box; 
+  margin-top: 3px;
+}
