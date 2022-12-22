@@ -14,6 +14,8 @@ const toggleBtn = document.querySelector('.navbar__toggleBtn');
 const menu = document.querySelector('.navbar__menu');
 const icons = document.querySelector('.navbar__icons');
 
+const customBook = document.getElementById("recom_book")
+const beforeLogin = document.querySelector(".before-login")
 toggleBtn.addEventListener('click', () => {
   menu.classList.toggle('active')
   icons.classList.toggle('active')
@@ -29,6 +31,8 @@ window.onload = function navbar(){
         feedButton.style.display = 'block';
         postButton.style.display = 'block';
         recommendButton.style.display = 'block';
+
+
     }
     //로그아웃 된 상태
     if(localStorage.hasOwnProperty("user") === false){
@@ -38,24 +42,10 @@ window.onload = function navbar(){
         feedButton.style.display = 'none';
         postButton.style.display = 'none';
         recommendButton.style.display = 'none';
+
     }
 }
 
-// function isAuthenticated() {
-//     const token = localStorage.getItem('access');
-//     const refreshToken = localStorage.getItem('refresh');
-//     try {
-//       decode(token);
-//       const { exp } = decode(refreshToken);
-//       if (Date.now() >= exp * 1000) {
-//         logout()
-//         return false;
-//       }
-//     } catch (err) {
-//       return false;
-//     }
-//     return true;
-//   }
 
 
 // # userpage로 가는 함수//
@@ -76,80 +66,86 @@ async function handleSignup(){
     }
     if(SignupData.email == ""){
         Swal.fire({
-            title: "이메일이 빈칸입니다!",
-            text: "이메일을 입력해주세요",
-            icon: "warning",
-            confirmButtonColor:"#FFCCCC",
-            confirmButtonText:"확인"
-        }).then((result) => {
-            if(result.value) {
-                return false;
+            title: '이메일을 작성해주세요!',
+            text: '이메일칸이 비어있습니다.',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
             }
         })
+        return false;
     }
     if(SignupData.username == ""){
         Swal.fire({
-            title: "유저네임이 빈칸입니다!",
-            text: "유저네임을 입력해주세요",
-            icon: "warning",
-            confirmButtonColor:"#FFCCCC",
-            confirmButtonText:"확인"
-        }).then((result) => {
-            if(result.value) {
-                return false;
+            title: '유저네임을 작성해주세요!',
+            text: '유저네임칸이 비어있습니다.',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
             }
         })
+        return false;
     }
     if(SignupData.password1 == ""){
         Swal.fire({
-            title: "패스워드가 빈칸입니다!",
-            text: "패스워드를 입력해주세요",
-            icon: "warning",
-            confirmButtonColor:"#FFCCCC",
-            confirmButtonText:"확인"
-        }).then((result) => {
-            if(result.value) {
-                return false;
+            title: '비밀번호를 입력해주세요!',
+            text: '비밀번호칸이 비어있습니다.',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
             }
         })
+        return false;
     }else if(SignupData.password1.length < 8){
         Swal.fire({
-            title: "패스워드 길이가 짧습니다!",
-            text: "문자,영어를 포함한 8글자 이상적어주세요",
-            icon: "warning",
-            confirmButtonColor:"#FFCCCC",
-            confirmButtonText:"확인"
-        }).then((result) => {
-            if(result.value) {
-                return false;
+            title: '비밀번호를 확인해주세요!',
+            text: '문자,영어를 포함해서 8자리 이상 작성해주세요',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
             }
         })
+        return false;
     }
     if(SignupData.password2 == ""){
         Swal.fire({
-            title: "비밀번호 확인이 빈칸입니다!",
-            text: "비밀번호 확인을 입력해주세요",
-            icon: "warning",
-            confirmButtonColor:"#FFCCCC",
-            confirmButtonText:"확인"
-        }).then((result) => {
-            if(result.value) {
-                return false;
+            title: '비밀번호check를 입력해주세요!',
+            text: '비밀번호check칸이 비어있습니다.',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
             }
         })
+        return false;
     }
     if(SignupData.password1 !== SignupData.password2){
         Swal.fire({
-            title: "비밀번호와 비밀번호확인이 다릅니다!",
-            text: "두 비밀번호를 확인해주세요",
-            icon: "warning",
-            confirmButtonColor:"#FFCCCC",
-            confirmButtonText:"확인"
-        }).then((result) => {
-            if(result.value) {
-                return false;
+            title: '비밀번호와 비밀번호check가 다릅니다!',
+            text: '비밀번호를 확인해주세요',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
             }
         })
+        return false; 
     }
 
     const response = await fetch(`${backend_base_url}users/dj-rest-auth/registration/`, {
@@ -164,14 +160,14 @@ async function handleSignup(){
     response_json = await response.json()
     if (response.status == 201) {
         Swal.fire({
-            title: "이메일이 전송되었습니다!",
-            text: "이메일을 확인해주세요",
-            icon: "success",
-            confirmButtonColor:"#FFCCCC",
-            confirmButtonText:"확인"
-        }).then((result) => {
-            if(result.value) {
-
+            title: '이메일이 전송되었습니다!',
+            text: '이메일을 확인해주세요',
+            icon: 'success',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
             }
         })
         signup.style.display = 'none';
@@ -179,15 +175,17 @@ async function handleSignup(){
 
     }else{
         Swal.fire({
-            title: "다시한번 확인해주세요!",
-            icon: "warning",
-            confirmButtonColor:"#FFCCCC",
-            confirmButtonText:"확인"
-        }).then((result) => {
-            if(result.value) {
-
+            title: '이미 로그인되어 있는 이메일입니다.',
+            text: '이메일을 확인해주세요',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
             }
         })
+        return false;
     }
 
 }
@@ -209,17 +207,16 @@ async function handleLogin(){
     user = response_json.user
     if (response.status == 200) {
         Swal.fire({
-            title: "로그인 성공!",
-            text: "좋은시간 되세요",
-            icon: "success",
-            confirmButtonColor:"#FFCCCC",
-            confirmButtonText:"확인"
-        }).then((result) => {
-            if(result.value) {
-
+            title: '로그인되었습니다!',
+            text: '환영합니다',
+            icon: 'success',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                window.location.href = "../templates/main.html"
             }
         })
-
         localStorage.setItem("access", response_json.access_token);
         localStorage.setItem("refresh", response_json.refresh_token);
 
@@ -233,19 +230,21 @@ async function handleLogin(){
     localStorage.setItem("user", response_json.user.email)
     localStorage.setItem("pk", response_json.user.pk)
 
-    window.location.reload()
+    window.onload()
+
 } else {
     Swal.fire({
-        title: "로그인 실패!",
-        text: "다시한번 확인해주세요",
-        icon: "warning",
-        confirmButtonColor: "#FFCCCC",
-        confirmButtonText:"확인"
-    }).then((result) => {
-        if(result.value) {
-
+        title: '잘못된 로그인입니다!',
+        text: '이메일과 비밀번호를 확인해주세요.',
+        icon: 'warning',
+        confirmButtonColor: '#FFCCCC',
+        confirmButtonText: '확인',
+    }).then(result =>{
+        if(result.isConfirmed){
+            
         }
     })
+    return false;
 }
 
 }
@@ -260,8 +259,17 @@ async function timeOut() {
         localStorage.removeItem("refresh")
         localStorage.removeItem("payload")
         localStorage.removeItem("user")
-        alert("사용시간이 완료되 로그아웃 되었습니다.")
-        window.location.href = "../templates/main.html"
+        Swal.fire({
+            title: '토큰세션이 만료되었습니다!',
+            text: '다시로그인 해주세요',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                window.location.href = "../templates/main.html"
+            }
+        })
     };
 }timeOut()
 
@@ -273,20 +281,20 @@ async function logout() {
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
     localStorage.removeItem("user")
-    localStorage.removeItem("pk")
 
     Swal.fire({
-        title: "로그아웃되었습니다!",
-        text: "로그아웃",
-        icon: "success",
-        confirmButtonColor: "#FFCCCC",
-        confirmButtonText:"확인"
-    }).then((result) => {
-        if(result.value) {
-            window.location.href="../templates/main.html"
+        title: '로그아웃 되었습니다!',
+        text: '또 찾아와주세요',
+        icon: 'warning',
+        confirmButtonColor: '#FFCCCC',
+        confirmButtonText: '확인',
+    }).then(result =>{
+        if(result.isConfirmed){
+            window.location.href = "../templates/main.html"
         }
     })
 }
+
 
 function parseJwt(token) {
     var base64Url = localStorage.getItem("access").split('.')[1];
@@ -298,4 +306,5 @@ function parseJwt(token) {
 
     return JSON.parse(jsonPayload);
 };
+
 

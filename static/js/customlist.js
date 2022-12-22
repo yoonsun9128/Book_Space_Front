@@ -78,9 +78,28 @@ async function send_id(){
         })
         response_json = await response.json()
         if(response.status == 200){
-            alert("취향반영된 책을 추천하겠습니다.")
+            Swal.fire({
+                title: '메인페이지로 이동합니다!',
+                text: '취향이 반영된 책을 추천드리겠습니다.',
+                icon: 'success',
+                confirmButtonColor: '#FFCCCC',
+                confirmButtonText: '확인',
+            }).then(result =>{
+                if(result.isConfirmed){
+                    window.location.href = "../templates/main.html"
+                }
+            })
         }else{
-            alert("실패")
+            Swal.fire({
+                title: '최소1개, 3개 이하로 선택해주세요!',
+                icon: 'warning',
+                confirmButtonColor: '#FFCCCC',
+                confirmButtonText: '확인',
+            }).then(result =>{
+                if(result.isConfirmed){
+                    window.location.reload()
+                }
+            })
         }
     }
 

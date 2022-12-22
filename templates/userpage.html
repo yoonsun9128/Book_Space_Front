@@ -24,6 +24,9 @@
 
   <link rel="stylesheet" href="../static/css/userpage.css">
   <link rel="stylesheet" href="../static/css/nav.css">
+  <!--sweetalrt-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 
   <!-- Favicon-->
   <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico" />
@@ -31,28 +34,28 @@
 </head>
 
 <body>
-    <!-- 네비바-->
-    <nav class="navbar">
+  <!-- 네비바-->
+  <nav class="navbar">
 
-      <div class="navbar__logo">
-          <i class="fa-solid fa-book"></i>
-          <a href="../templates/main.html">ThumBook</a>
-      </div>
+    <div class="navbar__logo">
+      <i class="fa-solid fa-book"></i>
+      <a href="../templates/main.html">ThumBook</a>
+    </div>
 
-      <ul class="navbar__menu">
-          <div id="post-button" onclick="location.href='../templates/booklist.html?page=1'">글 작성하기</div>
-          <div id="feed-button" onclick="location.href='../templates/feed.html'">독후감 보기</div>
-          <div id="recommend-button" onclick="location.href='../templates/customlist.html'">추천도서</div>
-          <div id="user_email" onclick="gotoUserpage()"></div>
-          <div id="login-button" class="open"> 로그인/회원가입</div>
-          <div id="logout-button" class="logout" onclick="logout()">로그아웃</div>
-      </ul>
+    <ul class="navbar__menu">
+      <div id="post-button" onclick="location.href='../templates/booklist.html?page=1'">글 작성하기</div>
+      <div id="feed-button" onclick="location.href='../templates/feed.html'">독후감 보기</div>
+      <div id="recommend-button" onclick="location.href='../templates/customlist.html'">추천도서</div>
+      <div id="user_email" onclick="gotoUserpage()"></div>
+      <div id="login-button" class="open"> 로그인/회원가입</div>
+      <div id="logout-button" class="logout" onclick="logout()">로그아웃</div>
+    </ul>
 
-      <a href="#" class="navbar__toggleBtn">
-          <i class="fas fa-bars"></i>
-      </a>
+    <a href="#" class="navbar__toggleBtn">
+      <i class="fas fa-bars"></i>
+    </a>
   </nav>
-<div class="profile-page">
+  <div class="profile-page">
     <div class="page-header header-filter" data-parallax="true"></div>
     <div class="main main-raised">
       <div class="profile-content">
@@ -88,7 +91,7 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                      <i onclick="likesArticle()"class="material-icons">favorite</i>
+                      <i onclick="likesArticle()" class="material-icons">favorite</i>
                       Favorite
                     </a>
                   </li>
@@ -110,7 +113,7 @@
               </div>
             </div>
             <div class="tab-pane text-center gallery" id="favorite">
-              <div class="row" id ="likeArticle_list">
+              <div class="row" id="likeArticle_list">
 
               </div>
             </div>
@@ -162,7 +165,7 @@
                 <textarea class="form-control" id="info_password"></textarea>
               </div>
               <div class="mb-3">
-                <label for="message-text" class="col-form-label">passwordcheock:</label>
+                <label for="message-text" class="col-form-label">passwordcheck:</label>
                 <textarea class="form-control" id="info_password2"></textarea>
               </div>
             </form>

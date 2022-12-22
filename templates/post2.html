@@ -19,39 +19,42 @@
   <link rel="stylesheet" href="../static/css/post.css" />
   <link rel="stylesheet" href="../static/css/nav.css" />
 
-    <!--폰트-->
-    <link rel='preconnect' href='https://fonts.googleapis.com'>
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-    <link href='https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap' rel='stylesheet'>
-    <!--아이콘-->
-    <script src="https://kit.fontawesome.com/43cd4c369a.js" crossorigin="anonymous"></script>
+  <!--폰트-->
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link href='https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap' rel='stylesheet'>
+  <!--아이콘-->
+  <script src="https://kit.fontawesome.com/43cd4c369a.js" crossorigin="anonymous"></script>
+  <!--sweetalrt-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 
 
 </head>
 
 <body>
-    <!-- 네비바-->
-    <nav class="navbar">
+  <!-- 네비바-->
+  <nav class="navbar">
 
-      <div class="navbar__logo">
-          <i class="fa-solid fa-book"></i>
-          <a href="../templates/main.html">ThumBook</a>
-      </div>
+    <div class="navbar__logo">
+      <i class="fa-solid fa-book"></i>
+      <a href="../templates/main.html">ThumBook</a>
+    </div>
 
-      <ul class="navbar__menu">
-          <div id="post-button" onclick="location.href='../templates/booklist.html?page=1'">글 작성하기</div>
-          <div id="feed-button" onclick="location.href='../templates/feed.html'">독후감 보기</div>
-          <div id="recommend-button" onclick="location.href='../templates/customlist.html'">추천도서</div>
-          <div id="user_email" onclick="gotoUserpage()"></div>
-          <div id="login-button" class="open"> 로그인/회원가입</div>
-          <div id="logout-button" class="logout" onclick="logout()">로그아웃</div>
-      </ul>
+    <ul class="navbar__menu">
+      <div id="post-button" onclick="location.href='../templates/booklist.html?page=1'">글 작성하기</div>
+      <div id="feed-button" onclick="location.href='../templates/feed.html'">독후감 보기</div>
+      <div id="recommend-button" onclick="location.href='../templates/customlist.html'">추천도서</div>
+      <div id="user_email" onclick="gotoUserpage()"></div>
+      <div id="login-button" class="open"> 로그인/회원가입</div>
+      <div id="logout-button" class="logout" onclick="logout()">로그아웃</div>
+    </ul>
 
-      <a href="#" class="navbar__toggleBtn">
-          <i class="fas fa-bars"></i>
-      </a>
+    <a href="#" class="navbar__toggleBtn">
+      <i class="fas fa-bars"></i>
+    </a>
   </nav>
-<section id="container">
+  <section id="container">
     <div id="main_container">
       <form class="post_form" style="padding-bottom: 100px">
         <div class="title">NEW POST</div>
