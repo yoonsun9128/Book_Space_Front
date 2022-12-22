@@ -188,9 +188,27 @@ async function post_comment() {
     response_json = await response.json()
     if (response.status == 200) {
         window.location.replace(`${frontend_base_url}detail.html?id=${code}`);
-        alert("댓글 작성 완료")
+        Swal.fire({
+            title: '댓글 작성 성공!',
+            icon: 'success',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                window.location.reload()
+            }
+        })
     } else {
-        alert("댓글 작성 실패");
+        Swal.fire({
+            title: '댓글 작성 실패',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
+            }
+        })
     }
 }
 
@@ -226,10 +244,28 @@ async function putSave() {
     comment_json = await response.json()
 
     if (response.status == 200) {
-        alert("댓글 수정 완료")
+        Swal.fire({
+            title: '댓글 수정 성공!',
+            icon: 'success',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                window.location.reload()
+            }
+        })
         OldComment.innerText=NewComment
     } else {
-        alert("댓글 작성자만 수정 가능합니다.")
+        Swal.fire({
+            title: '댓글 작성자만 수정 가능합니다!',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
+            }
+        })
     }
 }
 
@@ -244,10 +280,28 @@ async function delete_comment(id) {
     })
 
     if (response.status == 204) {
-        alert("댓글 삭제 완료")
+        Swal.fire({
+            title: '댓글 삭제 완료!',
+            icon: 'success',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
+            }
+        })
         window.location.reload();
     } else {
-        alert("댓글 작성자만 삭제 가능합니다.")
+        Swal.fire({
+            title: '댓글 작성자만 삭제 가능합니다!',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
+            }
+        })
     }
 }
 
@@ -263,7 +317,16 @@ async function delete_article() {
 
     if (response.status == 204) {
         window.location.replace(`${frontend_base_url}feed.html`);
-        alert("게시글 삭제 완료")
+        Swal.fire({
+            title: '게시글 삭제 완료!',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
+            }
+        })
     } else {
         alert("게시글 작성자만 삭제 가능합니다.")
     }
@@ -316,7 +379,16 @@ async function ArticleSave() {
     article_json = await response.json()
 
     if (response.status == 200) {
-        alert("게시글 수정 완료")
+        Swal.fire({
+            title: '게시글 수정 완료!',
+            icon: 'success',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
+            }
+        })
         window.location.replace(`${frontend_base_url}detail.html?id=${code}`);
     } else {
         alert("게시글 작성자만 수정 가능합니다.")

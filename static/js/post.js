@@ -49,7 +49,27 @@ async function post_article() {
     response_json = response.json();
 
     if (response.status == 200) {
-        window.location.replace(`${frontend_base_url}feed.html`);
+        Swal.fire({
+            title: '게시글 작성 완료!',
+            icon: 'success',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                window.location.replace(`${frontend_base_url}feed.html`);
+            }
+        })
+        
     } else {
-        alert("빈칸을 채워주세요", response.status);
+        Swal.fire({
+            title: '빈칸을 채워주세요!',
+            text: '내용, 별점, 이미지를 넣어주세요.',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
+            }
+        })
     }}

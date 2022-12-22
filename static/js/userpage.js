@@ -5,8 +5,17 @@ const image_url = 'http://127.0.0.1:8000'
 // 로그인 안하면 접근 금지
 var token = localStorage.getItem("access");
     if (!token) {
-        alert("로그인을 해주세요!")
-        window.location.replace (`${frontend_base_url}main.html`)
+        Swal.fire({
+            title: '로그인 해주세요!',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                window.location.replace (`${frontend_base_url}main.html`)
+            }
+        })
+        
     }
 
 const editButton = document.getElementById("user_info")
@@ -125,9 +134,28 @@ async function imageSave(){
     })
     response_json = response.json();
     if (response.status == 200) {
-        window.location.replace(`${frontend_base_url}userpage.html`);
+        Swal.fire({
+            title: '프로필이미지 수정 완료!',
+            icon: 'success',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                window.location.replace(`${frontend_base_url}userpage.html`);
+            }
+        })
+        
     } else {
-        alert(response.status);
+        Swal.fire({
+            title: '프로필이미지 수정 실패',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
+            }
+        })
     }
 }
 
@@ -138,20 +166,60 @@ async function editSave() {
         passwordcheck : document.getElementById(`info_password2`).value
     }
     if (userInfoData.username ==""){
-        alert("Username 입력해주세요")
+        Swal.fire({
+            title: '유저네임을 작성해주세요!',
+            text: '유저네임칸이 비어있습니다.',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
+            }
+        })
         return false
     };
-    if ((userInfoData.password).length <4){
-        alert("비밀번호는 4자리 이상으로 입력해주세요")
+    if ((userInfoData.password).length <8){
+        Swal.fire({
+            title: '비밀번호를 확인해주세요!',
+            text: '문자,영어를 포함해서 8자리 이상 작성해주세요.',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
+            }
+        })
         return false
     };
     if (userInfoData.password !== userInfoData.passwordcheck){
-        alert("비밀번호가 일치하지 않습니다!")
-        return false
+        Swal.fire({
+            title: '비밀번호와 비밀번호check가 다릅니다!',
+            text: '비밀번호를 확인해주세요',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
+            }
+        })
+        return false;
     };
     if (userInfoData.password == ""){
-        alert("비밀번호를 입력해주세요.")
-        return false
+        Swal.fire({
+            title: '비밀번호를 입력해주세요!',
+            text: '비밀번호칸이 비어있습니다.',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
+            }
+        })
+        return false;
     };
     const response = await fetch(`http://127.0.0.1:8000/users/${num}/`, {
         headers: {
@@ -163,10 +231,29 @@ async function editSave() {
     })
     response_json = response.json();
     if (response.status == 200) {
-        alert("수정완료")
-        window.location.replace(`${frontend_base_url}userpage.html`);
+        Swal.fire({
+            title: '프로필 정보 수정완료',
+            icon: 'success',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                window.location.onload()
+            }
+        })
+        
     } else {
-        alert(response.status);
+        Swal.fire({
+            title: '프로필이미지 수정 실패',
+            text: '빈칸을 확인해주세요',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                window.location.replace(`${frontend_base_url}userpage.html`);
+            }
+        })
     }
 
 }
@@ -185,9 +272,28 @@ async function userDelete() {
         localStorage.removeItem("refresh")
         localStorage.removeItem("payload")
         localStorage.removeItem("user")
-        alert("회원 탈퇴 완료")
-        window.location.href = "../templates/main.html"
+        Swal.fire({
+            title: '회원탈퇴 완료..',
+            text: '그동안 이용해주셔서 감사합니다.',
+            icon: 'success',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                window.location.replace(`${frontend_base_url}main.html`);
+            }
+        })
     } else {
-        alert("계정확인이 필요합니다.")
+        Swal.fire({
+            title: '회원탈퇴 실패',
+            text:'계정확인이 필요합니다',
+            icon: 'success',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                
+            }
+        })
     }
 }

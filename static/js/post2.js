@@ -77,5 +77,14 @@ async function post_book() {
     if (response.status == 200) {
         window.location.replace(`${frontend_base_url}feed.html`);
     } else {
-        alert(response.status);
+        Swal.fire({
+            title: '게시글 작성 완료!',
+            icon: 'success',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                window.location.href="../templates/feed.html"
+            }
+        })
     }}

@@ -117,6 +117,13 @@ body{
     margin-right: 50px;
     border-radius: 20px;
   }
+  .before-login{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 170px;
+  }
+
 
   .user-popular{
     height: 48%;
@@ -205,7 +212,6 @@ body{
     border-bottom: 1px solid #ccc;
     padding: 10px 0;
   }
-
 
 
 
