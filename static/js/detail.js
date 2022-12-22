@@ -187,7 +187,6 @@ async function post_comment() {
 
     response_json = await response.json()
     if (response.status == 200) {
-        window.location.replace(`${frontend_base_url}detail.html?id=${code}`);
         Swal.fire({
             title: '댓글 작성 성공!',
             icon: 'success',
@@ -195,12 +194,13 @@ async function post_comment() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                window.location.reload()
+                window.location.replace(`${frontend_base_url}detail.html?id=${code}`);
             }
         })
     } else {
         Swal.fire({
             title: '댓글 작성 실패',
+            text: '빈칸은 안됩니다!',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
@@ -287,10 +287,10 @@ async function delete_comment(id) {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+                window.location.reload();
             }
         })
-        window.location.reload();
+        
     } else {
         Swal.fire({
             title: '댓글 작성자만 삭제 가능합니다!',
@@ -316,7 +316,6 @@ async function delete_article() {
     })
 
     if (response.status == 204) {
-        window.location.replace(`${frontend_base_url}feed.html`);
         Swal.fire({
             title: '게시글 삭제 완료!',
             icon: 'warning',
@@ -324,7 +323,7 @@ async function delete_article() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+                window.location.replace(`${frontend_base_url}feed.html`);
             }
         })
     } else {
@@ -386,10 +385,10 @@ async function ArticleSave() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+                window.location.replace(`${frontend_base_url}detail.html?id=${code}`);
             }
         })
-        window.location.replace(`${frontend_base_url}detail.html?id=${code}`);
+        
     } else {
         alert("게시글 작성자만 수정 가능합니다.")
     }

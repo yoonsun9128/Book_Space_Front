@@ -141,19 +141,20 @@ async function imageSave(){
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                window.location.replace(`${frontend_base_url}userpage.html`);
+                window.location.replace(`${frontend_base_url}userpage.html?id=${id}`)
             }
         })
         
     } else {
         Swal.fire({
             title: '프로필이미지 수정 실패',
+            text:'이미지를 넣어주세요!',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+                window.location.replace(`${frontend_base_url}userpage.html?id=${id}`)
             }
         })
     }
@@ -238,20 +239,20 @@ async function editSave() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                window.location.onload()
+                window.location.replace(`${frontend_base_url}userpage.html?id=${id}`)
             }
         })
         
     } else {
         Swal.fire({
-            title: '프로필이미지 수정 실패',
+            title: '프로필정보 수정 실패',
             text: '빈칸을 확인해주세요',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                window.location.replace(`${frontend_base_url}userpage.html`);
+                window.location.replace(`${frontend_base_url}userpage.html?id=${id}`)
             }
         })
     }
