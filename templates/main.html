@@ -7,11 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
+        
     <link rel="stylesheet" href="../static/css/nav.css" />
     <link rel="stylesheet" href="../static/css/login.css" />
     <link rel="stylesheet" href="../static/css/main.css" />
@@ -32,10 +31,10 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
         <script src="https://kit.fontawesome.com/43cd4c369a.js" crossorigin="anonymous"></script>
 
-    <title>Document</title>
+    <title>Thumbook</title>
 
-    <style>
-    </style>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
 </head>
 
 <body>
@@ -76,37 +75,43 @@
                     <a>
                         <div class="textbox">
                             <h3 style="font-size:36px;color:#000;"><i class="fa-solid fa-book" style = "margin-right: 10px;"></i>ThunBook</h3>
-                            <p style="font-size:16px;color:#000;">책을 통한 소통과 교류의 장</p>
+                            <p style="font-size:20px;color:#000;">책을 통한 소통과 교류의 장</p>
                         </div>
                         <img src="../static/images/5467.PNG">
                     </a>
                 </li>
                 <li class="slideitem">
-                    <a>
+                    <a href = "../templates/customlist.html">
                         
                         <div class="textbox">
                             <h3>책을 추천해드립니다</h3>
-                            <p style="font-size:16px;color:#000;">이미읽은 책의 깊은 감동을 이어가보세요</p>
+                            <p style="font-size:18px;color:#000;">이미읽은 책의 깊은 감동을 이어가보세요</p>
+                            <br>
+                            <p style="font-size:16px;color : black; margin-top: 20px;">추천도서 바로가기 -></p>
                         </div>
                         <img src="../static/images/3579.png">
                     </a>
                 </li>
                 <li class="slideitem">
-                    <a>
+                    <a href = "http://127.0.0.1:5500/templates/booklist.html?page=1">
                         
                         <div class="textbox">
                             <h3 >독후감을 작성해주세요</h3>
-                            <p  style="font-size:16px;color:#000;">책에 대한 인상이 깊으셨다면 모두에게 글로 표현해주세요</p>
+                            <p  style="font-size:18px;color:#000;">책에 대한 인상이 깊으셨다면 글로 표현해주세요</p>
+                            <br>
+                            <p style="font-size:16px;color : black; margin-top: 20px;">기록하기 -></p>
                         </div>
                         <img src="../static/images/6786.png">
                     </a>
                 <li class="slideitem">
-                    <a>
+                    <a href="../templates/feed.html">
                             
                         <div class="textbox" style="margin-left: 80px;">
-                            <h3 >자신만의 감성을 표현해보세요</h3>
-                            <p  style="font-size:16px;color:#000;">책읽고 인상이 깊으셨다면 인증샷 찰칵! </p>
-                            <p  style="font-size:16px;color:#000;">댓글을 통해 사람들과 책소통을 해보아요</p>
+                            <h3 >사람들이 읽은 책과 감성을 구경해보세요</h3>
+                            <p  style="font-size:18px;color:#000;">독후감 글이 인상깊었다면 좋아요! </p>
+                            <p  style="font-size:18px;color:#000;">댓글을 통해 사람들과 책관련 소통을 해보아요</p>
+                            <br>
+                            <p style="font-size:16px;color : black; margin-top: 20px;">커뮤니티 바로가기 -></p>
                         </div>
                         <img src="../static/images/9876.png">
                     </a>
@@ -115,8 +120,8 @@
                         
                         <div class="textbox">
                             <h3>나만의 책 일기장</h3>
-                            <p style="font-size:16px;color:#000;">나의 독후감 기록소를 Thunbook에 마련해보세요</p>
-                            <p style="font-size:16px;color:#000;">하나씩 정리된 사진과 글귀는 추억이 된답니다</p>
+                            <p style="font-size:18px;color:#000;">나의 독후감 기록소를 Thunbook에 마련해보세요</p>
+                            <p style="font-size:18px;color:#000;">하나씩 정리된 사진과 글귀는 추억이 된답니다</p>
                         </div>
                         <img src="../static/images/3322.png">
                     </a>
@@ -239,16 +244,15 @@
     </div>
     <!-- 메인 인기피드-->
     <div class="user-container">
-        <div class="user_custom1">
+        <div class="user_custom">
             <div class="user_custom_txt">
                 당신을 위한 맞춤 도서
             </div>
-
-            <div class="row row-cols-1 row-cols-md-3 g-4" id="book_all_list" style = "margin:auto; margin-left: 90px;">
-                <div class="col">
-                    <div class='book'>
-                        <img src="../static/images/3456.png" id="${id}" onclick="writeFeed(this.id)"/>
-                    </div>   
+            <div class="recommend_list" style = "margin-top: 20px; margin-left: 100px;">
+                <!-- 리스트 -->
+                <div class="list_start" id = "user_book">
+                   
+                  
                 </div>
             </div>
         </div>

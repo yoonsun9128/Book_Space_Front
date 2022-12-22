@@ -23,9 +23,10 @@
 
 .flex-container{
   text-align: center;
+
 }
 .flex-item{
-  display: inline-block
+  display: inline-block;
 }
 .reload2{
   width: 100%;

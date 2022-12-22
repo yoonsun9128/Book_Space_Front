@@ -306,6 +306,27 @@ ul{
   width: 150px;
   height: 235px;
 }
+
+.recommend_list {
+  width: 700px;
+}
+
+.list_start {
+  text-align: center;
+}
+
+.list_detail {
+  display: inline-block;
+  width: 150px;
+  height: 235px;
+  border: 1px solid;
+  margin: 0 30px 30px 30px;
+  cursor: pointer;
+}
+.footer{
+  height: 380px;
+}
+
 /* main 슬라이드 */
 * {margin:0;padding:0;}
         .section input[id*="slide"] {display:none;}
@@ -318,7 +339,7 @@ ul{
         .section .slidelist .textbox {position:absolute;z-index:1;top:50%;left:20%;transform:translate(-50%,-50%);line-height:1.6;text-align:center;}
         .section .slidelist .textbox h3 {font-size:36px;color:#000;;transform:translateY(30px);transition:all .5s;}
         .section .slidelist .textbox p {font-size:16px;color:#fff;opacity:0;transform:translateY(30px);transition:all .5s;}
-        .section{background-color: #fff; }
+        .section{background-color: #fff; width: 100%;}
         
         
         /* input에 체크되면 슬라이드 효과 */
