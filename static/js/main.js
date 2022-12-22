@@ -99,15 +99,17 @@ function user_booklist(){
       data: {},
       success: function(response) {
           let books = response
-          for (let i=0; i <books.length; i++){
+          for (let i=0; i <6; i++){
               append_temp_html(
                   books[i].img_url,
                   books[i].book_link,
               )
           }
 
-          function append_temp_html(img_url, book_link, book_content, book_title){
-              temp_html =``
+          function append_temp_html(img_url, book_link){
+              temp_html =`
+              <img class="list_detail" src = "${img_url}" onclick = "window.location.href = '${book_link}'"></img>
+              `
               $('#user_book').append(temp_html)
           }
         }
