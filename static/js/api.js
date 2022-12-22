@@ -111,7 +111,7 @@ async function handleSignup(){
             if(result.value) {
                 return false;
             }
-        })    
+        })
     }else if(SignupData.password1.length < 8){
         Swal.fire({
             title: "패스워드 길이가 짧습니다!",
@@ -171,7 +171,7 @@ async function handleSignup(){
             confirmButtonText:"확인"
         }).then((result) => {
             if(result.value) {
-                
+
             }
         })
         signup.style.display = 'none';
@@ -185,7 +185,7 @@ async function handleSignup(){
             confirmButtonText:"확인"
         }).then((result) => {
             if(result.value) {
-                
+
             }
         })
     }
@@ -216,7 +216,7 @@ async function handleLogin(){
             confirmButtonText:"확인"
         }).then((result) => {
             if(result.value) {
-                
+
             }
         })
 
@@ -251,7 +251,7 @@ async function handleLogin(){
 }
 
 // 토큰 완료 자동 로그아웃//
-window.onload = () =>{
+async function timeOut() {
     const payload = JSON.parse(localStorage.getItem("payload"));
     console.log(payload.exp)
     console.log(Date.now()/1000)
@@ -263,7 +263,7 @@ window.onload = () =>{
         alert("사용시간이 완료되 로그아웃 되었습니다.")
         window.location.href = "../templates/main.html"
     };
-};
+}timeOut()
 
 
 
