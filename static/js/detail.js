@@ -70,7 +70,7 @@ detailData().then((data) => {
                 <div class="row row-cols-auto">
                     <div class="col" style="min-width:770px; text-align:left;" id="new-comment${detail_id}">${detail_comment}</div>
                     <div class="col put_comment_btn"><button type="button" class="btn btn-outline-dark float-right" id="${detail_id}" onclick="putComment(this.id)" data-bs-toggle="modal" data-bs-target="#Modal1">수정</button></div>
-                    <div class="col del_comment_btn"><button type="button" onclick="delete_comment(${detail_id})" class="btn btn-outline-dark float-right">삭제</button></div>
+                    <div class="col del_comment_btn"><button type="button" onclick="delete_comment_confirm(${detail_id})" class="btn btn-outline-dark float-right">삭제</button></div>
                 </div>
             </div>
         </div>
@@ -250,7 +250,6 @@ async function putSave() {
         })
     })
     comment_json = await response.json()
-
     if (response.status == 200) {
         Swal.fire({
             title: '댓글 수정 성공!',
@@ -286,32 +285,60 @@ async function delete_comment(id) {
         },
         method: 'DELETE'
     })
-
-    if (response.status == 204) {
+    if (response.status == 204){
         Swal.fire({
-            title: '댓글 삭제 완료!',
+            title: '댓글 삭제 성공!',
             icon: 'success',
-            confirmButtonColor: '#FFCCCC',
-            confirmButtonText: '확인',
-        }).then(result =>{
-            if(result.isConfirmed){
-                window.location.reload();
-            }
-        })
-        
-    } else {
-        Swal.fire({
-            title: '댓글 작성자만 삭제 가능합니다!',
-            icon: 'warning',
-            confirmButtonColor: '#FFCCCC',
-            confirmButtonText: '확인',
-        }).then(result =>{
-            if(result.isConfirmed){
-                
+        }).then(result => {
+            if(result){
+                window.location.reload()
             }
         })
     }
 }
+
+function delete_comment_confirm(id){
+    Swal.fire({
+        title: '댓글 삭제 하시겠습니까?',
+        text: '삭제하시면 복구시킬 수 없습니다',
+        icon: 'warning',
+        showDenyButton: true,
+        confirmButtonColor: '#FFCCCC',
+        confirmButtonText: '확인',
+        denyButtonColor : '#FFCCCC',
+        denyButtonText : '취소'
+    }).then(result =>{
+        if(result.isConfirmed){
+            delete_comment(id)
+        } else if(result.isDenied){
+            Swal.fire('댓글 삭제 취소!', '댓글 삭제를 취소하셨습니다.' ,'success')
+            return false
+        }
+    })
+}
+
+
+function delete_article_confirm(id){
+    Swal.fire({
+        title: '게시글을 삭제 하시겠습니까?',
+        text: '삭제하시면 복구시킬 수 없습니다',
+        icon: 'warning',
+        showDenyButton: true,
+        confirmButtonColor: '#FFCCCC',
+        confirmButtonText: '확인',
+        denyButtonColor : '#FFCCCC',
+        denyButtonText : '취소'
+    }).then(result =>{
+        if(result.isConfirmed){
+            delete_article(id)
+        } else if(result.isDenied){
+            Swal.fire('게시글 삭제 취소!', '게시글 삭제를 취소하셨습니다.' ,'success')
+            return false
+        }
+    })
+}
+
+
 
 // 게시글 삭제//
 async function delete_article() {
@@ -329,6 +356,8 @@ async function delete_article() {
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
+            cancelButtonColor : '#FFCCCC',
+            cancelButtonText : '취소'
         }).then(result =>{
             if(result.isConfirmed){
                 window.location.replace(`${frontend_base_url}feed.html`);
@@ -340,7 +369,6 @@ async function delete_article() {
 }
 
 
-//게시글 수정
 
 async function ArticleSave() {
     const OldContent = document.getElementById(`detail_article-box`)
@@ -354,8 +382,8 @@ async function ArticleSave() {
     const NewImage = document.getElementById(`put_InputImg`).files[0]
 
     const formData = new FormData();
-    formData.append('content', NewContent);
     formData.append('rating', NewRating);
+    formData.append('content', NewContent);
     formData.append('image', NewImage);
     formData.append('is_private', is_private);
 

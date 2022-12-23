@@ -13,6 +13,7 @@
     left: 0;
     width: 100%;
     visibility: hidden;
+    caret-color: red;
 }
 .container-open {
     visibility: visible;

@@ -38,9 +38,10 @@ page2login.addEventListener('click', () => {
   login.style.display = 'flex';
   signup.style.display = 'none';
 });
-container.addEventListener('click', () => {
-  close();
-});
+// 배경눌러도 닫히는 거
+// container.addEventListener('click', () => {
+//   close();
+// });
 
 contents.addEventListener('click', (e) => {
   e.stopPropagation();
@@ -73,7 +74,7 @@ function total_booklist(){
           }
           function append_temp_html(img_url, book_link, i){
               temp_html = `
-                    <img src="${img_url}" onclick="location.href='${book_link}'">
+                    <img src="${img_url}" onclick="window.open('${book_link}')">
 
             `
           if ( i % 3 == 0){

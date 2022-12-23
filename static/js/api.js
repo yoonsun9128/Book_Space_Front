@@ -49,10 +49,12 @@ window.onload = function navbar(){
 
 
 // # userpage로 가는 함수//
-const user_id = localStorage.getItem("pk")
+const user_pk = localStorage.getItem("pk")
 function gotoUserpage(){
-    window.location.href = `../templates/userpage.html?id=${user_id}`
+    window.location.href = `../templates/userpage.html?id=${user_pk}`
 }
+
+let regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 
 // # 회원가입 //
 async function handleSignup(){
@@ -108,10 +110,10 @@ async function handleSignup(){
         })
         return false;
     }
-    if(SignupData.password1 == ""){
+    if(!regPass.test(SignupData.password1)){
         Swal.fire({
-            title: '비밀번호를 입력해주세요!',
-            text: '비밀번호칸이 비어있습니다.',
+            title: '비밀번호를 확인해주세요!',
+            text: '문자,영어를 포함해서 8자리 이상 작성해주세요.',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
@@ -121,10 +123,11 @@ async function handleSignup(){
             }
         })
         return false;
-    }else if(SignupData.password1.length < 8){
+    }
+    if(SignupData.password1 == ""){
         Swal.fire({
-            title: '비밀번호를 확인해주세요!',
-            text: '문자,영어를 포함해서 8자리 이상 작성해주세요',
+            title: '비밀번호를 입력해주세요!',
+            text: '비밀번호칸이 비어있습니다.',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
@@ -163,7 +166,6 @@ async function handleSignup(){
         })
         return false;
     }
-
     const response = await fetch(`${backend_base_url}users/dj-rest-auth/registration/`, {
         headers:{
             Accept: "application/json",
@@ -189,10 +191,10 @@ async function handleSignup(){
         signup.style.display = 'none';
         login.style.display = 'flex';
 
-    }else {
+    }else if(SignupData.password1.length < 8){
         Swal.fire({
-            title: '이미 로그인되어 있는 username입니다.',
-            text: 'username을 확인해주세요',
+            title: '비밀번호를 확인해주세요!',
+            text: '영어, 숫자를 포함해서 8자리 이상 작성해주세요',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
