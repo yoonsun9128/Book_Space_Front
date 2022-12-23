@@ -38,11 +38,8 @@ async function inquiryList() {
             $('#inquiry-box-detail').append(temp_html_detail)
 
             const inquiryTit = document.getElementsByClassName('a')[i]
-            console.log(inquiryTit)
             const inquiryDetail = document.getElementsByClassName('board_detail')[i]
-            console.log(inquiryDetail)
             inquiryTit.addEventListener('click', () => {
-                console.log(document.getElementById('inquiry-box-detail').children)
                 inquiryDetail.style.display = 'block';
 
             })

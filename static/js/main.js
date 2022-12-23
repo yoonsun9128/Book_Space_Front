@@ -99,7 +99,6 @@ function user_booklist(){
       data: {},
       success: function(response) {
           let books = response
-          console.log(books)
           for (let i=0; i <6; i++){
               append_temp_html(
                 books[i].img_url,

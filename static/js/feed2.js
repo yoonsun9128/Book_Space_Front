@@ -20,7 +20,6 @@ function choiceBook(){
         }
         choiceFeed().then((data) => {
             feeds = data
-            console.log(feeds)
             if(feeds == ""){
                 Swal.fire({
                     title: '책에 대한 게시물이 없습니다.',
@@ -36,7 +35,6 @@ function choiceBook(){
                 return false;
             }
             let title = feeds[0]['title']
-            console.log(title)
             let temp_html = `
             <p class="a"><mark class="mint">"${title}"</mark>
             <span class="b" >에 대한 게시글</span>
