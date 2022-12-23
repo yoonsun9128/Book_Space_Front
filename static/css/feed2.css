@@ -105,11 +105,20 @@ body {
     cursor: pointer;
 }
 
-.selectpicker{
-    margin-top: 100px;
-    cursor: pointer;
+.search{
+    margin-top: 90px;
+    width: 100%;
 }
 
-.search{
-    margin-top: 100px;
+.a {
+    font-size: 50px
+}
+
+.a span{
+    font-size: 30px
+}
+
+mark.mint{
+    background: linear-gradient(to top, #e3c174 50%, transparent 50%)
+
 }

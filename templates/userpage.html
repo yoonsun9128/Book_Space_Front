@@ -13,6 +13,7 @@
   <link rel="stylesheet" type="text/css"
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
   <link rel="stylesgeet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
+  <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
   <!--폰트-->
   <link rel=“preconnect” href=“https://fonts.googleapis.com”>
@@ -160,13 +161,19 @@
                 <label for="recipient-name" class="col-form-label">name:</label>
                 <input type="text" class="form-control" id="info_name">
               </div>
-              <div class="mb-3">
+              <div class="mb-3 input password">
                 <label for="message-text" class="col-form-label">password:</label>
-                <textarea class="form-control" id="info_password"></textarea>
+                <input type="password" class="form-control" id="info_password"></input>
+                <div class="eyes">
+                  <i class="fa fa-eye fa-lg"></i>
+                </div>
               </div>
-              <div class="mb-3">
+              <div class="mb-3 input password2">
                 <label for="message-text" class="col-form-label">passwordcheck:</label>
-                <textarea class="form-control" id="info_password2"></textarea>
+                <input type="password2" class="form-control" id="info_password2"></input>
+                <div class="eyes2">
+                  <i class="fa fa-eye fa-lg"></i>
+                </div>
               </div>
             </form>
           </div>
@@ -217,9 +224,45 @@
         </div>
       </div>
     </div>
+
     <script src="../static/js/api.js"></script>
     <script src="../static/js/userpage.js"></script>
   </div>
+<script>
+  $(function(){
+    // 눈표시 클릭 시 패스워드 보이기
+    $('.eyes').on('click',function(){
+      $('.input.password').toggleClass('active');
+
+      if( $('.input.password').hasClass('active') == true ){
+        $(this).find('.fa-eye').attr('class',"fa fa-eye-slash fa-lg").parents('.input').find('#info_password').attr('type',"text");
+
+              // i 클래스                // 텍스트 보이기 i 클래스
+      }
+      else{
+        $(this).find('.fa-eye-slash').attr('class',"fa fa-eye fa-lg").parents('.input').find('#info_password').attr('type','password');
+      }
+    });
+  });
+
+  $(function(){
+    // 눈표시 클릭 시 패스워드 보이기
+    $('.eyes2').on('click',function(){
+      $('.input.password2').toggleClass('active');
+
+      if( $('.input.password2').hasClass('active') == true ){
+        $(this).find('.fa-eye').attr('class',"fa fa-eye-slash fa-lg").parents('.input').find('#info_password2').attr('type',"text");
+
+              // i 클래스                // 텍스트 보이기 i 클래스
+      }
+      else{
+        $(this).find('.fa-eye-slash').attr('class',"fa fa-eye fa-lg").parents('.input').find('#info_password2').attr('type','password');
+      }
+    });
+  });
+
+
+</script>
 </body>
 
 </html>

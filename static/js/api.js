@@ -49,8 +49,8 @@ window.onload = function navbar(){
 
 
 // # userpage로 가는 함수//
-const a = localStorage.getItem("payload").split(',')[4];
-const user_id = a[10];
+const user_id = localStorage.getItem("pk")
+console.log(user_id)
 function gotoUserpage(){
     window.location.href = `../templates/userpage.html?id=${user_id}`
 }
@@ -73,7 +73,21 @@ async function handleSignup(){
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
+            }
+        })
+        return false;
+    }
+    if(SignupData.email == ""){
+        Swal.fire({
+            title: '이메일을 작성해주세요!',
+            text: '이메일칸이 비어있습니다.',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+
             }
         })
         return false;
@@ -87,7 +101,7 @@ async function handleSignup(){
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
         return false;
@@ -101,7 +115,7 @@ async function handleSignup(){
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
         return false;
@@ -114,7 +128,7 @@ async function handleSignup(){
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
         return false;
@@ -128,7 +142,7 @@ async function handleSignup(){
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
         return false;
@@ -142,10 +156,10 @@ async function handleSignup(){
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
-        return false; 
+        return false;
     }
 
     const response = await fetch(`${backend_base_url}users/dj-rest-auth/registration/`, {
@@ -167,22 +181,22 @@ async function handleSignup(){
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
         signup.style.display = 'none';
         login.style.display = 'flex';
 
-    }else{
+    }else {
         Swal.fire({
-            title: '이미 로그인되어 있는 이메일입니다.',
-            text: '이메일을 확인해주세요',
+            title: '이미 로그인되어 있는 username입니다.',
+            text: 'username을 확인해주세요',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
         return false;
@@ -241,7 +255,7 @@ async function handleLogin(){
         confirmButtonText: '확인',
     }).then(result =>{
         if(result.isConfirmed){
-            
+
         }
     })
     return false;
@@ -259,6 +273,7 @@ async function timeOut() {
         localStorage.removeItem("refresh")
         localStorage.removeItem("payload")
         localStorage.removeItem("user")
+        localStorage.removeItem("pk")
         Swal.fire({
             title: '토큰세션이 만료되었습니다!',
             text: '다시로그인 해주세요',
@@ -281,6 +296,7 @@ async function logout() {
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
     localStorage.removeItem("user")
+    localStorage.removeItem("pk")
 
     Swal.fire({
         title: '로그아웃 되었습니다!',
