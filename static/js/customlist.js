@@ -10,7 +10,6 @@
             data: {},
             success: function(response) {
                 let books = response
-                console.log(books)
                 for (let i=0; i < books.length; i++){
                     append_temp_html(
                         books[i].id,
@@ -62,7 +61,6 @@ function save_id(id){
             }
         }
     }
-console.log(select_books)
 }
 
 
@@ -102,11 +100,4 @@ async function send_id(){
             })
         }
     }
-
-
-
-// console.log(genre)
-// var selectBox = function(value){
-//     console.log(value)
-// }
 

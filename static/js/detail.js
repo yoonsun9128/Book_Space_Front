@@ -66,11 +66,11 @@ detailData().then((data) => {
             <a class="col" class="flex-shrink-0" href="${frontend_base_url}userpage.html?id=${detail_user_id}"><img class="rounded-circle" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: top;" src="${image_url}${detail_profile_img}" alt="..." /></a>
             <div class="col"> <div> <div class="fw-bold" id="comment-user" id="comment-user">${detail_user}</div></div>
         </div>
-            <div class="container text-center" style="width:100%; margin-left:70px; margin-bottom:30px;">
+            <div class="container text-center" style="width:93%; margin-left:70px; margin-bottom:30px;">
                 <div class="row row-cols-auto">
-                    <div class="col" style="width:770px; text-align:left;" id="new-comment${detail_id}">${detail_comment}</div>
-                    <div class="col put_comment_btn"><button type="button" class="btn btn-outline-dark" id="${detail_id}" onclick="putComment(this.id)" data-bs-toggle="modal" data-bs-target="#Modal1">수정</button></div>
-                    <div class="col del_comment_btn"><button type="button" onclick="delete_comment(${detail_id})" class="btn btn-outline-dark">삭제</button></div>
+                    <div class="col" style="min-width:770px; text-align:left;" id="new-comment${detail_id}">${detail_comment}</div>
+                    <div class="col put_comment_btn"><button type="button" class="btn btn-outline-dark float-right" id="${detail_id}" onclick="putComment(this.id)" data-bs-toggle="modal" data-bs-target="#Modal1">수정</button></div>
+                    <div class="col del_comment_btn"><button type="button" onclick="delete_comment(${detail_id})" class="btn btn-outline-dark float-right">삭제</button></div>
                 </div>
             </div>
         </div>
@@ -84,13 +84,12 @@ detailData().then((data) => {
         function ButtonShow2(detail_user_id){
             //로그인 유저==댓글 작성유저
             if(userId==detail_user_id){
-                PutCommentBtn.style.display = 'flex';
-                DelCommentBtn.style.display = 'flex';
+                PutCommentBtn.style.visibility = 'visible';
+                DelCommentBtn.style.visibility = 'visible';
             }
-            else{PutCommentBtn.style.display = 'none'; DelCommentBtn.style.display = 'none';}
+            else{PutCommentBtn.style.visibility = 'hidden'; DelCommentBtn.style.visibility = 'hidden';}
             if(userId==article_user_id){
-                PutCommentBtn.style.display = 'flex';
-                DelCommentBtn.style.display = 'flex';
+                DelCommentBtn.style.visibility = 'visible';
             }
         }
         ButtonShow2(detail_user_id)
@@ -101,6 +100,15 @@ detailData().then((data) => {
     else{
         color = "gray"
     }
+
+    function OpenModal(content) {
+        $('#edit_modal').css({
+          display: 'flex'
+  
+        });
+        var modal_content = document.getElementById("put_content")
+        modal_content.value = content
+      }OpenModal(content)
 
 
     let temp1_html = `
@@ -218,7 +226,7 @@ num=0
 // 유저페이지 가는 기능
 function userpagemove(id){
     num=id
-    window.location.href=`../templates/userpage.html?id=${num}`
+    window.location.href=`${frontend_base_url}userpage.html?id=${num}`
 }
 
 function putComment(id) {
@@ -257,7 +265,7 @@ async function putSave() {
         OldComment.innerText=NewComment
     } else {
         Swal.fire({
-            title: '댓글 작성자만 수정 가능합니다!',
+            title: '댓글 창이 비어있습니다!',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
@@ -334,28 +342,11 @@ async function delete_article() {
 
 //게시글 수정
 
-
-function putArticle() {
-    const OldContent = document.getElementById(`detail_article-box`)
-    const NewContent = document.getElementById(`put_content`).value
-    const OldRating = document.getElementById(`detail_rating-box`)
-    const NewRating = document.getElementById(`put_rating`).value
-    const OldImage = document.getElementById(`detail_image-box`)
-    const private = document.getElementById("is_private")
-    const is_private = private.checked;
-    document.getElementById('result').innerText = is_private;
-    const NewImage = document.getElementById(`put_InputImg`).value
-    NewContent.value = OldContent
-    NewRating.value = OldRating
-    NewImage.value = OldImage
-
-}
-
 async function ArticleSave() {
     const OldContent = document.getElementById(`detail_article-box`)
     const NewContent = document.getElementById(`put_content`).value
     const OldRating = document.getElementById(`detail_rating-box`)
-    const NewRating = document.querySelector("input[type='radio']:checked").value
+    const NewRating = document.querySelector("input[type='radio']:checked")
     const OldImage = document.getElementById(`detail_image-box`)
     const private = document.getElementById("is_private")
     const is_private = private.checked;
@@ -368,7 +359,7 @@ async function ArticleSave() {
     formData.append('image', NewImage);
     formData.append('is_private', is_private);
 
-    const response = await fetch(`http://127.0.0.1:8000/articles/${code}/`, {
+    const response = await fetch(`${backend_base_url}articles/${code}/`, {
         headers: {
             "Authorization": "Bearer " + localStorage.getItem("access")
         },
@@ -390,6 +381,6 @@ async function ArticleSave() {
         })
         
     } else {
-        alert("게시글 작성자만 수정 가능합니다.")
+        alert("게시글 수정 실패")
     }
 }

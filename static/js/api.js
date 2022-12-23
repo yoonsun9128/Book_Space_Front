@@ -50,7 +50,6 @@ window.onload = function navbar(){
 
 // # userpage로 가는 함수//
 const user_id = localStorage.getItem("pk")
-console.log(user_id)
 function gotoUserpage(){
     window.location.href = `../templates/userpage.html?id=${user_id}`
 }
@@ -266,8 +265,6 @@ async function handleLogin(){
 // 토큰 완료 자동 로그아웃//
 async function timeOut() {
     const payload = JSON.parse(localStorage.getItem("payload"));
-    console.log(payload.exp)
-    console.log(Date.now()/1000)
     if (payload.exp <(Date.now()/1000)){
         localStorage.removeItem("access")
         localStorage.removeItem("refresh")

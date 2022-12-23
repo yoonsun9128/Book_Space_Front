@@ -77,7 +77,6 @@ function book_list(s_data) {
         새로운정보는 빠른시일내에 업데이트하겠습니다.  
         </div>
         `
-        console.log(cnt)
         if (cnt >= 1){
             $('#new-button').empty(temp_html2)
 
@@ -101,7 +100,6 @@ function book_list(s_data) {
     }
     BooksData().then((data) => {
         books = data
-        console.log(books)
         for (let i = 0; i < books.length; i++) {
             let book_name = books[i].book_title
             let book_img = books[i].img_url

@@ -81,7 +81,6 @@ async function post_book() {
     const is_private = private.checked;   
     document.getElementById('result').innerText = is_private; 
     const image=document.getElementById("InputImg").files[0]
-    console.log(image)
     const formData = new FormData();
     formData.append('content', content.value);
     formData.append('rating', star.value);
