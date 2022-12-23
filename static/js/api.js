@@ -54,7 +54,6 @@ function gotoUserpage(){
     window.location.href = `../templates/userpage.html?id=${user_id}`
 }
 
-
 // # 회원가입 //
 async function handleSignup(){
     const SignupData = {
@@ -63,6 +62,8 @@ async function handleSignup(){
         password1 : document.getElementById("password").value,
         password2 : document.getElementById("passwordcheck").value,
     }
+    var regExp = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.[a-zA-Z]{2,4}$/;
+
     if(SignupData.email == ""){
         Swal.fire({
             title: '이메일을 작성해주세요!',
@@ -77,10 +78,11 @@ async function handleSignup(){
         })
         return false;
     }
-    if(SignupData.email == ""){
+
+    if(!regExp.test(SignupData.email)){
         Swal.fire({
-            title: '이메일을 작성해주세요!',
-            text: '이메일칸이 비어있습니다.',
+            title: '이메일칸을 확인해주세요!',
+            text: '이메일 구성을 다시 확인해주세요!',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
@@ -91,6 +93,7 @@ async function handleSignup(){
         })
         return false;
     }
+
     if(SignupData.username == ""){
         Swal.fire({
             title: '유저네임을 작성해주세요!',
