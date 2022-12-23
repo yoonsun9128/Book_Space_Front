@@ -242,6 +242,32 @@ img.rounded {
   opacity: 0.5;
 }
 
+.input {
+  position: relative;
+}
+
+.input .eyes {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 2px;
+  height: 30px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.input .eyes2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 2px;
+  height: 30px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
 .modal-header {
   display: flex;
   flex-shrink: 0;

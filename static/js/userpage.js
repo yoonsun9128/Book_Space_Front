@@ -15,7 +15,7 @@ var token = localStorage.getItem("access");
                 window.location.replace (`${frontend_base_url}main.html`)
             }
         })
-        
+
     }
 
 const editButton = document.getElementById("user_info")
@@ -146,7 +146,7 @@ async function imageSave(){
                 window.location.replace(`${frontend_base_url}userpage.html?id=${id}`)
             }
         })
-        
+
     } else {
         Swal.fire({
             title: '프로필이미지 수정 실패',
@@ -177,7 +177,7 @@ async function editSave() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
         return false
@@ -191,7 +191,7 @@ async function editSave() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
         return false
@@ -205,7 +205,7 @@ async function editSave() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
         return false;
@@ -219,7 +219,7 @@ async function editSave() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
         return false;
@@ -244,7 +244,7 @@ async function editSave() {
                 window.location.replace(`${frontend_base_url}userpage.html?id=${id}`)
             }
         })
-        
+
     } else {
         Swal.fire({
             title: '프로필정보 수정 실패',
@@ -295,7 +295,7 @@ async function userDelete() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
     }

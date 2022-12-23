@@ -78,7 +78,7 @@ function total_booklist(){
             `
           if ( i % 3 == 0){
             $('#card').append(temp_html)
-          } 
+          }
           else if(i % 3 == 1){
             $('#card-left').append(temp_html)
           }
@@ -99,22 +99,28 @@ function user_booklist(){
       data: {},
       success: function(response) {
           let books = response
+          console.log(books)
           for (let i=0; i <6; i++){
               append_temp_html(
-                  books[i].img_url,
-                  books[i].book_link,
+                books[i].img_url,
+                books[i].book_link,
+                books[i].id
               )
           }
 
-          function append_temp_html(img_url, book_link){
+          function append_temp_html(img_url, book_link, id){
               temp_html =`
-              <img class="list_detail" src = "${img_url}" onclick = "window.location.href = '${book_link}'"></img>
+              <img class="list_detail" src = "${img_url}" id="${id}" onclick = "goToFeed(this.id)"></img>
               `
               $('#user_book').append(temp_html)
           }
         }
       }
     )} user_booklist()
+
+function goToFeed(id){
+  window.location.href = `http://127.0.0.1:5500/templates/feed2.html?book_id=${id}`
+}
 
 
 function popular_feed(){
@@ -131,7 +137,7 @@ function popular_feed(){
           ppfeed[i].username,
           ppfeed[i].title,
           ppfeed[i].likes_count,
-          
+
         )
       }
       function append_temp_html(i, username, title, likes_count){
