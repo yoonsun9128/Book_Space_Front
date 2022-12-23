@@ -100,12 +100,12 @@ header{
   }
 
   .book-rank{
-    width: 1500px;
+    width: 1510px;
     height: 400px;
   }
   .user_custom{
     width: 720px;
-    height : 520px;
+    height : 610px;
     background-color: rgb(232, 238, 243); 
     border-radius: 20px;
     float : left;
@@ -114,7 +114,7 @@ header{
   }
   .user_custom1{
     width: 720px;
-    height : 520px;
+    height : 610px;
     background-color: rgb(232, 238, 243); 
     border-radius: 20px;
     float : right;
