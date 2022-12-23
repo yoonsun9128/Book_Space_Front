@@ -47,7 +47,7 @@ async function FeedList(){
                     <a href="${frontend_base_url}userpage.html?id=${write_user_id}"><img src="${image_url}${profile_img}" alt="..."></a><span style = "margin-left : 10px;" class="text-uppercase fw-bold fs-6">${username}</span>
                     </div>
                     <div class="card-img-top image-card image-card-1">
-                        <img src="${image_url}${image}" alt="...">
+                        <img src="${image_url}${image}" onclick="window.location.href='${frontend_base_url}detail.html?id=${id}'" alt="...">
                     </div>
                     <div class = "btns">
                         <Button onclick = "Toggle(${id})"class = "btn" id="${id}" style = "color : ${color}" ><i class="fa-solid fa-heart"></i> ${count}</Button>

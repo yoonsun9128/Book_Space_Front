@@ -361,7 +361,7 @@
 })(window.jQuery, window, document);
 
 $('#pagination-demo').twbsPagination({
-  totalPages: 40,
+  totalPages: 16,
   visiblePages: 7,
   href: '/?page=',
 });

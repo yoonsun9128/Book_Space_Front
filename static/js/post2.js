@@ -52,19 +52,22 @@ fileInput.addEventListener("change", handleFiles)
 async function post_book() {
     const title = document.getElementById("title").value
     const content = document.getElementById("content")
-    if(content.value==""){
+    const InputImg = document.getElementById("InputImg").value
+    const image=document.getElementById("InputImg").files[0]
+    const star = document.querySelector("input[type='radio']:checked")
+
+    if(image==undefined){
         Swal.fire({
-            title: '내용을 적어주세요!',
+            title: '이미지를 넣어주세요!',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+                return false
             }
         })
-    }
-    const star = document.querySelector("input[type='radio']:checked")
+    } 
     if(star==null){
         Swal.fire({
             title: '별점을 넣어주세요!',
@@ -73,14 +76,26 @@ async function post_book() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
+                return false
             }
         })
     }
-    const InputImg = document.getElementById("InputImg").value
+    if(content.value==""){
+        Swal.fire({
+            title: '내용을 적어주세요!',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+
+            }
+        })
+    }
+
     const private = document.getElementById("is_private")
     const is_private = private.checked;   
     document.getElementById('result').innerText = is_private; 
-    const image=document.getElementById("InputImg").files[0]
     const formData = new FormData();
     formData.append('content', content.value);
     formData.append('rating', star.value);
@@ -104,10 +119,21 @@ async function post_book() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                window.location.replace(`${frontend_base_url}feed.html`);
+                setTimeout(window.location.replace(`${frontend_base_url}feed.html`), 10000);
             }
         })
-    } else {
+    } else if(content.value==""){
+        Swal.fire({
+            title: '내용을 적어주세요!',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+
+            }
+        })
+    } else{
         Swal.fire({
             title: '게시글 작성 실패!',
             icon: 'warning',
@@ -115,7 +141,9 @@ async function post_book() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+                window.location.replace(`${frontend_base_url}feed.html`);
             }
         })
-    }}
+    }
+
+}
