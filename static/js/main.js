@@ -17,11 +17,11 @@ for(i=0; i< closeButton.length; i++){
   });
 }
 
-// openButton.addEventListener('click', () => {
-//   container.style.display = 'flex';
-//   login.style.display = 'flex';
-//   signup.style.display = 'none';
-// });
+openButton.addEventListener('click', () => {
+  container.style.display = 'flex';
+  login.style.display = 'flex';
+  signup.style.display = 'none';
+});
 
 openButton.addEventListener('click', () => {
   modalContainer.classList.add('container-open');
