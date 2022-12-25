@@ -163,6 +163,8 @@ body{
 
 .check{
   cursor: pointer;
+  width: 30px;
+  height: 30px;
 }
 
 
@@ -211,7 +213,6 @@ select::-ms-expand {
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
-  margin-right: 620px;
 
 
     background-image:
