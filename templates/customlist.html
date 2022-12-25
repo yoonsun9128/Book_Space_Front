@@ -55,9 +55,9 @@
         <br>
         <p>1~3권의 책을 체크해서 "제출하기"버튼을 눌러주세요</p>
     </div>
-    <div class="flex-container">
-        <div class="flex-item">
-            <select name="job" class ="browsers2"id = "changeTest" onChange="changeValue()">
+    <div class="container" style="width:50%; margin-left:25%; display: flex; justify-content: space-between; align-items: center;">
+        <div style="margin-top:7%;">
+            <select name="job" class ="browsers2" id = "changeTest" onChange="changeValue()">
                 <option value="전체">전체</option>
                 <option value="어린이" >어린이</option>
                 <option value="교육">교육</option>
@@ -65,9 +65,12 @@
                 <option value="자기계발">자기계발</option>
                 <option value="기타">기타</option>
             </select>
+        </div>
+        <div style="margin-bottom:3%;">
             <button class="bttn-material-flat bttn-lg bttn-warning"onClick="window.location.reload()" >새로고침</button>
             <button class="bttn-material-flat bttn-lg bttn-warning" onclick="send_id()">제출하기</button>
         </div>
+    </div>
     <div class="container">
         <div class="book-store" id="customlist" >
 
