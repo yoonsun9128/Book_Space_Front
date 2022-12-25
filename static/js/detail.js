@@ -64,7 +64,7 @@ detailData().then((data) => {
         <div class="ms-3">
         <div class="row row-cols-auto">
             <a class="col" class="flex-shrink-0" href="${frontend_base_url}userpage.html?id=${detail_user_id}"><img class="rounded-circle" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: top;" src="${image_url}${detail_profile_img}" alt="..." /></a>
-            <div class="col"> <div> <div class="fw-bold" id="comment-user" id="comment-user">${detail_user}</div></div>
+            <div class="col"> <div> <a class="fw-bold" id="comment-user" id="comment-user" href="${frontend_base_url}userpage.html?id=${detail_user_id}">${detail_user}</a></div>
         </div>
             <div class="container text-center" style="width:93%; margin-left:70px; margin-bottom:30px;">
                 <div class="row row-cols-auto">
@@ -127,7 +127,7 @@ detailData().then((data) => {
 
     let temp3_html = `
     <div>
-        <div class="article_user">${article_user}</div>
+        <div class="article_user" id="${article_user_id}" onclick="userpagemove(this.id)">${article_user}</div>
     </div>
     `
     $('#detail_article_user-box').append(temp3_html)
