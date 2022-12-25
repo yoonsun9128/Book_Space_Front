@@ -49,12 +49,11 @@ window.onload = function navbar(){
 
 
 // # userpage로 가는 함수//
-const user_pk = localStorage.getItem("pk")
 function gotoUserpage(){
-    window.location.href = `../templates/userpage.html?id=${user_pk}`
+    var user_id = localStorage.getItem("pk")
+    console.log(user_id)
+    window.location.href = `../templates/userpage.html?id=${user_id}`
 }
-
-let regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 
 // # 회원가입 //
 async function handleSignup(){
@@ -84,7 +83,7 @@ async function handleSignup(){
     if(!regExp.test(SignupData.email)){
         Swal.fire({
             title: '이메일칸을 확인해주세요!',
-            text: '이메일 구성을 다시 확인해주세요!',
+            text: '이메일칸이 비어있습니다.',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
@@ -110,10 +109,10 @@ async function handleSignup(){
         })
         return false;
     }
-    if(!regPass.test(SignupData.password1)){
+    if(SignupData.password1 == ""){
         Swal.fire({
-            title: '비밀번호를 확인해주세요!',
-            text: '문자,영어를 포함해서 8자리 이상 작성해주세요.',
+            title: '비밀번호를 입력해주세요!',
+            text: '비밀번호칸이 비어있습니다.',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
@@ -123,11 +122,10 @@ async function handleSignup(){
             }
         })
         return false;
-    }
-    if(SignupData.password1 == ""){
+    }else if(SignupData.password1.length < 8){
         Swal.fire({
-            title: '비밀번호를 입력해주세요!',
-            text: '비밀번호칸이 비어있습니다.',
+            title: '비밀번호를 확인해주세요!',
+            text: '문자,영어를 포함해서 8자리 이상 작성해주세요',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
@@ -166,6 +164,7 @@ async function handleSignup(){
         })
         return false;
     }
+
     const response = await fetch(`${backend_base_url}users/dj-rest-auth/registration/`, {
         headers:{
             Accept: "application/json",
@@ -176,6 +175,8 @@ async function handleSignup(){
     })
 
     response_json = await response.json()
+    console.log(response_json)
+
     if (response.status == 201) {
         Swal.fire({
             title: '이메일이 전송되었습니다!',
@@ -191,11 +192,26 @@ async function handleSignup(){
         signup.style.display = 'none';
         login.style.display = 'flex';
 
-    }else if(SignupData.password1.length < 8){
+    }
+    if ("email" in response_json) {
         Swal.fire({
-            title: '비밀번호를 확인해주세요!',
-            text: '영어, 숫자를 포함해서 8자리 이상 작성해주세요',
-            icon: 'warning',
+            title: '이메일이 중복됩니다.',
+            text: '다른 유저 이메일과 동일합니다. 다시 확인해주세요.',
+            icon: 'warnings',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+
+            }
+        })
+        return false;
+    }
+    if ("username" in response_json) {
+        Swal.fire({
+            title: '유저네임 중복됩니다.',
+            text: '다른 유저와 유저네임이 동일합니다. 다시 확인해주세요.',
+            icon: 'warnings',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
         }).then(result =>{
@@ -270,6 +286,8 @@ async function handleLogin(){
 // 토큰 완료 자동 로그아웃//
 async function timeOut() {
     const payload = JSON.parse(localStorage.getItem("payload"));
+    console.log(payload.exp)
+    console.log(Date.now()/1000)
     if (payload.exp <(Date.now()/1000)){
         localStorage.removeItem("access")
         localStorage.removeItem("refresh")
