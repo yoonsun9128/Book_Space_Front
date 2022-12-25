@@ -25,14 +25,14 @@
                     <div class="book-cell">
                         <div class="book-img">
                         <img src="${img_url}" class="book-photo">
-                    </div>
-                    <div class="book-content">
-                        <div class="book-title">${book_title}</div>
-                        <div class="book-sum">${book_content}</div>
-                    
-                    </div>
-                    <div class="checkbox">
-                        <input class="check" type="checkbox" id="${id}"  name="check" onclick=save_id(this.id)>
+                        </div>
+                        <div class="book-content">
+                            <div class="book-title">${book_title}</div>
+                            <div class="book-sum">${book_content}</div>
+                        </div>
+                        <div class="checkbox">
+                            <input class="check" type="checkbox" id="${id}"  name="check" onclick=save_id(this.id)>
+                        </div>
                     </div>
                     `
                     $('#customlist').append(temp_html)
