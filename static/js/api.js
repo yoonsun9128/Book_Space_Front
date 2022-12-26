@@ -21,6 +21,7 @@ toggleBtn.addEventListener('click', () => {
   icons.classList.toggle('active')
 })
 
+
 window.onload = function navbar(){
     $("#div_load_image").hide();
     // 로그인 된 상태
@@ -32,6 +33,7 @@ window.onload = function navbar(){
         feedButton.style.display = 'block';
         postButton.style.display = 'block';
         recommendButton.style.display = 'block';
+        
 
 
     }
@@ -43,10 +45,13 @@ window.onload = function navbar(){
         feedButton.style.display = 'none';
         postButton.style.display = 'none';
         recommendButton.style.display = 'none';
+       
 
     }
 }
-
+navloginButton.onclick = () => {
+    window.scrollTo({ top: 0, behavior:"smooth"});
+}
 
 
 // # userpage로 가는 함수//
@@ -60,8 +65,8 @@ async function handleSignup(){
     const SignupData = {
         username : document.getElementById("username").value,
         email : document.getElementById("email").value,
-        password1 : document.getElementById("password").value,
-        password2 : document.getElementById("passwordcheck").value,
+        password : document.getElementById("password").value,
+        passwordcheck : document.getElementById("passwordcheck").value,
     }
     var regExp = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.[a-zA-Z]{2,4}$/;
 
@@ -122,7 +127,7 @@ async function handleSignup(){
         })
         return false;
     }
-    if(SignupData.password1 == ""){
+    if(SignupData.password == ""){
         Swal.fire({
             title: '비밀번호를 입력해주세요!',
             text: '비밀번호칸이 비어있습니다.',
@@ -135,7 +140,7 @@ async function handleSignup(){
             }
         })
         return false;
-    }else if(SignupData.password1.length < 8){
+    }else if(SignupData.password.length < 8){
         Swal.fire({
             title: '비밀번호를 확인해주세요!',
             text: '문자,영어를 포함해서 8자리 이상 작성해주세요',
@@ -149,7 +154,7 @@ async function handleSignup(){
         })
         return false;
     }
-    if(SignupData.password2 == ""){
+    if(SignupData.passwordcheck == ""){
         Swal.fire({
             title: '비밀번호check를 입력해주세요!',
             text: '비밀번호check칸이 비어있습니다.',
@@ -163,7 +168,7 @@ async function handleSignup(){
         })
         return false;
     }
-    if(SignupData.password1 !== SignupData.password2){
+    if(SignupData.password !== SignupData.passwordcheck){
         Swal.fire({
             title: '비밀번호와 비밀번호check가 다릅니다!',
             text: '비밀번호를 확인해주세요',
@@ -178,7 +183,7 @@ async function handleSignup(){
         return false;
     }
     $("#div_load_image").show();
-    const response = await fetch(`${backend_base_url}users/dj-rest-auth/registration/`, {
+    const response = await fetch(`${backend_base_url}users/signup/`, {
         headers:{
             Accept: "application/json",
             'Content-type':'application/json'
@@ -233,7 +238,6 @@ async function handleSignup(){
         })
         return false;
     }
-
 }
 // # 로그인 //
 async function handleLogin(){
@@ -241,7 +245,7 @@ async function handleLogin(){
         email : document.getElementById("email1").value,
         password : document.getElementById("password1").value
     }
-    const response = await fetch(`${backend_base_url}users/dj-rest-auth/login/`, {
+    const response = await fetch(`${backend_base_url}users/api/token/`, {
         headers:{
             'content-type':'application/json',
         },
@@ -260,23 +264,29 @@ async function handleLogin(){
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                window.location.href = "../templates/main.html"
+                window.location.href = `${frontend_base_url}main.html`
             }
         })
-        localStorage.setItem("access", response_json.access_token);
-        localStorage.setItem("refresh", response_json.refresh_token);
+        localStorage.setItem("access", response_json.access);
+        localStorage.setItem("refresh", response_json.refresh);
 
-        const base64Url = response_json.access_token.split('.')[1];
+        const base64Url = response_json.access.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         const jsonPayload = decodeURIComponent(atob(base64).split('').map(
             function(c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
-    localStorage.setItem("payload", jsonPayload);
-    localStorage.setItem("user", response_json.user.email)
-    localStorage.setItem("pk", response_json.user.pk)
+        console.log(jsonPayload)
+    user_login_email = jsonPayload.split(',')[5]
+    user_login_email = user_login_email.substring(9)
+    user_login_email = user_login_email.replace('"','')
 
-    window.onload()
+    user_login_pk = jsonPayload.split(',')[4]
+    user_login_pk = user_login_pk.substring(10)
+    localStorage.setItem("payload", jsonPayload);
+    localStorage.setItem("user", user_login_email)
+    localStorage.setItem("pk", user_login_pk)
+   
 
 } else {
     Swal.fire({

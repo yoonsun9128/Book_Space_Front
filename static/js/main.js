@@ -8,6 +8,23 @@ const login = document.querySelector('.login');
 const signup = document.querySelector('.signup');
 const modalContainer = document.getElementById('modal-container');
 const page2login = document.querySelector('.page2login');
+const wouldYouLogin = document.querySelector(".wouldyou-login")
+
+function recommend_text(){
+    // 로그인 된 상태
+    if(localStorage.hasOwnProperty("user") === true){
+        wouldYouLogin.style.display = 'none';
+
+
+    }
+    //로그아웃 된 상태
+    if(localStorage.hasOwnProperty("user") === false){
+        wouldYouLogin.style.display = 'block';
+
+    }
+}recommend_text()
+
+
 
 
 const closeButton = document.querySelectorAll('.close')
@@ -169,6 +186,7 @@ function numberous_book(){
           numberbook[i].article_count,
         )
       }
+      
       function append_temp_html(i, username, article_count){
         temp_html = `
         <div class="user-stats-number">

@@ -4,9 +4,9 @@ const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
 
-window.onload = function init(){
+function init(){
     document.getElementById("best").value = "시간순"
-}
+}init()
 
 function Best(){
     var A = document.getElementById("best").value;

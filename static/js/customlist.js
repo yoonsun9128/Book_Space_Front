@@ -10,20 +10,22 @@
             data: {},
             success: function(response) {
                 let books = response
+                console.log(books)
                 for (let i=0; i < books.length; i++){
                     append_temp_html(
                         books[i].id,
                         books[i].img_url,
                         books[i].book_title,
                         books[i].book_content,
+                        books[i].book_link,
                     )
                 }
                 
                 
-                function append_temp_html(id, img_url, book_title, book_content){
+                function append_temp_html(id, img_url, book_title, book_content, book_link){
                     temp_html = `
-                    <div class="book-cell">
-                        <div class="book-img">
+                    <div class="book-cell" >
+                        <div class="book-img" onclick="window.open('${book_link}')">
                         <img src="${img_url}" class="book-photo">
                         </div>
                         <div class="book-content">

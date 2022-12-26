@@ -3,6 +3,12 @@
 const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
+const privateButton = document.getElementById('result')
+privateButton.style.display = 'none';
+
+
+
+
 W = window.location.href
 id = (W.split("=")[1])
 
@@ -64,8 +70,8 @@ async function post_book() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                return false
-            }
+                
+            }return false
         })
     } 
     if(star==null){
@@ -88,7 +94,7 @@ async function post_book() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-
+                
             }
         })
     }
@@ -131,18 +137,19 @@ async function post_book() {
         }).then(result =>{
             if(result.isConfirmed){
 
-            }
+            }return false
         })
     } else{
         Swal.fire({
-            title: '게시글 작성 실패!',
+            title: '게시글에 이미지를 넣어주세요!',
+            text: '이미지는 필수입니다,',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                window.location.replace(`${frontend_base_url}feed.html`);
-            }
+                
+            }return false;
         })
     }
 
