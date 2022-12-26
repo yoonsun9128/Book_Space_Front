@@ -233,7 +233,11 @@
                 },
             })
         }
-
+        $('#content').on('keydown', function(e){
+	if (e.code == 'Enter'){
+		$('.btn btn-outline-dark').click()
+	}
+})    
     </script>
 </body>
 

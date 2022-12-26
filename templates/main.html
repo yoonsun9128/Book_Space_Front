@@ -336,4 +336,9 @@
             });
         }
     });
+    $('#email1, #password1').on('keydown', function(e){
+	if (e.code == 'Enter'){
+		$('.loginBtn').click()
+	}
+})
 </script>
