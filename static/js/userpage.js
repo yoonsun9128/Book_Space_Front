@@ -147,7 +147,7 @@ async function imageSave(){
             }
         })
 
-    } else {
+    }else {
         Swal.fire({
             title: '프로필이미지 수정 실패',
             text:'이미지를 넣어주세요!',
@@ -168,52 +168,11 @@ async function editSave() {
         password : document.getElementById(`info_password`).value,
         passwordcheck : document.getElementById(`info_password2`).value
     }
-    if (userInfoData.username ==""){
-        Swal.fire({
-            title: '유저네임을 작성해주세요!',
-            text: '유저네임칸이 비어있습니다.',
-            icon: 'warning',
-            confirmButtonColor: '#FFCCCC',
-            confirmButtonText: '확인',
-        }).then(result =>{
-            if(result.isConfirmed){
 
-            }
-        })
-        return false
-    };
-    if ((userInfoData.password).length <8){
-        Swal.fire({
-            title: '비밀번호를 확인해주세요!',
-            text: '문자,영어를 포함해서 8자리 이상 작성해주세요.',
-            icon: 'warning',
-            confirmButtonColor: '#FFCCCC',
-            confirmButtonText: '확인',
-        }).then(result =>{
-            if(result.isConfirmed){
-
-            }
-        })
-        return false
-    };
     if (userInfoData.password !== userInfoData.passwordcheck){
         Swal.fire({
             title: '비밀번호와 비밀번호check가 다릅니다!',
             text: '비밀번호를 확인해주세요',
-            icon: 'warning',
-            confirmButtonColor: '#FFCCCC',
-            confirmButtonText: '확인',
-        }).then(result =>{
-            if(result.isConfirmed){
-
-            }
-        })
-        return false;
-    };
-    if (userInfoData.password == ""){
-        Swal.fire({
-            title: '비밀번호를 입력해주세요!',
-            text: '비밀번호칸이 비어있습니다.',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
@@ -232,7 +191,8 @@ async function editSave() {
         method: 'PUT',
         body: JSON.stringify(userInfoData)
     })
-    response_json = response.json();
+    response_json = await response.json();
+    console.log(response_json)
     if (response.status == 200) {
         Swal.fire({
             title: '프로필 정보 수정완료',
@@ -245,11 +205,11 @@ async function editSave() {
             }
         })
 
-    } else {
+    }
+    if (response.status != 200) {
         Swal.fire({
-            title: '프로필정보 수정 실패',
-            text: '빈칸을 확인해주세요',
-            icon: 'warning',
+            title: 'ddddd',
+            icon: 'success',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
         }).then(result =>{
@@ -257,6 +217,21 @@ async function editSave() {
                 window.location.replace(`${frontend_base_url}userpage.html?id=${id}`)
             }
         })
+
+    }
+    if ("username" in response_json) {
+        Swal.fire({
+            title: '유저네임이 중복됩니다.',
+            text: '다른 유저 이름과 동일합니다. 다시 확인해주세요.',
+            icon: 'warnings',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+
+            }
+        })
+        return false;
     }
 
 }
@@ -291,7 +266,7 @@ async function userDelete() {
                     confirmButtonText: '확인',
                 }).then(result =>{
                     if(result.isConfirmed){
-                        window.location.replace(`${frontend_base_url}main.html`); 
+                        window.location.replace(`${frontend_base_url}main.html`);
                     }
                 })
             }
