@@ -68,7 +68,7 @@ detailData().then((data) => {
         </div>
             <div class="container text-center" style="width:93%; margin-left:70px; margin-bottom:30px;">
                 <div class="row row-cols-auto">
-                    <div class="col" style="min-width:770px; text-align:left;" id="new-comment${detail_id}">${detail_comment}</div>
+                    <div class="col" style="min-width:770px; text-align:left; white-space:pre-wrap" id="new-comment${detail_id}">${detail_comment}</div>
                     <div class="col put_comment_btn"><button type="button" class="btn btn-outline-dark float-right" id="${detail_id}" onclick="putComment(this.id)" data-bs-toggle="modal" data-bs-target="#Modal1">수정</button></div>
                     <div class="col del_comment_btn"><button type="button" onclick="delete_comment_confirm(${detail_id})" class="btn btn-outline-dark float-right">삭제</button></div>
                 </div>
@@ -113,7 +113,7 @@ detailData().then((data) => {
 
     let temp1_html = `
     <div>
-        <div class="articles">${content}</div>
+        <div class="articles" style="white-space:pre-wrap">${content}</div>
     </div>
     `
     $('#detail_article-box').append(temp1_html)
@@ -360,7 +360,7 @@ async function delete_article() {
             cancelButtonText : '취소'
         }).then(result =>{
             if(result.isConfirmed){
-                window.location.replace(`${frontend_base_url}feed.html`);
+                window.location.replace(`${frontend_base_url}userpage.html?id=${userId}`);
             }
         })
     } else {
