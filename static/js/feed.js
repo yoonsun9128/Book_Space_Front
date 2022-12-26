@@ -56,7 +56,7 @@ async function FeedList(){
                         <span class="text-uppercase fw-bold fs-6">${title}</span>
                         <p>${content}</p>
                         <div class="mt-4 about d-flex justify-content-between align-items-center">
-                        <a href="${frontend_base_url}detail.html?id=${id}" class="text-dark">Read full story...</a>
+                        <a href="${frontend_base_url}detail.html?id=${id}" class="text-dark">더보기...</a>
                         </div>
                     </div>
                 </div>

@@ -1,12 +1,10 @@
-body {
-    background-color:antiquewhite !important;
-
+html{
+    background-color: antiquewhite;
 }
-
 .card {
     border-radius: 5px;
-    width : 400px;
-    height: 592px;
+    width : 380px;
+    height: 520px;
     overflow: hidden;
     border: none;
     background-color: #fff;
@@ -24,10 +22,7 @@ body {
     -webkit-box-orient : vertical;
     display : -webkit-box;
     margin-top: 3px;
-
 }
-
-
 .image-card {
     height: 310px;
     width: 100%;
@@ -35,20 +30,14 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-
 }
-
 .image-card-1 {
     background-color: white;
-
 }
-
 .image-card img {
     height: 300px;
     width: 350px;
     object-fit: cover;
-
-
 }
 .profile-image img{
     height: 30px;
@@ -108,8 +97,21 @@ body {
 .selectpicker{
     margin-top: 100px;
     cursor: pointer;
+    width: 200px; 
+    height: 45px;
+    padding:.5em; 
+    border: 1px solid #999;
+    font-family: inherit;  
+    background: url('../images/arrow.jpg') no-repeat 95% 50%; 
+    border-radius: 0px; 
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white;
 }
-
+.selectpicker::-ms-expand {
+    display: none;
+}
 .search{
     margin-top: 100px;
 }

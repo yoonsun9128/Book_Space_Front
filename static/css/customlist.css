@@ -1,10 +1,9 @@
-body{
-  background-color : antiquewhite !important;
+html{
+  background-color: antiquewhite;
 }
 .container{
   text-align: center;
 }
-
 .book-store {
   display: table;
   width: 1000px;
@@ -12,7 +11,6 @@ body{
   background-color: white;
   margin: auto;
 }
-
 .reload{
   margin-top: 100px;
   border: 0;
@@ -21,12 +19,9 @@ body{
   width: 50px;
   height: 50px;
   cursor: pointer;
-
 }
-
 .flex-container{
   text-align: center;
-
 }
 .flex-item{
   display: inline-block;
@@ -35,13 +30,10 @@ body{
   width: 100%;
   height: 100%;
   background-color:#f2f5f7;
-
 }
-
 .book {
   background: #fff;
 }
-
 .book-cell {
   display: flex;
   padding: 25px;
@@ -50,34 +42,26 @@ body{
   margin: 30px 10px 10px 30px;
   float: left;
 }
-
-
 .book-photo {
   width: 180px;
   height: 253px;
   left: 35px;
   border-radius: 2px;
 }
-
-
 .book-title {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-
 .book-title {
   color: #000000;
   font-weight: 600;
 }
-
-
 .book-content {
   padding: 0 20px;
   color: #000000;
   overflow: hidden;
 }
-
 .book-sum {
   margin-top: 20px;
   font-size: 14px;
@@ -86,7 +70,6 @@ body{
   -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;
 }
-
 .book-see {
   margin-top: 25px;
   text-align: center;
@@ -98,8 +81,6 @@ body{
   width: 160px;
   border-radius: 20px;
 }
-
-
 .book-cell:nth-child(1) {
   background-color: #fcdede;
 }
@@ -164,8 +145,6 @@ body{
 .check{
   cursor: pointer;
 }
-
-
 .custom-select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -188,14 +167,12 @@ body{
 select::-ms-expand {
   display:none;
 }
-
 .booklist_txt1{
   position: relative;
   text-align: center;
   font-weight: bold;
   font-size: 30px;
 }
-
 .browsers2{
   background-color: white;
   /* border: 1px solid purple; */
@@ -228,7 +205,6 @@ select::-ms-expand {
     1.5em 1.5em;
     background-repeat: no-repeat;
 }
-
 .bttn-default {
   color: #fff;
 }
@@ -264,7 +240,6 @@ select::-ms-expand {
   font-family: inherit;
   padding: 5px 12px;
 }
-
 .bttn-material-flat {
   margin: 0;
   padding: 0;
