@@ -34,6 +34,9 @@ html{
 .image-card-1 {
     background-color: white;
 }
+.text-dark{
+    font-size: 30px;
+}
 .image-card img {
     height: 300px;
     width: 350px;
