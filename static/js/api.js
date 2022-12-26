@@ -93,6 +93,19 @@ async function handleSignup(){
         })
         return false;
     }
+    if ((SignupData.email).split('.')[1] != "com"){
+        Swal.fire({
+            title: 'com만지원합니다',
+            text: '이메일 구성을 다시 확인해주세요!',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+
+            }
+        })
+    }
 
     if(SignupData.username == ""){
         Swal.fire({
