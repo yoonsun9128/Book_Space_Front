@@ -25,18 +25,70 @@ function teststar(){
 
 // 게시글 작성 //
 async function post_article() {
-    const title = document.getElementById("title").value
-    const content = document.getElementById("content").value
-    const star = document.querySelector("input[type='radio']:checked").value
+    const title = document.getElementById("title")
+    const content = document.getElementById("content")
+    const star = document.querySelector("input[type='radio']:checked")
     const private = document.getElementById("is_private")
     const is_private = private.checked;   
     document.getElementById('result').innerText = is_private; 
     const image=document.getElementById("InputImg").files[0]
+
+    if(image==undefined){
+        Swal.fire({
+            title: '이미지를 넣어주세요!',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                return false
+            }
+        })
+    } 
+    if(star==null){
+        Swal.fire({
+            title: '별점을 넣어주세요!',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                return false
+            }
+        })
+    }
+    if(content.value==""){
+        Swal.fire({
+            title: '내용을 적어주세요!',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+
+            }
+        })
+    }
+    if(title.value==""){
+        Swal.fire({
+            title: '제목을 적어주세요!',
+            icon: 'warning',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+
+            }
+        })
+    }
+
+
+
     const formData = new FormData();
-    formData.append('title', title);
-    formData.append('content', content);
+    formData.append('title', title.value);
+    formData.append('content', content.value);
     formData.append('image', image);
-    formData.append('rating', star);
+    formData.append('rating', star.value);
     formData.append('is_private', is_private)
     const response = await fetch(`${backend_base_url}articles/search/`, {
         headers: {
@@ -63,7 +115,7 @@ async function post_article() {
     } else {
         Swal.fire({
             title: '빈칸을 채워주세요!',
-            text: '내용, 별점, 이미지를 넣어주세요.',
+            text: '제목, 내용, 별점, 이미지를 모두 넣어주세요.',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',

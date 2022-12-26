@@ -257,17 +257,7 @@ async function userDelete() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                Swal.fire({
-                    title: '회원탈퇴 성공했습니다.',
-                    text:'그동안 감사했습니다...',
-                    icon: 'success',
-                    confirmButtonColor: '#FFCCCC',
-                    confirmButtonText: '확인',
-                }).then(result =>{
-                    if(result.isConfirmed){
-                        window.location.replace(`${frontend_base_url}main.html`);
-                    }
-                })
+                window.location.replace(`${frontend_base_url}main.html`);  
             }
         })
     } else {
@@ -280,7 +270,7 @@ async function userDelete() {
         }).then(result =>{
             if(result.isConfirmed){
 
-            }
+            }return false;
         })
     }
 }
