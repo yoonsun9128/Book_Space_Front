@@ -192,9 +192,23 @@ async function editSave() {
         body: JSON.stringify(userInfoData)
     })
     response_json = await response.json();
+    console.log(response_json)
     if (response.status == 200) {
         Swal.fire({
             title: '프로필 정보 수정완료',
+            icon: 'success',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+                window.location.replace(`${frontend_base_url}userpage.html?id=${id}`)
+            }
+        })
+
+    }
+    if (response.status != 200) {
+        Swal.fire({
+            title: 'ddddd',
             icon: 'success',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
@@ -218,19 +232,6 @@ async function editSave() {
             }
         })
         return false;
-    }
-    if (response.status != 200) {
-        Swal.fire({
-            title: 'ddddd',
-            icon: 'success',
-            confirmButtonColor: '#FFCCCC',
-            confirmButtonText: '확인',
-        }).then(result =>{
-            if(result.isConfirmed){
-                window.location.replace(`${frontend_base_url}userpage.html?id=${id}`)
-            }
-        })
-
     }
 
 }
