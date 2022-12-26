@@ -6,7 +6,7 @@ html{
 }
 .book-store {
   display: table;
-  width: 1000px;
+  width: 55vw;
   height: 100vh;
   background-color: white;
   margin: auto;
@@ -144,6 +144,8 @@ html{
 
 .check{
   cursor: pointer;
+  width: 30px;
+  height: 30px;
 }
 .custom-select {
   -webkit-appearance: none;
@@ -188,7 +190,6 @@ select::-ms-expand {
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
-  margin-right: 620px;
 
 
     background-image:
