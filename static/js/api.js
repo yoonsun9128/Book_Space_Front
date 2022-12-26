@@ -22,6 +22,7 @@ toggleBtn.addEventListener('click', () => {
 })
 
 window.onload = function navbar(){
+    $("#div_load_image").hide();
     // 로그인 된 상태
     if(localStorage.hasOwnProperty("user") === true){
         user_email.innerText = login_email
@@ -176,7 +177,7 @@ async function handleSignup(){
         })
         return false;
     }
-
+    $("#div_load_image").show();
     const response = await fetch(`${backend_base_url}users/dj-rest-auth/registration/`, {
         headers:{
             Accept: "application/json",
@@ -187,7 +188,7 @@ async function handleSignup(){
     })
 
     response_json = await response.json()
-
+    $("#div_load_image").hide();
     if (response.status == 201) {
         Swal.fire({
             title: '이메일이 전송되었습니다!',
@@ -351,5 +352,6 @@ function parseJwt(token) {
 
     return JSON.parse(jsonPayload);
 };
+
 
 

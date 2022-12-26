@@ -192,7 +192,6 @@ async function editSave() {
         body: JSON.stringify(userInfoData)
     })
     response_json = await response.json();
-    console.log(response_json)
     if (response.status == 200) {
         Swal.fire({
             title: '프로필 정보 수정완료',
