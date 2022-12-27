@@ -20,7 +20,6 @@ function choiceBook(){
         }
         choiceFeed().then((data) => {
             feeds = data
-            console.log(feeds)
             if(feeds == ""){
                 Swal.fire({
                     title: '책에 대한 게시물이 없습니다.',
@@ -94,7 +93,6 @@ function choiceBook(){
         if (btnvar1.style.color == 'red'){
           btnvar1.style.color = "grey"
           btnvar1.textContent = Number(btnvar1.textContent) -1
-          console.log(btnvar1.textContent)
           btnvar1.innerHTML = `<div class="fa-solid fa-heart" style = "margin-right:10px"></div>${btnvar1.textContent}`;
         }
         else {
