@@ -210,7 +210,6 @@ async function handleSignup(){
         })
         signup.style.display = 'none';
         login.style.display = 'flex';
-
     } else{
         $("#div_load_image").hide();
         Swal.fire({
@@ -226,6 +225,7 @@ async function handleSignup(){
         })
     }
     if ("email" in response_json) {
+        $("#div_load_image").hide();
         Swal.fire({
             title: '이메일이 중복됩니다.',
             text: '다른 유저 이메일과 동일합니다. 다시 확인해주세요.',
@@ -240,6 +240,7 @@ async function handleSignup(){
         return false;
     }
     if ("username" in response_json) {
+        $("#div_load_image").hide();
         Swal.fire({
             title: '유저네임 중복됩니다.',
             text: '다른 유저와 유저네임이 동일합니다. 다시 확인해주세요.',
@@ -291,7 +292,6 @@ async function handleLogin(){
             function(c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
-        console.log(jsonPayload)
     user_login_email = jsonPayload.split(',')[5]
     user_login_email = user_login_email.substring(9)
     user_login_email = user_login_email.replace('"','')
@@ -303,10 +303,39 @@ async function handleLogin(){
     localStorage.setItem("pk", user_login_pk)
 
 
-} else {
+}
+if (response_json['non_field_errors']== "이메일이 존재하지 않습니다."){
     Swal.fire({
-        title: '잘못된 로그인입니다!',
-        text: '이메일과 비밀번호를 확인해주세요.',
+        title: '이메일이 존재하지 않습니다.',
+        text: '회원가입을 해주세요.',
+        icon: 'warning',
+        confirmButtonColor: '#FFCCCC',
+        confirmButtonText: '확인',
+    }).then(result =>{
+        if(result.isConfirmed){
+
+        }
+    })
+    return false;
+}
+if (response_json['non_field_errors']== "이메일 인증이 필요합니다."){
+    Swal.fire({
+        title: '이메일 인증이 필요합니다.',
+        text: '이메일을 확인해주세요.',
+        icon: 'warning',
+        confirmButtonColor: '#FFCCCC',
+        confirmButtonText: '확인',
+    }).then(result =>{
+        if(result.isConfirmed){
+
+        }
+    })
+    return false;
+}
+if (response_json['non_field_errors']== "비밀번호가 틀렸습니다."){
+    Swal.fire({
+        title: '비밀번호가 틀렸습니다.',
+        text: '비밀번호를 다시 확인해주세요.',
         icon: 'warning',
         confirmButtonColor: '#FFCCCC',
         confirmButtonText: '확인',
