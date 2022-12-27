@@ -33,7 +33,7 @@ window.onload = function navbar(){
         feedButton.style.display = 'block';
         postButton.style.display = 'block';
         recommendButton.style.display = 'block';
-        
+
 
 
     }
@@ -45,7 +45,7 @@ window.onload = function navbar(){
         feedButton.style.display = 'none';
         postButton.style.display = 'none';
         recommendButton.style.display = 'none';
-       
+
 
     }
 }
@@ -69,6 +69,7 @@ async function handleSignup(){
         passwordcheck : document.getElementById("passwordcheck").value,
     }
     var regExp = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.[a-zA-Z]{2,4}$/;
+    var regExp2 = /^(=?.*[a-zA-Z])(?=.*[0-9]).{8-12}$/;
 
     if(SignupData.email == ""){
         Swal.fire({
@@ -88,7 +89,7 @@ async function handleSignup(){
     if(!regExp.test(SignupData.email)){
         Swal.fire({
             title: '이메일칸을 확인해주세요!',
-            text: '이메일칸이 비어있습니다.',
+            text: '이메일 형식을 다시 확인해주세요!',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
@@ -140,7 +141,7 @@ async function handleSignup(){
             }
         })
         return false;
-    }else if(SignupData.password.length < 8){
+    }else if(!regExp2.test(SignupData.password)){
         Swal.fire({
             title: '비밀번호를 확인해주세요!',
             text: '문자,영어를 포함해서 8자리 이상 작성해주세요',
@@ -286,7 +287,7 @@ async function handleLogin(){
     localStorage.setItem("payload", jsonPayload);
     localStorage.setItem("user", user_login_email)
     localStorage.setItem("pk", user_login_pk)
-   
+
 
 } else {
     Swal.fire({

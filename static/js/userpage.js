@@ -207,19 +207,6 @@ async function editSave() {
     }
     if (response.status != 200) {
         Swal.fire({
-            title: 'ddddd',
-            icon: 'success',
-            confirmButtonColor: '#FFCCCC',
-            confirmButtonText: '확인',
-        }).then(result =>{
-            if(result.isConfirmed){
-                window.location.replace(`${frontend_base_url}userpage.html?id=${id}`)
-            }
-        })
-
-    }
-    if ("username" in response_json) {
-        Swal.fire({
             title: '유저네임이 중복됩니다.',
             text: '다른 유저 이름과 동일합니다. 다시 확인해주세요.',
             icon: 'warnings',
@@ -257,7 +244,7 @@ async function userDelete() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                window.location.replace(`${frontend_base_url}main.html`);  
+                window.location.replace(`${frontend_base_url}main.html`);
             }
         })
     } else {
