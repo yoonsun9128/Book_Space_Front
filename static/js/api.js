@@ -69,7 +69,7 @@ async function handleSignup(){
         passwordcheck : document.getElementById("passwordcheck").value,
     }
     var regExp = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.[a-zA-Z]{2,4}$/;
-    var regExp2 = /^(=?.*[a-zA-Z])(?=.*[0-9]).{8-12}$/;
+    var reg = /^(?=.*\d)(?=.*[a-z])[\da-zA-Z!@#]{8,}$/
 
     if(SignupData.email == ""){
         Swal.fire({
@@ -141,7 +141,8 @@ async function handleSignup(){
             }
         })
         return false;
-    }else if(!regExp2.test(SignupData.password)){
+    }
+    if(!reg.test(SignupData.password)){
         Swal.fire({
             title: '비밀번호를 확인해주세요!',
             text: '문자,영어를 포함해서 8자리 이상 작성해주세요',
@@ -194,8 +195,8 @@ async function handleSignup(){
     })
 
     response_json = await response.json()
-    $("#div_load_image").hide();
     if (response.status == 201) {
+        $("#div_load_image").hide();
         Swal.fire({
             title: '이메일이 전송되었습니다!',
             text: '이메일을 확인해주세요',
@@ -210,6 +211,19 @@ async function handleSignup(){
         signup.style.display = 'none';
         login.style.display = 'flex';
 
+    } else{
+        $("#div_load_image").hide();
+        Swal.fire({
+            title: '인증받을 수 없는 이메일 입니다',
+            text: '이메일을 확인해주세요',
+            icon: 'warnings',
+            confirmButtonColor: '#FFCCCC',
+            confirmButtonText: '확인',
+        }).then(result =>{
+            if(result.isConfirmed){
+
+            }
+        })
     }
     if ("email" in response_json) {
         Swal.fire({
