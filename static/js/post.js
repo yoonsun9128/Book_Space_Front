@@ -81,9 +81,6 @@ async function post_article() {
             }
         })
     }
-
-
-
     const formData = new FormData();
     formData.append('title', title.value);
     formData.append('content', content.value);

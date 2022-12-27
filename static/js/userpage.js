@@ -207,8 +207,8 @@ async function editSave() {
     }
     if (response.status != 200) {
         Swal.fire({
-            title: '유저네임이 중복됩니다.',
-            text: '다른 유저 이름과 동일합니다. 다시 확인해주세요.',
+            title: '빈칸입니다.',
+            text: '유저네임 또는 비밀번호를 변경해주세요.',
             icon: 'warnings',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',

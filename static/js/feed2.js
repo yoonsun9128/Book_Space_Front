@@ -66,7 +66,7 @@ function choiceBook(){
                         <div class = "text">
                         <a href="${frontend_base_url}userpage.html?id=${write_user_id}"><img src="${image_url}${profile_img}" alt="..."></a><span style = "margin-left : 10px;" class="text-uppercase fw-bold fs-6">${username}</span>
                         </div>
-                        <div class="card-img-top image-card image-card-1">
+                        <div class="card-img-top image-card image-card-1" onclick="window.location.href='${frontend_base_url}detail.html?id=${id}'">
                             <img src="${image_url}${image}" alt="...">
                         </div>
                         <div class = "btns">

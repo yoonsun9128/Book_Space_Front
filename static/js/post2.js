@@ -128,29 +128,17 @@ async function post_book() {
                 setTimeout(window.location.replace(`${frontend_base_url}feed.html`), 10000);
             }
         })
-    } else if(content.value==""){
+    }else{
         Swal.fire({
-            title: '내용을 적어주세요!',
-            icon: 'warning',
+            title:'게시글 작성 실패',
+            text:'내용, 별점, 이미지는 필수입니다.',
+            icon:'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-
-            }return false
-        })
-    } else{
-        Swal.fire({
-            title: '게시글에 이미지를 넣어주세요!',
-            text: '이미지는 필수입니다,',
-            icon: 'warning',
-            confirmButtonColor: '#FFCCCC',
-            confirmButtonText: '확인',
-        }).then(result =>{
-            if(result.isConfirmed){
-                
-            }return false;
+                return false
+            }
         })
     }
-
 }

@@ -181,6 +181,9 @@ flex: 0 0 auto;
 width: 50%;
 }
 
+.article_user {
+    cursor: pointer;
+}
 
 .form-control {
 display: block;

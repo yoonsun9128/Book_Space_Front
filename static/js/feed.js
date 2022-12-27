@@ -15,7 +15,7 @@ const payload = localStorage.getItem('payload')
 const personObj = JSON.parse(payload)
 const userId = personObj['user_id']
 
-window.onload = function init(){
+window.onpageshow = function init(){
     user_email.innerText = login_email
     document.getElementById("best").value = "시간순"
     navloginButton.style.display = 'none';
