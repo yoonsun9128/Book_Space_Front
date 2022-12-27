@@ -10,7 +10,6 @@
             data: {},
             success: function(response) {
                 let books = response
-                console.log(books)
                 for (let i=0; i < books.length; i++){
                     append_temp_html(
                         books[i].id,
@@ -20,8 +19,8 @@
                         books[i].book_link,
                     )
                 }
-                
-                
+
+
                 function append_temp_html(id, img_url, book_title, book_content, book_link){
                     temp_html = `
                     <div class="book-cell" >
@@ -40,7 +39,7 @@
                     $('#customlist').append(temp_html)
                 }
             }
-            
+
         }
         )
     }
@@ -51,7 +50,7 @@ changeValue();
 
 
 var select_books = [];
-function save_id(id){    
+function save_id(id){
     if($(`input:checkbox[id=${id}]`).is(":checked") == true){
         select_books.push(id)
     }
@@ -74,7 +73,7 @@ async function send_id(){
                 'Authorization': "Bearer " + localStorage.getItem("access"),
             },
             body: JSON.stringify({"choice":select_books})
-            
+
         })
         response_json = await response.json()
         if(response.status == 200){
