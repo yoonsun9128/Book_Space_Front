@@ -153,8 +153,9 @@ header{
   }
   .user-stats{
     width: 50%;
-    height: 250px;
+    height: 280px;
     margin-top: 10px;
+    border-radius: 20px;
   }
   
   .user-stats .user_custom_txt{

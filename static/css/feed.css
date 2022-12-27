@@ -4,7 +4,7 @@ html{
 .card {
     border-radius: 5px;
     width : 380px;
-    height: 520px;
+    height: 590px;
     overflow: hidden;
     border: none;
     background-color: #fff;
@@ -96,7 +96,18 @@ html{
 .btn i:hover{
     cursor: pointer;
 }
-
+.star{
+    background:transparent;
+    border-color: transparent;
+    height: 40px;
+    border : none;
+    padding : none;
+    margin:5px;
+    font-size: 20px;
+    outline : none;
+    margin-top: 10px;
+    margin-right: 17px;
+}
 .selectpicker{
     margin-top: 100px;
     cursor: pointer;
