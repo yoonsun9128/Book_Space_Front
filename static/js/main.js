@@ -15,7 +15,6 @@ function recommend_text(){
     if(localStorage.hasOwnProperty("user") === true){
         wouldYouLogin.style.display = 'none';
 
-
     }
     //로그아웃 된 상태
     if(localStorage.hasOwnProperty("user") === false){
@@ -186,7 +185,7 @@ function numberous_book(){
           numberbook[i].article_count,
         )
       }
-      
+
       function append_temp_html(i, username, article_count){
         temp_html = `
         <div class="user-stats-number">
