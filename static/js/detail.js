@@ -66,10 +66,11 @@ detailData().then((data) => {
         <div class="row row-cols-auto">
             <a class="col" class="flex-shrink-0" href="${frontend_base_url}userpage.html?id=${detail_user_id}"><img class="rounded-circle" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: top;" src="${image_url}${detail_profile_img}" alt="..." /></a>
             <div class="col"> <div> <a class="fw-bold" id="comment-user" id="comment-user" href="${frontend_base_url}userpage.html?id=${detail_user_id}">${detail_user}</a></div>
+            <div class="col">${updated_at}</div>
         </div>
             <div class="container text-center" style="width:93%; margin-left:70px; margin-bottom:30px;">
                 <div class="row row-cols-auto">
-                    <div class="col" style="min-width:770px; text-align:left; white-space:pre-wrap" id="new-comment${detail_id}">${detail_comment}</div>
+                    <div class="col" style="min-width:770px; text-align:left; white-space:pre-line" id="new-comment${detail_id}">${detail_comment}</div>
                     <div class="col put_comment_btn"><button type="button" class="btn btn-outline-dark float-right" id="${detail_id}" onclick="putComment(this.id)" data-bs-toggle="modal" data-bs-target="#Modal1">수정</button></div>
                     <div class="col del_comment_btn"><button type="button" onclick="delete_comment_confirm(${detail_id})" class="btn btn-outline-dark float-right">삭제</button></div>
                 </div>
@@ -78,6 +79,12 @@ detailData().then((data) => {
         <hr>
         `
         $('#detail_comment-box').append(temp_html)
+
+        function OpenModal2(detail_comment) {
+            var comment_modal = document.getElementById("new_comment")
+            console.log(detail_comment)
+            comment_modal.value = detail_comment
+        }OpenModal2(detail_comment)
 
         const PutCommentBtn = document.getElementsByClassName("put_comment_btn")[i] //댓글수정버튼
         const DelCommentBtn = document.getElementsByClassName("del_comment_btn")[i] //댓글삭제버튼
@@ -103,18 +110,15 @@ detailData().then((data) => {
     }
 
     function OpenModal(content) {
-        $('#edit_modal').css({
-          display: 'flex'
-  
-        });
-        var modal_content = document.getElementById("put_content")
-        modal_content.value = content
+        var article_content = document.getElementById("put_content")
+        article_content.value = content
       }OpenModal(content)
+    
 
 
     let temp1_html = `
     <div>
-        <div class="articles" style="white-space:pre-wrap">${content}</div>
+        <div class="articles" style="white-space:pre-line">${content}</div>
     </div>
     `
     $('#detail_article-box').append(temp1_html)
@@ -372,18 +376,14 @@ async function delete_article() {
 
 
 async function ArticleSave() {
-    const OldContent = document.getElementById(`detail_article-box`)
+    
     const NewContent = document.getElementById(`put_content`).value
-    const OldRating = document.getElementById(`detail_rating-box`)
-    const NewRating = document.querySelector("input[type='radio']:checked")
-    const OldImage = document.getElementById(`detail_image-box`)
     const private = document.getElementById("is_private")
     const is_private = private.checked;
     document.getElementById('result').innerText = is_private;
     const NewImage = document.getElementById(`put_InputImg`).files[0]
 
     const formData = new FormData();
-    formData.append('rating', NewRating);
     formData.append('content', NewContent);
     formData.append('image', NewImage);
     formData.append('is_private', is_private);
