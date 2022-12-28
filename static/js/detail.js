@@ -59,18 +59,19 @@ detailData().then((data) => {
         let detail_id = comment[i]['id']
         let detail_profile_img = comment[i]['profile_img']
         let detail_user_id = comment[i]['user_id']
+        let detail_updated = comment[i]['updated_at']
 
 
         let temp_html = `
         <div class="ms-3">
         <div class="row row-cols-auto">
             <a class="col" class="flex-shrink-0" href="${frontend_base_url}userpage.html?id=${detail_user_id}"><img class="rounded-circle" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: top;" src="${image_url}${detail_profile_img}" alt="..." /></a>
-            <div class="col"> <div> <a class="fw-bold" id="comment-user" id="comment-user" href="${frontend_base_url}userpage.html?id=${detail_user_id}">${detail_user}</a></div>
-            <div class="col">${updated_at}</div>
+            <div class="col"><a class="fw-bold" id="comment-user" id="comment-user" href="${frontend_base_url}userpage.html?id=${detail_user_id}">${detail_user}</a></div>
+            <div class="col" style="font-size:12px;">${detail_updated}</div>
         </div>
             <div class="container text-center" style="width:93%; margin-left:70px; margin-bottom:30px;">
                 <div class="row row-cols-auto">
-                    <div class="col" style="min-width:770px; text-align:left; white-space:pre-line" id="new-comment${detail_id}">${detail_comment}</div>
+                    <div class="col" style="min-width:730px; text-align:left; white-space:pre-line" id="new-comment${detail_id}">${detail_comment}</div>
                     <div class="col put_comment_btn"><button type="button" class="btn btn-outline-dark float-right" id="${detail_id}" onclick="putComment(this.id)" data-bs-toggle="modal" data-bs-target="#Modal1">수정</button></div>
                     <div class="col del_comment_btn"><button type="button" onclick="delete_comment_confirm(${detail_id})" class="btn btn-outline-dark float-right">삭제</button></div>
                 </div>
@@ -79,12 +80,6 @@ detailData().then((data) => {
         <hr>
         `
         $('#detail_comment-box').append(temp_html)
-
-        function OpenModal2(detail_comment) {
-            var comment_modal = document.getElementById("new_comment")
-            console.log(detail_comment)
-            comment_modal.value = detail_comment
-        }OpenModal2(detail_comment)
 
         const PutCommentBtn = document.getElementsByClassName("put_comment_btn")[i] //댓글수정버튼
         const DelCommentBtn = document.getElementsByClassName("del_comment_btn")[i] //댓글삭제버튼
@@ -114,7 +109,6 @@ detailData().then((data) => {
         article_content.value = content
       }OpenModal(content)
     
-
 
     let temp1_html = `
     <div>
@@ -237,8 +231,8 @@ function userpagemove(id){
 function putComment(id) {
     num=id
     const OldComment = document.getElementById(`new-comment${num}`)
-    const NewComment = document.getElementById(`new_comment`).value
-    NewComment.value = OldComment
+    const NewComment = document.getElementById(`new_comment`)
+    NewComment.value = OldComment.innerText
 }
 
 async function putSave() {
