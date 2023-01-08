@@ -52,7 +52,7 @@ detailData().then((data) => {
             DelArticleBtn.style.display = 'none';
         }
     }ButtonShow1(article_user_id)
-    
+
     for (let i=0; i < comment.length; i++){
         let detail_comment = comment[i]['content']
         let detail_user = comment[i]['user']
@@ -105,10 +105,14 @@ detailData().then((data) => {
     }
 
     function OpenModal(content) {
-        var article_content = document.getElementById("put_content")
-        article_content.value = content
+        $('#edit_modal').css({
+          display: 'flex'
+
+        });
+        var modal_content = document.getElementById("put_content")
+        modal_content.value = content
       }OpenModal(content)
-    
+
 
     let temp1_html = `
     <div>
@@ -213,7 +217,7 @@ async function post_comment() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
     }
@@ -227,6 +231,7 @@ function userpagemove(id){
     num=id
     window.location.href=`${frontend_base_url}userpage.html?id=${num}`
 }
+
 
 function putComment(id) {
     num=id
@@ -269,7 +274,7 @@ async function putSave() {
             confirmButtonText: '확인',
         }).then(result =>{
             if(result.isConfirmed){
-                
+
             }
         })
     }
@@ -370,7 +375,7 @@ async function delete_article() {
 
 
 async function ArticleSave() {
-    
+    const OldContent = document.getElementById(`detail_article-box`)
     const NewContent = document.getElementById(`put_content`).value
     const private = document.getElementById("is_private")
     const is_private = private.checked;
@@ -402,7 +407,7 @@ async function ArticleSave() {
                 window.location.replace(`${frontend_base_url}detail.html?id=${code}`);
             }
         })
-        
+
     } else {
         alert("게시글 수정 실패")
     }
