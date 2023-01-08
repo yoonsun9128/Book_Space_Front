@@ -20,8 +20,9 @@ var token = localStorage.getItem("access");
 
 const editButton = document.getElementById("user_info")
 
-URL = window.location.search
-id = URL.split("=")[1]
+const payload = localStorage.getItem('payload')
+const personObj = JSON.parse(payload)
+const userId = personObj['user_id']
 
 function getUserpage(){
 URL = window.location.search
@@ -54,6 +55,7 @@ id = URL.split("=")[1]
         let user_image = data['profile_img']
         let info_user_id = data['id']
 
+
         let name_html = `
         <h3 class="title">${name}</h3>
         `
@@ -70,8 +72,9 @@ id = URL.split("=")[1]
         `
         $('#user_info').append(info_html)
 
-        if (user_id != info_user_id){
+        if (userId != info_user_id){
             editButton.style.display = 'none';
+
         }
     })
 }getUserpage()
@@ -250,7 +253,7 @@ async function userDelete() {
     } else {
         Swal.fire({
             title: '회원탈퇴 실패',
-            text:'계정확인이 필요합니다',
+            text:'해당 유저가 아닙니다.',
             icon: 'warning',
             confirmButtonColor: '#FFCCCC',
             confirmButtonText: '확인',

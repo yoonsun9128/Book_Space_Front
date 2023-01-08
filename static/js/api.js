@@ -68,7 +68,9 @@ async function handleSignup(){
         password : document.getElementById("password").value,
         passwordcheck : document.getElementById("passwordcheck").value,
     }
-    var regExp = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.[a-zA-Z]{2,4}$/;
+    // # 이메일 정규식 //
+    var regExp = /\w+([-+.]\w+)+@\w+([-.]\w+)+\.[a-zA-Z]{2,4}$/;
+    // # 비밀번호 정규식 //
     var reg = /^(?=.*\d)(?=.*[a-z])[\da-zA-Z!@#]{8,}$/
 
     if(SignupData.email == ""){
@@ -270,6 +272,7 @@ async function handleLogin(){
     })
 
     response_json = await response.json()
+    console.log(response_json)
     user = response_json.user
     if (response.status == 200) {
         Swal.fire({
